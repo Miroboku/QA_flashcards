@@ -32,6 +32,32 @@
   --table-border: #e5e7eb;
 
   --primary-color: #4f46e5;
+
+  /* Sidebar */
+  --base-clr: #11121a;
+  --line-clr: #42434a;
+  --hover-clr: #222533;
+  --text-clr: #e6e6ef;
+  --accent-clr: #5e63ff;
+  --secondary-text-clr: #b0b3c1;
+
+  /* 3D QA карусель */
+  --primary: #9d00ff;
+  --secondary: #00e5ff;
+  --accent: #ff00e5;
+  --background: #050510;
+  --card-bg-3d: rgba(20, 20, 40, 0.7);
+  --text-primary-3d: #ffffff;
+  --text-secondary-3d: #b8b8ff;
+  --glow-primary: 0 0 10px rgba(157, 0, 255, 0.7),
+    0 0 20px rgba(157, 0, 255, 0.5);
+  --glow-secondary: 0 0 10px rgba(0, 229, 255, 0.7),
+    0 0 20px rgba(0, 229, 255, 0.5);
+  --glow-accent: 0 0 10px rgba(255, 0, 229, 0.7),
+    0 0 20px rgba(255, 0, 229, 0.5);
+  --card-width: 300px;
+  --card-height: 420px;
+  --carousel-radius: 400px;
 }
 
 body.darkmode {
@@ -69,6 +95,7 @@ body.darkmode {
   --primary-color: #3b82f6;
 }
 
+/* ===== Глобальне ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -85,16 +112,21 @@ body {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-/* Головний контейнер програми */
+/* Головний контейнер програми (одна актуальна версія) */
 .app {
-  max-width: 1000px;
+  max-width: 1100px;
   width: 100%;
+  min-height: 850px; /* вищий контейнер */
   background: var(--bg-app);
-  border-radius: 18px;
-  padding: 20px 24px 28px;
+  border-radius: 22px;
+  padding: 30px 40px 60px; /* більше простору знизу під кнопки */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
   border: 1px solid var(--border-main);
   transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 h1 {
@@ -151,7 +183,7 @@ body.darkmode #theme-switch svg:last-child {
   display: block;
 }
 
-/* Вкладки (Теорія / Карточки) */
+/* ===== Вкладки (Теорія / Карточки) ===== */
 .tabs {
   display: flex;
   gap: 6px;
@@ -220,7 +252,7 @@ body.darkmode #theme-switch svg:last-child {
   display: block;
 }
 
-/* Панель керування карточками */
+/* Панель керування карточками (старий режим) */
 .controls {
   display: flex;
   flex-wrap: wrap;
@@ -295,7 +327,7 @@ button:active {
   color: var(--text-muted);
 }
 
-/* Карточка */
+/* Звичайна плоска карточка (старий варіант) */
 .card {
   margin-top: 4px;
   border-radius: 18px;
@@ -438,14 +470,6 @@ body.darkmode .topic-tag {
 }
 
 /* ===== Sidebar layout ===== */
-:root {
-  --base-clr: #11121a;
-  --line-clr: #42434a;
-  --hover-clr: #222533;
-  --text-clr: #e6e6ef;
-  --accent-clr: #5e63ff;
-  --secondary-text-clr: #b0b3c1;
-}
 
 /* Body з сайдбаром */
 body.sidebar-layout {
@@ -508,7 +532,7 @@ body.sidebar-layout main {
   border-radius: 0.5em;
   padding: 0.85em;
   text-decoration: none;
-  color: #ffffff; /* завжди білий текст */
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 1em;
@@ -516,7 +540,7 @@ body.sidebar-layout main {
 
 #sidebar svg {
   flex-shrink: 0;
-  fill: #ffffff; /* завжди білі іконки */
+  fill: #ffffff;
 }
 
 #sidebar a span,
@@ -585,16 +609,14 @@ body.sidebar-layout main {
   background-color: var(--hover-clr);
 }
 
-/* ==== Sidebar text color and highlight ==== */
-
-/* Головні пункти (Теорія / Карточки) – залишаються білими навіть коли li.active */
+/* Sidebar active / hover */
 #sidebar ul > li.active > .dropdown-btn,
 #sidebar ul > li.active > a {
   color: #ffffff;
   background-color: transparent;
 }
 
-/* Підменю: активний пункт підсвічується фіолетовим */
+/* Підменю: активний пункт */
 #sidebar .sub-menu a.active {
   color: #5e63ff;
   background-color: #1b1e2d;
@@ -613,7 +635,7 @@ body.sidebar-layout main {
   transition: color 0.15s ease, background-color 0.15s ease;
 }
 
-/* Адаптив */
+/* Адаптив для сайдбару */
 @media (max-width: 800px) {
   body.sidebar-layout {
     grid-template-columns: 1fr;
@@ -624,7 +646,8 @@ body.sidebar-layout main {
   }
 
   .app {
-    padding: 16px 14px 20px;
+    padding: 16px 14px 80px;
+    min-height: auto;
   }
 
   #sidebar {
@@ -697,4 +720,489 @@ body.sidebar-layout main {
   .theory-table {
     font-size: 11px;
   }
+}
+
+/* ===== КОСМІЧНИЙ ФОН для 3D-карток ===== */
+.cosmos-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+}
+
+.stars-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(1px 1px at 25% 25%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(2px 2px at 75% 75%, white, transparent),
+    radial-gradient(2px 2px at 100% 100%, white, transparent);
+  background-size: 200px 200px, 300px 300px, 400px 400px, 600px 600px;
+  background-repeat: repeat;
+  animation: twinkle 10s linear infinite;
+}
+
+/* ===== 3D QA CAROUSEL (вкладка "Карточки") ===== */
+
+.memory-section {
+  position: relative;
+  padding: 20px 0 80px;
+  text-align: center;
+}
+
+/* Контейнер каруселі тільки у вкладці "Карточки" */
+#cardsTab .carousel-container {
+  position: relative;
+  width: 100%;
+  height: 600px; /* вища зона під 3D-картки */
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Саме коло, по якому стоять картки */
+#cardsTab .carousel {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+/* Окрема 3D-картка */
+#cardsTab .memory-card {
+  position: absolute;
+  width: 280px;
+  height: 360px;
+  left: 50%;
+  top: 50%;
+  margin-left: -140px; /* половина ширини */
+  margin-top: -180px; /* половина висоти */
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.3s ease;
+  cursor: pointer;
+  opacity: 0.35; /* бічні картки напівпрозорі */
+}
+
+/* Центральна картка – повністю видима */
+#cardsTab .memory-card.active {
+  opacity: 1;
+}
+
+/* Щільніший фон для активної */
+#cardsTab .memory-card.active .card-front,
+#cardsTab .memory-card.active .card-back {
+  background: linear-gradient(135deg, #18182b, #1f2236);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#cardsTab .memory-card:hover .card-inner {
+  transform: translateZ(20px);
+}
+
+#cardsTab .memory-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.card-front {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 30, 60, 0.8),
+    rgba(20, 20, 40, 0.9)
+  );
+  border: 1px solid rgba(157, 0, 255, 0.3);
+}
+
+.card-back {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 40, 0.9),
+    rgba(30, 30, 60, 0.8)
+  );
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  transform: rotateY(180deg);
+}
+
+/* Вміст картки – мінімальні бокові падінги, щоб текст був ширше */
+#cardsTab .card-content {
+  padding: 16px 8px 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Тема зверху */
+#cardsTab .memory-date {
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px rgba(255, 0, 229, 0.7);
+}
+
+/* Блок з питанням + підказкою */
+#cardsTab .memory-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* текст по всій ширині */
+  justify-content: center; /* питання по центру по вертикалі */
+}
+
+/* Питання – по ширині картки */
+#cardsTab .memory-question {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+  text-align: center;
+  width: 100%;
+}
+
+/* Підказка – менший шрифт і у самому низу */
+#cardsTab .memory-preview {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  text-align: center;
+  margin-top: auto; /* прижимаємо вниз усередині картки */
+  opacity: 0.9;
+}
+
+/* Прибираємо будь-які старі "квадрати" з карток, якщо лишилися */
+#cardsTab .memory-image {
+  display: none;
+}
+
+/* Текст відповіді на звороті */
+#cardsTab .card-back .memory-answer {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Легка підсвітка при наведенні */
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(157, 0, 255, 0.1),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#cardsTab .memory-card:hover .card-glow {
+  opacity: 1;
+}
+
+/* Кнопки керування – зафіксовані внизу білої області */
+#cardsTab .carousel-controls {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  z-index: 10;
+}
+
+#cardsTab .control-btn {
+  background: rgba(20, 20, 40, 0.9);
+  border: 1px solid #9d00ff;
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 14px rgba(157, 0, 255, 0.4);
+}
+
+#cardsTab .control-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(157, 0, 255, 0.7);
+}
+
+/* ===== Анімації ===== */
+@keyframes twinkle {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 200px 200px, 300px 300px, 400px 400px, 600px 600px;
+  }
+}
+
+/* glitch – раптом десь використовуєш .glitch-effect */
+@keyframes glitch {
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Адаптив для 3D-карток */
+@media (max-width: 768px) {
+  #cardsTab .carousel {
+    width: 300px;
+    height: 300px;
+  }
+
+  #cardsTab .memory-card {
+    width: 240px;
+    height: 320px;
+    margin-left: -120px;
+    margin-top: -160px;
+  }
+
+  #cardsTab .memory-question {
+    font-size: 0.95rem;
+  }
+
+  #cardsTab .memory-preview {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  #cardsTab .carousel {
+    width: 260px;
+    height: 260px;
+  }
+
+  #cardsTab .memory-card {
+    width: 220px;
+    height: 300px;
+    margin-left: -110px;
+    margin-top: -150px;
+  }
+}
+
+/* ==== Фіксуємо білий текст на 3D-картках у вкладці "Карточки" ==== */
+
+/* Питання — білим, по ширині картки */
+#cardsTab .memory-card .memory-question {
+  color: #ffffff !important;
+  width: 100%;
+}
+
+/* Підказка внизу — трохи менший шрифт, теж біла/майже біла */
+#cardsTab .memory-card .memory-preview {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 12px;
+  width: 100%;
+}
+
+/* Відповідь на звороті — також біла */
+#cardsTab .memory-card .memory-answer {
+  color: #ffffff !important;
+}
+
+/* ===== Показуємо текст ТІЛЬКИ на активній картці ===== */
+
+/* спочатку ховаємо текст на всіх картках */
+#cardsTab .memory-card .memory-date,
+#cardsTab .memory-card .memory-main,
+#cardsTab .memory-card .memory-preview {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+/* а тут вмикаємо тільки для активної */
+#cardsTab .memory-card.active .memory-date,
+#cardsTab .memory-card.active .memory-main,
+#cardsTab .memory-card.active .memory-preview {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ======================================================
+   ✨ INTER + MANROPE — Сучасна типографія для QA Flashcards
+   ====================================================== */
+
+/* Основний текст */
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--text-main);
+}
+
+/* Заголовки */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.theory-section h2,
+.theory-section h3 {
+  font-family: "Manrope", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.015em;
+  color: var(--text-heading);
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+}
+
+/* Розміри заголовків */
+h1,
+.theory-section h1 {
+  font-size: 2.1rem;
+}
+h2,
+.theory-section h2 {
+  font-size: 1.65rem;
+}
+h3,
+.theory-section h3 {
+  font-size: 1.3rem;
+}
+h4,
+.theory-section h4 {
+  font-size: 1.1rem;
+}
+
+/* Текст списків */
+.theory-list li {
+  margin-bottom: 0.6em;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Таблиці */
+.theory-table th,
+.theory-table td {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Кнопки і навігація */
+button,
+.tab-btn,
+.subtab-btn,
+#sidebar a,
+#sidebar .dropdown-btn,
+#sidebar .logo {
+  font-family: "Manrope", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 15px;
+}
+
+/* Flashcards / 3D Cards */
+.memory-question {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  padding: 0 14px;
+}
+
+.memory-answer {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.memory-preview {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: auto;
+  text-align: center;
+}
+
+/* Інформаційні мітки */
+.topic-tag,
+.index-info,
+.progress-info {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Малий текст */
+small,
+label,
+input,
+textarea {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+}
+
+/* Код */
+code,
+pre {
+  font-family: "Inter", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Тема: темна / світла (автоматично працює з var(--text-main)) */
+:root {
+  --text-main: #1c1c1c;
+  --text-heading: #000;
+}
+
+body.darkmode {
+  --text-main: #f2f2f2;
+  --text-heading: #fff;
 }

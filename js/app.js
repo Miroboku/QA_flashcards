@@ -64,6 +64,7 @@ if (themeSwitch) {
 }
 
 // ===== Основні вкладки (Теорія / Карточки) =====
+// ===== Основні вкладки (Теорія / Карточки) =====
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
@@ -72,9 +73,21 @@ function setActiveTab(targetId) {
     const t = b.getAttribute('data-tab');
     b.classList.toggle('active', t === targetId);
   });
+
   tabContents.forEach((c) => {
     c.classList.toggle('active', c.id === targetId);
   });
+
+  // запам'ятати, яку вкладку обрали
+  if (targetId) {
+    localStorage.setItem('qa_activeMainTab', targetId);
+  }
+}
+
+// при завантаженні пробуємо відновити попередню вкладку
+const savedMainTab = localStorage.getItem('qa_activeMainTab');
+if (savedMainTab) {
+  setActiveTab(savedMainTab);
 }
 
 tabButtons.forEach((btn) => {
@@ -83,6 +96,7 @@ tabButtons.forEach((btn) => {
     setActiveTab(targetId);
   });
 });
+
 
 // ===== Саб-вкладки Теорії =====
 const subtabButtons = document.querySelectorAll('.subtab-btn');
@@ -93,9 +107,21 @@ function setActiveSubtab(targetId) {
     const t = b.getAttribute('data-subtab');
     b.classList.toggle('active', t === targetId);
   });
+
   subtabContents.forEach((c) => {
     c.classList.toggle('active', c.id === targetId);
   });
+
+  // запам'ятати активну саб-вкладку
+  if (targetId) {
+    localStorage.setItem('qa_activeSubtab', targetId);
+  }
+}
+
+// при завантаженні пробуємо відновити попередню саб-вкладку
+const savedSubtab = localStorage.getItem('qa_activeSubtab');
+if (savedSubtab) {
+  setActiveSubtab(savedSubtab);
 }
 
 subtabButtons.forEach((btn) => {
@@ -561,38 +587,253 @@ if (nextCardBtn && showAnswerBtn) {
 
 
 /// ===== Зв'язок сайдбару з вкладками/карточками + підсвічування активної теми =====
-const sidebarLinks = document.querySelectorAll('#sidebar .sub-menu a');
+/// ===== Зв'язок сайдбару з вкладками/карточками + підсвічування активної теми =====
+
+// Беремо всі лінки, які керують вкладками / темами
+const sidebarLinks = document.querySelectorAll('#sidebar a[data-main-tab]');
 
 sidebarLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
-    e.preventDefault();
+    const mainTab = link.getAttribute('data-main-tab');   // theoryTab / cardsTab
+    const subtab = link.getAttribute('data-subtab');      // тільки для теорії
+    const topic = link.getAttribute('data-topic');        // тільки для старих карточок
 
-    // 1) Підсвітити активний пункт у сайдбарі й зняти з інших
+    if (mainTab) {
+      e.preventDefault(); // блокуємо стандартний #скрол
+
+      // Перемикаємо основну вкладку (Теорія / Карточки)
+      setActiveTab(mainTab);
+
+      // Прокручуємо до потрібного блоку (щоб візуально "перекинуло")
+      const target = document.getElementById(mainTab);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Підсвічування активного пункту в сайдбарі
     sidebarLinks.forEach((l) => l.classList.remove('active'));
     link.classList.add('active');
 
-    // 2) Перемкнути основну вкладку / сабвкладку / тему карточок
-    const mainTab = link.getAttribute('data-main-tab');
-    const subtab = link.getAttribute('data-subtab');
-    const topic = link.getAttribute('data-topic'); // 'База', 'Функціональне', 'STLC', 'SQL/API', 'GameDev' або 'all'
-
-    if (mainTab) {
-      setActiveTab(mainTab);
-    }
+    // Саб-вкладка теорії, якщо є
     if (subtab) {
       setActiveSubtab(subtab);
     }
 
-    // якщо є селектор тем — користуємось ним (старий варіант)
+    // Старий механізм фільтрації карточок по темі (якщо ще колись знадобиться)
     if (topic && topicFilter) {
       topicFilter.value = topic;
       filterCards();
-    }
-    // якщо селектора вже немає, фільтруємо напряму по назві теми
-    else if (topic) {
+    } else if (topic) {
       filterCardsByTopicName(topic);
     }
   });
 });
+
+
+// ===== 3D QA Flashcards Carousel =====
+
+const carousel3D = document.getElementById('memory-carousel');
+const prevBtn3D = document.getElementById('prev-btn');
+const nextBtn3D = document.getElementById('next-btn');
+
+const VISIBLE_3D_CARDS = 6;
+let carouselCards = [];
+let angleStep3D = 360 / VISIBLE_3D_CARDS;
+let theta3D = 0;
+let activeIndex3D = 0;      // яка картка зараз спереду
+let qaCurrentIndex3D = 0;   // індекс поточного питання в масиві cards
+
+// Беремо наступну флешкарту з нашого великого масиву cards
+// function getNextQaCard() {
+//   if (!Array.isArray(cards) || cards.length === 0) return null;
+//   const card = cards[qaIndex3D % cards.length];
+//   qaIndex3D++;
+//   return card;
+// }
+
+
+// Створюємо 6 3D-карток
+function build3DCarousel() {
+  if (!carousel3D) return;
+
+  carousel3D.innerHTML = '';
+  carouselCards = [];
+
+  for (let i = 0; i < VISIBLE_3D_CARDS; i++) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'memory-card';
+    wrapper.dataset.index = i.toString();
+
+    // Шаблон однієї картки
+wrapper.innerHTML = `
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-content">
+        <!-- Топ: тема -->
+        <div class="memory-date"></div>
+
+        <!-- Центр: питання -->
+        <div class="memory-main">
+          <h3 class="memory-question"></h3>
+        </div>
+
+        <!-- Низ: підказка -->
+        <p class="memory-preview">
+          Клікни по цій картці, щоб побачити відповідь.
+        </p>
+
+        <div class="card-glow"></div>
+      </div>
+    </div>
+
+    <div class="card-back">
+      <div class="card-content">
+        <div class="memory-date back-topic"></div>
+        <p class="memory-answer"></p>
+      </div>
+    </div>
+  </div>
+`;
+
+
+    // Фліп тільки якщо це центральна картка
+    wrapper.addEventListener('click', () => {
+      const idx = parseInt(wrapper.dataset.index, 10);
+      if (idx === activeIndex3D) {
+        wrapper.classList.toggle('flipped');
+      }
+    });
+
+    carousel3D.appendChild(wrapper);
+    carouselCards.push(wrapper);
+  }
+
+  arrange3DCards();
+  updateActive3D();
+  fillActiveCardWithQA(); // заповнюємо перше питання
+}
+
+// Розставляємо картки по колу
+function arrange3DCards() {
+  const radius = 380; // відстань від центру
+  carouselCards.forEach((card, index) => {
+    const angle = angleStep3D * index;
+    card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+  });
+}
+
+// Підсвічування активної (центральної) картки
+function updateActive3D() {
+  carouselCards.forEach((card, index) => {
+    const isActive = index === activeIndex3D;
+    card.classList.toggle('active', isActive);
+    if (!isActive) {
+      card.classList.remove('flipped'); // бічні завжди фронтом
+    }
+  });
+}
+
+// Повертаємо все коло
+function rotate3D() {
+  if (!carousel3D) return;
+  carousel3D.style.transform = `rotateY(${theta3D}deg)`;
+  updateActive3D();
+}
+
+// Заповнюємо центральну картку наступним питанням
+function fillActiveCardWithQA() {
+  const cardEl = carouselCards[activeIndex3D];
+  if (!cardEl) return;
+  if (!Array.isArray(cards) || cards.length === 0) return;
+
+  // беремо поточне питання по qaCurrentIndex3D
+  const qa = cards[qaCurrentIndex3D % cards.length];
+
+  const topicFront = cardEl.querySelector('.memory-date');
+  const topicBack = cardEl.querySelector('.back-topic');
+  const questionEl = cardEl.querySelector('.memory-question');
+  const answerEl = cardEl.querySelector('.memory-answer');
+
+  if (topicFront) topicFront.textContent = `Тема: ${qa.topic}`;
+  if (topicBack) topicBack.textContent = `Тема: ${qa.topic}`;
+  if (questionEl) questionEl.textContent = qa.question;
+  if (answerEl) answerEl.textContent = qa.answer;
+
+  cardEl.classList.remove('flipped'); // завжди показуємо фронт
+}
+
+
+function showNext3D() {
+  // наступне питання
+  qaCurrentIndex3D = (qaCurrentIndex3D + 1) % cards.length;
+
+  // повертаємо карусель вперед
+  activeIndex3D = (activeIndex3D + 1) % VISIBLE_3D_CARDS;
+  theta3D -= angleStep3D;
+  rotate3D();
+
+  // ставимо новий текст у центральну картку
+  fillActiveCardWithQA();
+}
+
+function showPrev3D() {
+  // попереднє питання
+  qaCurrentIndex3D =
+    (qaCurrentIndex3D - 1 + cards.length) % cards.length;
+
+  // повертаємо карусель назад
+  activeIndex3D = (activeIndex3D - 1 + VISIBLE_3D_CARDS) % VISIBLE_3D_CARDS;
+  theta3D += angleStep3D;
+  rotate3D();
+
+  // ставимо текст попереднього питання
+  fillActiveCardWithQA();
+}
+
+// Простий свайп/drag
+function init3DDrag() {
+  if (!carousel3D) return;
+
+  let dragStartX = null;
+  let dragging = false;
+
+  const startDrag = (clientX) => {
+    dragStartX = clientX;
+    dragging = true;
+  };
+
+  const endDrag = (clientX) => {
+    if (!dragging || dragStartX == null) return;
+    const diff = clientX - dragStartX;
+    dragging = false;
+
+    if (diff > 40) {
+      showPrev3D();  // свайп вправо — попередня
+    } else if (diff < -40) {
+      showNext3D();  // свайп вліво — наступна
+    }
+  };
+
+  carousel3D.addEventListener('mousedown', (e) => startDrag(e.clientX));
+  document.addEventListener('mouseup', (e) => endDrag(e.clientX));
+
+  carousel3D.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) startDrag(e.touches[0].clientX);
+  });
+  document.addEventListener('touchend', (e) => {
+    if (e.changedTouches.length > 0) endDrag(e.changedTouches[0].clientX);
+  });
+}
+
+// Ініціалізація 3D-каруселі
+if (carousel3D && prevBtn3D && nextBtn3D) {
+  prevBtn3D.addEventListener('click', showPrev3D);
+  nextBtn3D.addEventListener('click', showNext3D);
+
+  init3DDrag();
+  build3DCarousel();
+}
+
 
 
