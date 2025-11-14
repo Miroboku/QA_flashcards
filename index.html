@@ -126,12 +126,33 @@
     <span>Карточки</span>
   </a>
 </li>
+<!-- Тести / Quiz -->
+<li>
+  <a href="#quizTab" data-main-tab="quizTab">
+    <!-- Іконка тестів (чекбокси) -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 -960 960 960"
+      width="24px"
+    >
+      <path
+        d="M200-160q-33 0-56.5-23.5T120-240v-480q0-33 23.5-56.5T200-800h400l200 200v360q0 33-23.5 56.5T720-160H200Zm280-80h240v-280H640v-160H200v440h280Zm-180-80 80-80-56-56-24 24-24-24-56 56 80 80Zm0-200 80-80-56-56-24 24-24-24-56 56 80 80Zm200 80h160v-80H500v80Zm0 200h160v-80H500v80Z"
+      />
+    </svg>
+    <span>Тести / Quiz</span>
+  </a>
+</li>
+
 
       </ul>
     </nav>
 
     <!-- MAIN APP -->
     <main>
+        <div class="cosmos-background">
+    <div class="stars-container"></div>
+  </div>
       <div class="app">
         <div class="header-row">
           <div>
@@ -859,10 +880,7 @@
 
         <!-- ===== Карточки ===== -->
 <div id="cardsTab" class="tab-content">
-  <!-- Космічний фон (можна прибрати, якщо не сподобається) -->
-  <div class="cosmos-background">
-    <div class="stars-container"></div>
-  </div>
+
 
   <section class="memory-section">
     <div class="carousel-container">
@@ -874,6 +892,54 @@
         <button id="prev-btn" class="control-btn">&lsaquo;</button>
         <button id="next-btn" class="control-btn">&rsaquo;</button>
       </div>
+  </section>
+</div>
+<!-- ===== Тести / Quiz ===== -->
+<div id="quizTab" class="tab-content">
+  <section class="quiz-section">
+    <div class="quiz-header">
+      <h2>Тести / Quiz</h2>
+      <p>
+        Обери тему і пройди невеликий тест. Обирай варіанти відповідей, 
+        а потім переходь до наступного питання.
+      </p>
+    </div>
+
+    <div class="quiz-controls">
+      <div class="quiz-select-wrap">
+        <label for="quizTopicSelect">Тема:</label>
+        <select id="quizTopicSelect">
+          <option value="all">Усі теми впереміш</option>
+          <option value="База">Базова теорія</option>
+          <option value="STLC">STLC / процеси</option>
+          <option value="SQL/API">SQL / API</option>
+          <option value="GameDev">GameDev QA</option>
+        </select>
+      </div>
+
+      <button id="quizStartBtn">Почати заново</button>
+    </div>
+
+    <div id="quizCard" class="quiz-card">
+      <div class="quiz-meta">
+        <span id="quizQuestionCounter">Питання 0 / 0</span>
+        <span id="quizScore">Рахунок: 0</span>
+      </div>
+
+      <div id="quizQuestionText" class="quiz-question">
+        Обери тему і натисни «Почати заново», щоб почати тест.
+      </div>
+
+      <div id="quizOptions" class="quiz-options">
+        <!-- Сюди JS додасть кнопки з варіантами -->
+      </div>
+
+      <div id="quizFeedback" class="quiz-feedback"></div>
+
+      <button id="quizNextBtn" class="quiz-next-btn" disabled>
+        Наступне питання
+      </button>
+    </div>
   </section>
 </div>
 

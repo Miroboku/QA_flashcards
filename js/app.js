@@ -127,9 +127,15 @@ if (savedSubtab) {
 subtabButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
     const targetId = btn.getAttribute('data-subtab');
+
+    // міняємо контент теорії
     setActiveSubtab(targetId);
+
+    // і синхронізуємо підсвітку в сайдбарі
+    highlightSidebarBySubtab(targetId);
   });
 });
+
 
 // ===== Flashcards =====
 const cards = [
@@ -476,6 +482,137 @@ const cards = [
       'Перевірка того, що між збірками нові зміни не зламали вже працюючі фічі, квести, сейви та перфоманс.',
   },
 ];
+// ===== Quiz questions (множинний вибір) =====
+const quizQuestions = [
+  // ==== БАЗА ====
+  {
+    topic: 'База',
+    question: 'Що найкраще описує Software Testing?',
+    options: [
+      'Процес перевірки ПЗ, щоб виявити дефекти та перевірити відповідність вимогам',
+      'Процес написання коду розробниками',
+      'Створення дизайну інтерфейсу користувача',
+      'Розгортання застосунку на продакшені'
+    ],
+    correctIndex: 0
+  },
+  {
+    topic: 'База',
+    question: 'Що таке Black Box Testing?',
+    options: [
+      'Тестування з повним доступом до коду',
+      'Тестування без знання внутрішньої реалізації, лише за вхідними/вихідними даними',
+      'Тестування тільки інтерфейсу без бекенду',
+      'Тестування тільки бази даних'
+    ],
+    correctIndex: 1
+  },
+  {
+    topic: 'База',
+    question: 'Що відноситься до Functional testing?',
+    options: [
+      'Перевірка продуктивності під навантаженням',
+      'Перевірка безпеки мережевих підключень',
+      'Перевірка, що система робить те, що прописано у вимогах',
+      'Перевірка юзабіліті інтерфейсу'
+    ],
+    correctIndex: 2
+  },
+  {
+    topic: 'База',
+    question: 'Що таке Regression Testing?',
+    options: [
+      'Тестування тільки нових фіч',
+      'Повторне тестування, щоб переконатися, що зміни не зламали існуючий функціонал',
+      'Тестування лише критичних сценаріїв',
+      'Перевірка UI на різних браузерах'
+    ],
+    correctIndex: 1
+  },
+  {
+    topic: 'База',
+    question: 'Що з цього приклад Boundary Value Testing?',
+    options: [
+      'Тестувати випадкові значення в середині діапазону',
+      'Тестувати тільки валідні дані',
+      'Перевіряти мінімум, максимум, значення трохи нижче та трохи вище меж',
+      'Перевіряти лише негативні сценарії'
+    ],
+    correctIndex: 2
+  },
+
+  // ==== STLC ====
+  {
+    topic: 'STLC',
+    question: 'Що таке STLC?',
+    options: [
+      'Життєвий цикл розробки ПЗ',
+      'Набір фаз, що описують процес тестування від планування до закриття тестового циклу',
+      'Методологія управління проєктами',
+      'Окремий тип регресійного тестування'
+    ],
+    correctIndex: 1
+  },
+  {
+    topic: 'STLC',
+    question: 'Що відбувається на етапі Requirement Analysis у STLC?',
+    options: [
+      'Пишеться код і запускаються юніт-тести',
+      'Формується план релізу',
+      'Тестувальники аналізують вимоги, шукають прогалини та ризики',
+      'Виконується навантажувальне тестування'
+    ],
+    correctIndex: 2
+  },
+
+  // ==== SQL / API ====
+  {
+    topic: 'SQL/API',
+    question: 'Для чого QA знати SQL?',
+    options: [
+      'Щоб писати бекенд-логіку',
+      'Щоб редагувати макети дизайну',
+      'Щоб перевіряти дані в БД, шукати причини багів і валідувати результати',
+      'Щоб налаштовувати CI/CD'
+    ],
+    correctIndex: 2
+  },
+  {
+    topic: 'SQL/API',
+    question: 'Що означає HTTP-метод POST у REST API?',
+    options: [
+      'Отримати ресурс',
+      'Оновити існуючий ресурс',
+      'Створити новий ресурс',
+      'Видалити ресурс'
+    ],
+    correctIndex: 2
+  },
+
+  // ==== GameDev ====
+  {
+    topic: 'GameDev',
+    question: 'Що найхарактерніше для GameDev QA?',
+    options: [
+      'Тільки тестування API',
+      'Фокус на геймплеї, перфомансі, візуальних багах, фізиці та сейвах',
+      'Тільки тестування бекенду',
+      'Тільки тестування баз даних'
+    ],
+    correctIndex: 1
+  },
+  {
+    topic: 'GameDev',
+    question: 'Що з цього приклад візуального бага в грі?',
+    options: [
+      'Гра крашиться при запуску',
+      'Неправильний статус-код від API',
+      'Персонаж проходить крізь стіну',
+      'Текст вилазить за межі кнопки'
+    ],
+    correctIndex: 3
+  }
+];
 
 let filteredCards = cards.slice();
 let currentIndex = -1;
@@ -587,49 +724,68 @@ if (nextCardBtn && showAnswerBtn) {
 
 
 /// ===== Зв'язок сайдбару з вкладками/карточками + підсвічування активної теми =====
-/// ===== Зв'язок сайдбару з вкладками/карточками + підсвічування активної теми =====
-
-// Беремо всі лінки, які керують вкладками / темами
 const sidebarLinks = document.querySelectorAll('#sidebar a[data-main-tab]');
+
+function highlightSidebarBySubtab(subtabId) {
+  if (!subtabId) return;
+
+  sidebarLinks.forEach((link) => {
+    const linkSubtab = link.getAttribute('data-subtab');
+    if (!linkSubtab) return;
+
+    link.classList.toggle('active', linkSubtab === subtabId);
+  });
+}
+
+// якщо при завантаженні ми вже відновили сабвкладку — підсвітимо її в сайдбарі
+if (savedSubtab) {
+  highlightSidebarBySubtab(savedSubtab);
+}
+// підсвічуємо лише верхні пункти (без data-subtab)
+if (savedMainTab) {
+  sidebarLinks.forEach((link) => {
+    const mainTab = link.getAttribute('data-main-tab');
+    const hasSubtab = link.hasAttribute('data-subtab'); // у теорії є data-subtab
+    if (!hasSubtab) {
+      link.classList.toggle('active', mainTab === savedMainTab);
+    }
+  });
+}
+
+
+
 
 sidebarLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
-    const mainTab = link.getAttribute('data-main-tab');   // theoryTab / cardsTab
-    const subtab = link.getAttribute('data-subtab');      // тільки для теорії
-    const topic = link.getAttribute('data-topic');        // тільки для старих карточок
+    e.preventDefault();
 
-    if (mainTab) {
-      e.preventDefault(); // блокуємо стандартний #скрол
-
-      // Перемикаємо основну вкладку (Теорія / Карточки)
-      setActiveTab(mainTab);
-
-      // Прокручуємо до потрібного блоку (щоб візуально "перекинуло")
-      const target = document.getElementById(mainTab);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    // Підсвічування активного пункту в сайдбарі
+    // 1) Підсвітити активний пункт у сайдбарі й зняти з інших
     sidebarLinks.forEach((l) => l.classList.remove('active'));
     link.classList.add('active');
 
-    // Саб-вкладка теорії, якщо є
+    // 2) Перемкнути основну вкладку / сабвкладку / тему карточок
+    const mainTab = link.getAttribute('data-main-tab');
+    const subtab = link.getAttribute('data-subtab');
+    const topic = link.getAttribute('data-topic'); // 'База', 'Функціональне', 'STLC', 'SQL/API', 'GameDev' або 'all'
+
+    if (mainTab) {
+      setActiveTab(mainTab);
+    }
     if (subtab) {
       setActiveSubtab(subtab);
     }
 
-    // Старий механізм фільтрації карточок по темі (якщо ще колись знадобиться)
+    // якщо є селектор тем — користуємось ним (старий варіант)
     if (topic && topicFilter) {
       topicFilter.value = topic;
       filterCards();
-    } else if (topic) {
+    }
+    // якщо селектора вже немає, фільтруємо напряму по назві теми
+    else if (topic) {
       filterCardsByTopicName(topic);
     }
   });
 });
-
 
 // ===== 3D QA Flashcards Carousel =====
 
@@ -837,3 +993,131 @@ if (carousel3D && prevBtn3D && nextBtn3D) {
 
 
 
+// ===== QUIZ LOGIC =====
+
+// DOM-елементи
+const quizTopicSelect = document.getElementById('quizTopicSelect');
+const quizStartBtn = document.getElementById('quizStartBtn');
+const quizNextBtn = document.getElementById('quizNextBtn');
+const quizQuestionText = document.getElementById('quizQuestionText');
+const quizOptionsContainer = document.getElementById('quizOptions');
+const quizFeedback = document.getElementById('quizFeedback');
+const quizQuestionCounter = document.getElementById('quizQuestionCounter');
+const quizScoreElem = document.getElementById('quizScore');
+
+let quizFiltered = [];
+let quizCurrentIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+// Простий shuffle-мінімум
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+// Оновлення тексту рахунку
+function updateQuizScore() {
+  if (quizScoreElem) {
+    quizScoreElem.textContent = `Рахунок: ${quizScore}`;
+  }
+}
+
+// Показати поточне питання
+function showQuizQuestion() {
+  if (!quizQuestionText || !quizOptionsContainer || !quizQuestionCounter) return;
+
+  if (quizFiltered.length === 0) {
+    quizQuestionText.textContent = 'Немає питань для цієї теми.';
+    quizOptionsContainer.innerHTML = '';
+    quizQuestionCounter.textContent = 'Питання 0 / 0';
+    quizFeedback.textContent = '';
+    if (quizNextBtn) quizNextBtn.disabled = true;
+    return;
+  }
+
+  if (quizCurrentIndex >= quizFiltered.length) {
+    quizQuestionText.textContent = 'Тест завершено 🎉';
+    quizOptionsContainer.innerHTML = '';
+    quizQuestionCounter.textContent = `Питання ${quizFiltered.length} / ${quizFiltered.length}`;
+    quizFeedback.textContent = `Твій результат: ${quizScore} з ${quizFiltered.length}.`;
+    if (quizNextBtn) quizNextBtn.disabled = true;
+    return;
+  }
+
+  const q = quizFiltered[quizCurrentIndex];
+  quizAnswered = false;
+
+  quizQuestionText.textContent = q.question;
+  quizQuestionCounter.textContent = `Питання ${quizCurrentIndex + 1} / ${quizFiltered.length}`;
+  quizFeedback.textContent = '';
+  quizOptionsContainer.innerHTML = '';
+
+  q.options.forEach((opt, index) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-option-btn';
+    btn.type = 'button';
+    btn.textContent = opt;
+
+    btn.addEventListener('click', () => {
+      if (quizAnswered) return;
+      quizAnswered = true;
+
+      if (index === q.correctIndex) {
+        quizScore++;
+        btn.classList.add('correct');
+        quizFeedback.textContent = '✅ Правильно!';
+      } else {
+        btn.classList.add('wrong');
+        quizFeedback.textContent = `❌ Неправильно. Правильна відповідь: ${q.options[q.correctIndex]}`;
+        // підсвічуємо правильну
+        const allButtons = quizOptionsContainer.querySelectorAll('.quiz-option-btn');
+        if (allButtons[q.correctIndex]) {
+          allButtons[q.correctIndex].classList.add('correct');
+        }
+      }
+      updateQuizScore();
+    });
+
+    quizOptionsContainer.appendChild(btn);
+  });
+
+  if (quizNextBtn) {
+    quizNextBtn.disabled = false;
+  }
+}
+
+// Старт / рестарт тесту
+function startQuiz() {
+  if (!quizTopicSelect) return;
+
+  const topic = quizTopicSelect.value;
+  if (topic === 'all') {
+    quizFiltered = quizQuestions.slice();
+  } else {
+    quizFiltered = quizQuestions.filter((q) => q.topic === topic);
+  }
+
+  shuffleArray(quizFiltered);
+  quizCurrentIndex = 0;
+  quizScore = 0;
+  updateQuizScore();
+  showQuizQuestion();
+}
+
+// Наступне питання
+function goToNextQuestion() {
+  if (quizFiltered.length === 0) return;
+
+  quizCurrentIndex++;
+  showQuizQuestion();
+}
+
+// Навішуємо обробники, якщо елементи існують
+if (quizTopicSelect && quizStartBtn && quizNextBtn) {
+  quizStartBtn.addEventListener('click', startQuiz);
+  quizNextBtn.addEventListener('click', goToNextQuestion);
+  quizTopicSelect.addEventListener('change', startQuiz);
+}
