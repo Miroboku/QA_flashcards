@@ -737,15 +737,21 @@ function highlightSidebarBySubtab(subtabId) {
   });
 }
 
-// якщо при завантаженні ми вже відновили сабвкладку — підсвітимо її в сайдбарі
-if (savedSubtab) {
-  highlightSidebarBySubtab(savedSubtab);
-}
-// підсвічуємо лише верхні пункти (без data-subtab)
-if (savedMainTab) {
+// стартове підсвічування пунктів сайдбару з localStorage
+sidebarLinks.forEach((l) => l.classList.remove('active'));
+
+if (savedMainTab === 'theoryTab' && savedSubtab) {
+  // ми на вкладці "Теорія" → підсвічуємо тільки відповідну тему в підменю
+  sidebarLinks.forEach((link) => {
+    const linkSubtab = link.getAttribute('data-subtab');
+    link.classList.toggle('active', linkSubtab === savedSubtab);
+  });
+} else if (savedMainTab) {
+  // ми НЕ на "Теорії" → підсвічуємо тільки верхній пункт (Карточки або Тести)
   sidebarLinks.forEach((link) => {
     const mainTab = link.getAttribute('data-main-tab');
     const hasSubtab = link.hasAttribute('data-subtab'); // у теорії є data-subtab
+
     if (!hasSubtab) {
       link.classList.toggle('active', mainTab === savedMainTab);
     }

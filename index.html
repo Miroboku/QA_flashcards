@@ -144,6 +144,24 @@
   </a>
 </li>
 
+<li>
+  <a href="#practiceTab" data-main-tab="practiceTab">
+    <!-- Іконка практики (умовно "кліпборд") -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 -960 960 960"
+      width="24px"
+    >
+      <path
+        d="M320-120q-33 0-56.5-23.5T240-200v-520q0-33 23.5-56.5T320-800h80q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800h80q33 0 56.5 23.5T720-720v520q0 33-23.5 56.5T640-120H320Zm0-80h320v-520h-80v80H400v-80h-80v520Zm80-440h160v-80H400v80Z"
+      />
+    </svg>
+    <span>Практика</span>
+  </a>
+</li>
+
+
 
       </ul>
     </nav>
@@ -430,6 +448,124 @@
         <li>ретельно ретестити після фіксу та вирішувати, чи можна закривати дефект.</li>
       </ul>
     </div>
+<div class="theory-section">
+  <h2>6. Чек-листи, тест-кейси та баг-репорти</h2>
+
+  <!-- ========================= -->
+  <!-- 6.1 Чек-листи -->
+  <!-- ========================= -->
+
+  <h3>6.1. Чек-лист (Checklist)</h3>
+  <p>
+    <strong>Чек-лист</strong> — перелік коротких перевірок без детальних кроків.
+    Використовується для швидких проходів, smoke, sanity, дослідницького тестування.
+  </p>
+
+  <ul class="theory-list">
+    <li>одна перевірка — один пункт;</li>
+    <li>мінімум тексту, максимум конкретики;</li>
+    <li>добре підходить як для GameDev, так і Web UI.</li>
+  </ul>
+
+  <div class="code-block">
+    <strong>Приклад GameDev чек-листа:</strong><br />
+    [ ] Головне меню: кнопка "New Game" активна та працює<br />
+    [ ] Модель персонажа не провалюється під землю на старті<br />
+    [ ] Налаштування гучності зберігаються після рестарту гри<br />
+    [ ] Квест-трекер оновлюється після виконання завдання<br /><br />
+
+    <strong>Приклад Web чек-листа:</strong><br />
+    [ ] Логотип на головній сторінці відображається коректно<br />
+    [ ] Поля Email / Password помітні та активні<br />
+    [ ] Кнопка Login активна при валідних даних<br />
+    [ ] Верстка не ламається на ширині 360px<br />
+    [ ] Валідація Email працює (некоректні значення блокуються)
+  </div>
+
+  <!-- ========================= -->
+  <!-- 6.2 Тест-кейси -->
+  <!-- ========================= -->
+
+  <h3>6.2. Тест-кейс (Test Case)</h3>
+  <p>
+    <strong>Тест-кейс</strong> — формалізований сценарій із чіткими кроками, тестовими
+    даними та очікуваним результатом.
+  </p>
+
+  <ul class="theory-list">
+    <li><strong>ID</strong> — унікальний номер;</li>
+    <li><strong>Назва</strong> — що перевіряємо;</li>
+    <li><strong>Передумови (Preconditions)</strong>;</li>
+    <li><strong>Кроки (Steps)</strong>;</li>
+    <li><strong>Очікуваний результат</strong>;</li>
+    <li><strong>Фактичний результат / Статус</strong> — під час тесту.</li>
+  </ul>
+
+  <div class="code-block">
+    <strong>GameDev тест-кейс:</strong><br />
+    ID: TC-GAME-001<br />
+    Назва: Створення нового сейву<br />
+    Preconditions: Гра запущена, головне меню<br />
+    Steps:<br />
+    1. Натиснути "New Game"<br />
+    2. Дочекатися завантаження рівня<br />
+    Expected Result: Гра стартує з початкового рівня, створено новий сейв<br /><br />
+
+    <strong>Web тест-кейс:</strong><br />
+    ID: TC-WEB-002<br />
+    Назва: Авторизація з валідними даними<br />
+    Preconditions: Користувач існує в БД<br />
+    Steps:<br />
+    1. Ввести валідний email<br />
+    2. Ввести валідний пароль<br />
+    3. Натиснути "Login"<br />
+    Expected Result: Користувача перенаправляє на Dashboard
+  </div>
+
+  <!-- ========================= -->
+  <!-- 6.3 Баг-репорти -->
+  <!-- ========================= -->
+
+  <h3>6.3. Баг-репорт (Bug Report)</h3>
+  <p>
+    <strong>Баг-репорт</strong> — опис дефекту з чіткими кроками відтворення,
+    очікуваним та фактичним результатом.
+  </p>
+
+  <ul class="theory-list">
+    <li><strong>Title</strong> — що зламано і де;</li>
+    <li><strong>Environment</strong> — платформа, збірка, браузер;</li>
+    <li><strong>Steps to Reproduce</strong> — нумеровані кроки;</li>
+    <li><strong>Expected / Actual result</strong>;</li>
+    <li><strong>Severity / Priority</strong>;</li>
+    <li><strong>Attachments</strong> — скріни/відео/логи.</li>
+  </ul>
+
+  <div class="code-block">
+    <strong>GameDev баг-репорт:</strong><br />
+    Title: [PC] Крашається гра при завантаженні сейву "Forest"<br />
+    Environment: PC, build 1.0.0.1234, Win10, RTX 3060<br />
+    Steps:<br />
+    1. Відкрити меню Load Game<br />
+    2. Обрати сейв "Forest_AutoSave_01"<br />
+    3. Натиснути "Load"<br />
+    Expected: Рівень успішно завантажується<br />
+    Actual: Гра крашиться через 3–4 секунди<br />
+    Severity: Critical<br /><br />
+
+    <strong>Web баг-репорт:</strong><br />
+    Title: [WEB] 500 Error при відправці форми "Contact Us"<br />
+    Environment: Chrome 124, Win11<br />
+    Steps:<br />
+    1. Заповнити форму<br />
+    2. Натиснути "Send"<br />
+    Expected: Повідомлення "Message sent"<br />
+    Actual: Сервер повертає HTTP 500<br />
+    Severity: Major
+  </div>
+</div>
+
+
   </div>
 
   <!-- SDLC / STLC -->
@@ -737,6 +873,54 @@
 
   <!-- GAMEDEV QA -->
   <div id="theoryGameDev" class="subtab-content">
+        <div class="theory-section">
+      <h2>0. Game Development Life Cycle (GDLC)</h2>
+      <p>
+        <strong>Game Development Life Cycle</strong> — це послідовність етапів, через які проходить
+        гра від ідеї до підтримки після релізу. Для QA важливо розуміти, <em>на якому етапі які ризики</em>
+        і що саме тестується.
+      </p>
+
+      <img
+        src="png/gdlc.png"
+        alt="Game Development Life Cycle"
+        class="theory-illustration"
+      />
+
+      <h3>Основні етапи GDLC</h3>
+      <ul class="theory-list">
+        <li>
+          <strong>Planning</strong> — ідея гри, цілі, цільова аудиторія, платформи, високорівневий
+          віжн, ризики та приблизний бюджет.
+        </li>
+        <li>
+          <strong>Pre-production</strong> — концепт-документи, GDD, прототипи, вибір технологій,
+          чорнові UX/UI, планування пайплайнів контенту.
+        </li>
+        <li>
+          <strong>Production</strong> — активна розробка: рівні, механіки, AI, анімації, контент,
+          інтеграція систем, перші повноцінні збірки.
+        </li>
+        <li>
+          <strong>Testing</strong> — інтенсивне функціональне тестування, баланс, перфоманс,
+          стабільність, регресія build-to-build, підготовка до релізу.
+        </li>
+        <li>
+          <strong>Launch</strong> — реліз гри на платформи, моніторинг метрик, гарячі фікси
+          критичних багів, підтримка користувачів.
+        </li>
+        <li>
+          <strong>Post-production</strong> — патчі, DLC, сезонні івенти, live ops, технічна підтримка
+          й розвиток гри після запуску.
+        </li>
+      </ul>
+
+      <p>
+        QA може залучатися <strong>на кожному етапі</strong> — від рев’ю документації на Pre-production
+        до аналізу реальних краш-логів і відгуків гравців на Post-production.
+      </p>
+    </div>
+
     <div class="theory-section">
       <h2>1. GameDev QA: що тут особливого</h2>
       <ul class="theory-list">
@@ -942,6 +1126,7 @@
     </div>
   </section>
 </div>
+
 
 
           
