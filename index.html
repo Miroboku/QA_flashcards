@@ -6,9 +6,12 @@
     <title>QA Flashcards – Теорія тестування</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/app.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="sidebar-layout">
     <!-- Кнопка перемикання теми -->
@@ -84,93 +87,104 @@
             </svg>
           </button>
           <ul class="sub-menu show">
+            <li>
+              <a
+                href="#theoryTab"
+                data-main-tab="theoryTab"
+                data-subtab="theoryBase"
+              >
+                Базова теорія
+              </a>
+            </li>
+            <li>
+              <a
+                href="#theoryTab"
+                data-main-tab="theoryTab"
+                data-subtab="theoryApiSql"
+              >
+                API / SQL
+              </a>
+            </li>
+            <li>
+              <a
+                href="#theoryTab"
+                data-main-tab="theoryTab"
+                data-subtab="theoryGameDev"
+              >
+                GameDev QA
+              </a>
+            </li>
+            <li>
+              <a
+                href="#theoryTab"
+                data-main-tab="theoryTab"
+                data-subtab="theorySdlcStlc"
+              >
+                SDLC / STLC
+              </a>
+            </li>
+          </ul>
+        </li>
 
-    <li>
-      <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryBase">
-        Базова теорія
-      </a>
-    </li>
-    <li>
-      <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryApiSql">
-        API / SQL
-      </a>
-    </li>
-    <li>
-      <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryGameDev">
-        GameDev QA
-      </a>
-    </li>
-    <li>
-      <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theorySdlcStlc">
-        SDLC / STLC
-      </a>
-    </li>
-  </ul>
-</li>
-        
+        <!-- Карточки -->
+        <li>
+          <a href="#cardsTab" data-main-tab="cardsTab">
+            <!-- Іконка карточок -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+            >
+              <path
+                d="M240-160q-33 0-56.5-23.5T160-240v-480q0-33 23.5-56.5T240-800h360q33 0 56.5 23.5T680-720v80h80q33 0 56.5 23.5T840-560v320q0 33-23.5 56.5T760-160H240Zm0-80h520v-320h-80v240q0 33-23.5 56.5T600-240H240v80Zm0-160h360v-320H240v320Zm80-80v-80h200v80H320Z"
+              />
+            </svg>
+            <span>Карточки</span>
+          </a>
+        </li>
+        <!-- Тести / Quiz -->
+        <li>
+          <a href="#quizTab" data-main-tab="quizTab">
+            <!-- Іконка тестів (чекбокси) -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+            >
+              <path
+                d="M200-160q-33 0-56.5-23.5T120-240v-480q0-33 23.5-56.5T200-800h400l200 200v360q0 33-23.5 56.5T720-160H200Zm280-80h240v-280H640v-160H200v440h280Zm-180-80 80-80-56-56-24 24-24-24-56 56 80 80Zm0-200 80-80-56-56-24 24-24-24-56 56 80 80Zm200 80h160v-80H500v80Zm0 200h160v-80H500v80Z"
+              />
+            </svg>
+            <span>Тести / Quiz</span>
+          </a>
+        </li>
 
-<!-- Карточки -->
-<li>
-  <a href="#cardsTab" data-main-tab="cardsTab">
-    <!-- Іконка карточок -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-    >
-      <path
-        d="M240-160q-33 0-56.5-23.5T160-240v-480q0-33 23.5-56.5T240-800h360q33 0 56.5 23.5T680-720v80h80q33 0 56.5 23.5T840-560v320q0 33-23.5 56.5T760-160H240Zm0-80h520v-320h-80v240q0 33-23.5 56.5T600-240H240v80Zm0-160h360v-320H240v320Zm80-80v-80h200v80H320Z"
-      />
-    </svg>
-    <span>Карточки</span>
-  </a>
-</li>
-<!-- Тести / Quiz -->
-<li>
-  <a href="#quizTab" data-main-tab="quizTab">
-    <!-- Іконка тестів (чекбокси) -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-    >
-      <path
-        d="M200-160q-33 0-56.5-23.5T120-240v-480q0-33 23.5-56.5T200-800h400l200 200v360q0 33-23.5 56.5T720-160H200Zm280-80h240v-280H640v-160H200v440h280Zm-180-80 80-80-56-56-24 24-24-24-56 56 80 80Zm0-200 80-80-56-56-24 24-24-24-56 56 80 80Zm200 80h160v-80H500v80Zm0 200h160v-80H500v80Z"
-      />
-    </svg>
-    <span>Тести / Quiz</span>
-  </a>
-</li>
-
-<li>
-  <a href="#practiceTab" data-main-tab="practiceTab">
-    <!-- Іконка практики (умовно "кліпборд") -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-    >
-      <path
-        d="M320-120q-33 0-56.5-23.5T240-200v-520q0-33 23.5-56.5T320-800h80q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800h80q33 0 56.5 23.5T720-720v520q0 33-23.5 56.5T640-120H320Zm0-80h320v-520h-80v80H400v-80h-80v520Zm80-440h160v-80H400v80Z"
-      />
-    </svg>
-    <span>Практика</span>
-  </a>
-</li>
-
-
-
+        <li>
+          <a href="#practiceTab" data-main-tab="practiceTab">
+            <!-- Іконка практики (умовно "кліпборд") -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+            >
+              <path
+                d="M320-120q-33 0-56.5-23.5T240-200v-520q0-33 23.5-56.5T320-800h80q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800h80q33 0 56.5 23.5T720-720v520q0 33-23.5 56.5T640-120H320Zm0-80h320v-520h-80v80H400v-80h-80v520Zm80-440h160v-80H400v80Z"
+              />
+            </svg>
+            <span>Практика</span>
+          </a>
+        </li>
       </ul>
     </nav>
 
     <!-- MAIN APP -->
     <main>
-        <div class="cosmos-background">
-    <div class="stars-container"></div>
-  </div>
+      <div class="cosmos-background">
+        <div class="stars-container"></div>
+      </div>
       <div class="app">
         <div class="header-row">
           <div>
@@ -181,1160 +195,1216 @@
           </div>
         </div>
 
+        <div id="theoryTab" class="tab-content active">
+          <!-- Кнопки сабвкладок -->
+          <div class="subtabs">
+            <button class="subtab-btn active" data-subtab="theoryBase">
+              Базова теорія
+            </button>
+            <button class="subtab-btn" data-subtab="theoryApiSql">
+              API / SQL
+            </button>
+            <button class="subtab-btn" data-subtab="theoryGameDev">
+              GameDev QA
+            </button>
+            <button class="subtab-btn" data-subtab="theorySdlcStlc">
+              SDLC / STLC
+            </button>
+          </div>
 
-<div id="theoryTab" class="tab-content active">
-  <!-- Кнопки сабвкладок -->
-  <div class="subtabs">
-    <button class="subtab-btn active" data-subtab="theoryBase">
-      Базова теорія
-    </button>
-    <button class="subtab-btn" data-subtab="theoryApiSql">
-      API / SQL
-    </button>
-    <button class="subtab-btn" data-subtab="theoryGameDev">
-      GameDev QA
-    </button>
-    <button class="subtab-btn" data-subtab="theorySdlcStlc">
-      SDLC / STLC
-    </button>
-  </div>
+          <!-- БАЗОВА ТЕОРІЯ -->
+          <div id="theoryBase" class="subtab-content active">
+            <div class="theory-section">
+              <h2>1. База: що таке тестування</h2>
+              <ul class="theory-list">
+                <li>
+                  <strong>Software Testing</strong> — процес перевірки ПЗ, щоб
+                  виявити дефекти та переконатися, що продукт відповідає
+                  вимогам.
+                </li>
+                <li>
+                  <strong>Defect</strong> — помилка в коді, вимогах або дизайні.
+                </li>
+                <li>
+                  <strong>Bug</strong> — прояв дефекту під час виконання
+                  програми (коли бачиш некоректну поведінку).
+                </li>
+                <li>
+                  <strong>QA (Quality Assurance)</strong> — процесний підхід:
+                  стандарти, правила, покращення процесу розробки, щоб
+                  запобігати дефектам.
+                </li>
+                <li>
+                  <strong>QC (Quality Control)</strong> — робота з самим
+                  продуктом: тестування, рев’ю, інспекції, щоб знайти дефекти.
+                </li>
+              </ul>
+            </div>
 
-  <!-- БАЗОВА ТЕОРІЯ -->
-  <div id="theoryBase" class="subtab-content active">
-    <div class="theory-section">
-      <h2>1. База: що таке тестування</h2>
-      <ul class="theory-list">
-        <li>
-          <strong>Software Testing</strong> — процес перевірки ПЗ, щоб
-          виявити дефекти та переконатися, що продукт відповідає
-          вимогам.
-        </li>
-        <li>
-          <strong>Defect</strong> — помилка в коді, вимогах або дизайні.
-        </li>
-        <li>
-          <strong>Bug</strong> — прояв дефекту під час виконання
-          програми (коли бачиш некоректну поведінку).
-        </li>
-        <li>
-          <strong>QA (Quality Assurance)</strong> — процесний підхід:
-          стандарти, правила, покращення процесу розробки, щоб
-          запобігати дефектам.
-        </li>
-        <li>
-          <strong>QC (Quality Control)</strong> — робота з самим
-          продуктом: тестування, рев’ю, інспекції, щоб знайти дефекти.
-        </li>
-      </ul>
-    </div>
+            <div class="theory-section">
+              <h2>2. Методи та типи тестування</h2>
+              <h3>Методи (як ми тестуємо — доступ до коду)</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>Black Box</strong> — тестуєш функціонал, не знаючи
+                  коду. Робота тільки з вхідними / вихідними даними.
+                </li>
+                <li>
+                  <strong>White Box</strong> — тестування з повним доступом до
+                  коду та логіки (гілки, умови, покриття коду).
+                </li>
+                <li>
+                  <strong>Grey Box</strong> — часткове знання внутрішньої логіки
+                  (структура БД, API, архітектура).
+                </li>
+              </ul>
 
-    <div class="theory-section">
-      <h2>2. Методи та типи тестування</h2>
-      <h3>Методи (як ми тестуємо — доступ до коду)</h3>
-      <ul class="theory-list">
-        <li>
-          <strong>Black Box</strong> — тестуєш функціонал, не знаючи
-          коду. Робота тільки з вхідними / вихідними даними.
-        </li>
-        <li>
-          <strong>White Box</strong> — тестування з повним доступом до
-          коду та логіки (гілки, умови, покриття коду).
-        </li>
-        <li>
-          <strong>Grey Box</strong> — часткове знання внутрішньої логіки
-          (структура БД, API, архітектура).
-        </li>
-      </ul>
+              <h3>Типи (що саме / з якою ціллю тестуємо)</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>Functional testing</strong> — перевірка, що система
+                  робить те, що прописано у вимогах.
+                </li>
+                <li>
+                  <strong>Non-functional testing</strong> — продуктивність,
+                  безпека, юзабіліті, сумісність тощо.
+                </li>
+                <li>
+                  За ступенем: <strong>manual</strong> та
+                  <strong>automation</strong>.
+                </li>
+                <li>
+                  За стабільністю:
+                  <strong>Smoke, Sanity, Regression</strong> тощо.
+                </li>
+              </ul>
+            </div>
 
-      <h3>Типи (що саме / з якою ціллю тестуємо)</h3>
-      <ul class="theory-list">
-        <li>
-          <strong>Functional testing</strong> — перевірка, що система
-          робить те, що прописано у вимогах.
-        </li>
-        <li>
-          <strong>Non-functional testing</strong> — продуктивність,
-          безпека, юзабіліті, сумісність тощо.
-        </li>
-        <li>
-          За ступенем: <strong>manual</strong> та
-          <strong>automation</strong>.
-        </li>
-        <li>
-          За стабільністю:
-          <strong>Smoke, Sanity, Regression</strong> тощо.
-        </li>
-      </ul>
-    </div>
+            <div class="theory-section">
+              <h2>3. Рівні тестування</h2>
+              <ul class="theory-list">
+                <li>
+                  <strong>Unit Testing</strong> — тестування окремих функцій /
+                  класів / методів. Найчастіше роблять розробники.
+                </li>
+                <li>
+                  <strong>Integration Testing</strong> — перевірка взаємодії між
+                  модулями (фронт ↔ бек, сервіс ↔ БД).
+                </li>
+                <li>
+                  <strong>System Testing</strong> — тестування всієї системи як
+                  єдиного цілого в середовищі, наближеному до продакшену.
+                </li>
+                <li>
+                  <strong>Acceptance Testing (UAT)</strong> — приймальне
+                  тестування, яке проводять замовники / користувачі перед
+                  релізом.
+                </li>
+              </ul>
+            </div>
 
-    <div class="theory-section">
-      <h2>3. Рівні тестування</h2>
-      <ul class="theory-list">
-        <li>
-          <strong>Unit Testing</strong> — тестування окремих функцій /
-          класів / методів. Найчастіше роблять розробники.
-        </li>
-        <li>
-          <strong>Integration Testing</strong> — перевірка взаємодії між
-          модулями (фронт ↔ бек, сервіс ↔ БД).
-        </li>
-        <li>
-          <strong>System Testing</strong> — тестування всієї системи як
-          єдиного цілого в середовищі, наближеному до продакшену.
-        </li>
-        <li>
-          <strong>Acceptance Testing (UAT)</strong> — приймальне
-          тестування, яке проводять замовники / користувачі перед
-          релізом.
-        </li>
-      </ul>
-    </div>
+            <div class="theory-section">
+              <h2>4. Функціональне тестування (основні види)</h2>
+              <table class="theory-table">
+                <thead>
+                  <tr>
+                    <th>Тип тестування</th>
+                    <th>Опис</th>
+                    <th>Коли застосовується / мета</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Smoke Testing</strong></td>
+                    <td>
+                      Швидка поверхнева перевірка критичного функціоналу після
+                      нової збірки.
+                    </td>
+                    <td>
+                      Вирішити, чи взагалі має сенс продовжувати тестування цієї
+                      збірки.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sanity Testing</strong></td>
+                    <td>Перевірка конкретних змін / фіксів.</td>
+                    <td>
+                      Упевнитися, що певна функція працює після виправлення або
+                      невеликих змін.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Regression Testing</strong></td>
+                    <td>
+                      Повторне тестування вже перевіреного функціоналу після
+                      змін.
+                    </td>
+                    <td>
+                      Переконатися, що новий код не зламав те, що працювало
+                      раніше.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Exploratory Testing</strong></td>
+                    <td>Дослідницьке тестування без жорстких сценаріїв.</td>
+                    <td>
+                      Швидко знаходити неочевидні дефекти, вивчаючи поведінку
+                      системи.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ad-hoc Testing</strong></td>
+                    <td>Неформальне тестування без документації.</td>
+                    <td>Шукати баги на основі інтуїції та досвіду.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Positive Testing</strong></td>
+                    <td>Тестування з коректними даними.</td>
+                    <td>
+                      Перевірити, що система працює згідно з вимогами при
+                      правильному використанні.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Negative Testing</strong></td>
+                    <td>Тестування з некоректними даними та діями.</td>
+                    <td>
+                      Перевірити, як система поводиться з помилками користувача
+                      / невалідними даними.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Boundary Value Testing</strong></td>
+                    <td>
+                      Перевірка граничних значень: мінімум, максимум, трохи
+                      нижче / вище меж.
+                    </td>
+                    <td>
+                      Виявити проблеми з обробкою крайніх значень і діапазонів.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Equivalence Partitioning</strong></td>
+                    <td>
+                      Поділ вхідних даних на класи еквівалентності (валідні /
+                      невалідні).
+                    </td>
+                    <td>
+                      Зменшити кількість тестів, зберігши адекватне покриття.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-    <div class="theory-section">
-      <h2>4. Функціональне тестування (основні види)</h2>
-      <table class="theory-table">
-        <thead>
-          <tr>
-            <th>Тип тестування</th>
-            <th>Опис</th>
-            <th>Коли застосовується / мета</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Smoke Testing</strong></td>
-            <td>
-              Швидка поверхнева перевірка критичного функціоналу після
-              нової збірки.
-            </td>
-            <td>
-              Вирішити, чи взагалі має сенс продовжувати тестування цієї
-              збірки.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Sanity Testing</strong></td>
-            <td>Перевірка конкретних змін / фіксів.</td>
-            <td>
-              Упевнитися, що певна функція працює після виправлення або
-              невеликих змін.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Regression Testing</strong></td>
-            <td>
-              Повторне тестування вже перевіреного функціоналу після
-              змін.
-            </td>
-            <td>
-              Переконатися, що новий код не зламав те, що працювало
-              раніше.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Exploratory Testing</strong></td>
-            <td>Дослідницьке тестування без жорстких сценаріїв.</td>
-            <td>
-              Швидко знаходити неочевидні дефекти, вивчаючи поведінку
-              системи.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Ad-hoc Testing</strong></td>
-            <td>Неформальне тестування без документації.</td>
-            <td>Шукати баги на основі інтуїції та досвіду.</td>
-          </tr>
-          <tr>
-            <td><strong>Positive Testing</strong></td>
-            <td>Тестування з коректними даними.</td>
-            <td>
-              Перевірити, що система працює згідно з вимогами при
-              правильному використанні.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Negative Testing</strong></td>
-            <td>Тестування з некоректними даними та діями.</td>
-            <td>
-              Перевірити, як система поводиться з помилками користувача
-              / невалідними даними.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Boundary Value Testing</strong></td>
-            <td>
-              Перевірка граничних значень: мінімум, максимум, трохи
-              нижче / вище меж.
-            </td>
-            <td>
-              Виявити проблеми з обробкою крайніх значень і діапазонів.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Equivalence Partitioning</strong></td>
-            <td>
-              Поділ вхідних даних на класи еквівалентності (валідні /
-              невалідні).
-            </td>
-            <td>
-              Зменшити кількість тестів, зберігши адекватне покриття.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <div class="theory-section">
+              <h2>5. Життєвий цикл бага (Bug Life Cycle)</h2>
 
-    <div class="theory-section">
-      <h2>5. Життєвий цикл бага (Bug Life Cycle)</h2>
+              <p>
+                <strong>Bug Life Cycle (життєвий цикл дефекту)</strong> — це
+                послідовність статусів, через які проходить баг від моменту
+                виявлення до повного закриття. Розуміння цього циклу допомагає
+                QA, девелоперам і менеджерам правильно відслідковувати стан
+                дефектів.
+              </p>
 
-      <p>
-        <strong>Bug Life Cycle (життєвий цикл дефекту)</strong> — це послідовність
-        статусів, через які проходить баг від моменту виявлення до повного закриття.
-        Розуміння цього циклу допомагає QA, девелоперам і менеджерам правильно
-        відслідковувати стан дефектів.
-      </p>
+              <h3>Типові етапи Bug Life Cycle</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>New</strong> — тестувальник створює баг-репорт. Дефект
+                  описаний, задокументований, але ще не призначений
+                  відповідальному.
+                </li>
+                <li>
+                  <strong>Assigned</strong> — баг призначений конкретному
+                  розробнику або команді. Хтось офіційно відповідає за його
+                  виправлення.
+                </li>
+                <li>
+                  <strong>In Progress / Open</strong> — розробник працює над
+                  фіксом: відтворює проблему, аналізує причину, змінює код.
+                </li>
+                <li>
+                  <strong>Fixed</strong> — розробник вніс зміни в код і вважає,
+                  що проблема усунута. На цьому етапі баг ще не вважається
+                  закритим.
+                </li>
+                <li>
+                  <strong>Ready for Retest / To Verify</strong> — збірка з
+                  фіксом потрапила на тестове середовище, і дефект готовий до
+                  перевірки тестувальником.
+                </li>
+                <li>
+                  <strong>Retest</strong> — QA виконує кроки відтворення,
+                  перевіряє, чи дійсно проблема зникла, і чи не з’явилися
+                  побічні ефекти.
+                </li>
+                <li>
+                  <strong>Closed</strong> — дефект більше не відтворюється, всі
+                  пов’язані сценарії працюють коректно. Баг офіційно
+                  закривається.
+                </li>
+                <li>
+                  <strong>Reopened</strong> — якщо під час ретесту або в
+                  наступних збірках проблема знову проявилась, баг відкривають
+                  повторно й цикл проходиться ще раз.
+                </li>
+                <li>
+                  <strong>Deferred / Postponed</strong> — виправлення відкладено
+                  (низький пріоритет, мало впливає на користувача, немає
+                  ресурсів прямо зараз).
+                </li>
+                <li>
+                  <strong>Rejected / Won’t Fix</strong> — дефект не вважають
+                  проблемою (наприклад, очікувана поведінка або дублікат іншого
+                  бага), тому його не будуть виправляти.
+                </li>
+              </ul>
 
-      <h3>Типові етапи Bug Life Cycle</h3>
-      <ul class="theory-list">
-        <li>
-          <strong>New</strong> — тестувальник створює баг-репорт. Дефект описаний,
-          задокументований, але ще не призначений відповідальному.
-        </li>
-        <li>
-          <strong>Assigned</strong> — баг призначений конкретному розробнику або
-          команді. Хтось офіційно відповідає за його виправлення.
-        </li>
-        <li>
-          <strong>In Progress / Open</strong> — розробник працює над фіксом:
-          відтворює проблему, аналізує причину, змінює код.
-        </li>
-        <li>
-          <strong>Fixed</strong> — розробник вніс зміни в код і вважає, що проблема
-          усунута. На цьому етапі баг ще не вважається закритим.
-        </li>
-        <li>
-          <strong>Ready for Retest / To Verify</strong> — збірка з фіксом потрапила
-          на тестове середовище, і дефект готовий до перевірки тестувальником.
-        </li>
-        <li>
-          <strong>Retest</strong> — QA виконує кроки відтворення, перевіряє, чи
-          дійсно проблема зникла, і чи не з’явилися побічні ефекти.
-        </li>
-        <li>
-          <strong>Closed</strong> — дефект більше не відтворюється, всі пов’язані
-          сценарії працюють коректно. Баг офіційно закривається.
-        </li>
-        <li>
-          <strong>Reopened</strong> — якщо під час ретесту або в наступних збірках
-          проблема знову проявилась, баг відкривають повторно й цикл проходиться ще
-          раз.
-        </li>
-        <li>
-          <strong>Deferred / Postponed</strong> — виправлення відкладено (низький
-          пріоритет, мало впливає на користувача, немає ресурсів прямо зараз).
-        </li>
-        <li>
-          <strong>Rejected / Won’t Fix</strong> — дефект не вважають проблемою
-          (наприклад, очікувана поведінка або дублікат іншого бага), тому його
-          не будуть виправляти.
-        </li>
-      </ul>
+              <h3>Роль QA у Bug Life Cycle</h3>
+              <ul class="theory-list">
+                <li>
+                  коректно описати дефект: кроки, очікуваний та фактичний
+                  результат;
+                </li>
+                <li>
+                  проставити пріоритет і серйозність (severity / priority);
+                </li>
+                <li>
+                  слідкувати за зміною статусів і нагадувати, якщо критичні баги
+                  “висять”;
+                </li>
+                <li>
+                  ретельно ретестити після фіксу та вирішувати, чи можна
+                  закривати дефект.
+                </li>
+              </ul>
+            </div>
+            <div class="theory-section">
+              <h2>6. Чек-листи, тест-кейси та баг-репорти</h2>
 
-      <h3>Роль QA у Bug Life Cycle</h3>
-      <ul class="theory-list">
-        <li>коректно описати дефект: кроки, очікуваний та фактичний результат;</li>
-        <li>проставити пріоритет і серйозність (severity / priority);</li>
-        <li>слідкувати за зміною статусів і нагадувати, якщо критичні баги “висять”;</li>
-        <li>ретельно ретестити після фіксу та вирішувати, чи можна закривати дефект.</li>
-      </ul>
-    </div>
-<div class="theory-section">
-  <h2>6. Чек-листи, тест-кейси та баг-репорти</h2>
+              <!-- ========================= -->
+              <!-- 6.1 Чек-листи -->
+              <!-- ========================= -->
 
-  <!-- ========================= -->
-  <!-- 6.1 Чек-листи -->
-  <!-- ========================= -->
+              <h3>6.1. Чек-лист (Checklist)</h3>
+              <p>
+                <strong>Чек-лист</strong> — перелік коротких перевірок без
+                детальних кроків. Використовується для швидких проходів, smoke,
+                sanity, дослідницького тестування.
+              </p>
 
-  <h3>6.1. Чек-лист (Checklist)</h3>
-  <p>
-    <strong>Чек-лист</strong> — перелік коротких перевірок без детальних кроків.
-    Використовується для швидких проходів, smoke, sanity, дослідницького тестування.
-  </p>
+              <ul class="theory-list">
+                <li>одна перевірка — один пункт;</li>
+                <li>мінімум тексту, максимум конкретики;</li>
+                <li>добре підходить як для GameDev, так і Web UI.</li>
+              </ul>
 
-  <ul class="theory-list">
-    <li>одна перевірка — один пункт;</li>
-    <li>мінімум тексту, максимум конкретики;</li>
-    <li>добре підходить як для GameDev, так і Web UI.</li>
-  </ul>
+              <div class="code-block">
+                <strong>Приклад GameDev чек-листа:</strong><br />
+                [ ] Головне меню: кнопка "New Game" активна та працює<br />
+                [ ] Модель персонажа не провалюється під землю на старті<br />
+                [ ] Налаштування гучності зберігаються після рестарту гри<br />
+                [ ] Квест-трекер оновлюється після виконання завдання<br /><br />
 
-  <div class="code-block">
-    <strong>Приклад GameDev чек-листа:</strong><br />
-    [ ] Головне меню: кнопка "New Game" активна та працює<br />
-    [ ] Модель персонажа не провалюється під землю на старті<br />
-    [ ] Налаштування гучності зберігаються після рестарту гри<br />
-    [ ] Квест-трекер оновлюється після виконання завдання<br /><br />
+                <strong>Приклад Web чек-листа:</strong><br />
+                [ ] Логотип на головній сторінці відображається коректно<br />
+                [ ] Поля Email / Password помітні та активні<br />
+                [ ] Кнопка Login активна при валідних даних<br />
+                [ ] Верстка не ламається на ширині 360px<br />
+                [ ] Валідація Email працює (некоректні значення блокуються)
+              </div>
 
-    <strong>Приклад Web чек-листа:</strong><br />
-    [ ] Логотип на головній сторінці відображається коректно<br />
-    [ ] Поля Email / Password помітні та активні<br />
-    [ ] Кнопка Login активна при валідних даних<br />
-    [ ] Верстка не ламається на ширині 360px<br />
-    [ ] Валідація Email працює (некоректні значення блокуються)
-  </div>
+              <!-- ========================= -->
+              <!-- 6.2 Тест-кейси -->
+              <!-- ========================= -->
 
-  <!-- ========================= -->
-  <!-- 6.2 Тест-кейси -->
-  <!-- ========================= -->
+              <h3>6.2. Тест-кейс (Test Case)</h3>
+              <p>
+                <strong>Тест-кейс</strong> — формалізований сценарій із чіткими
+                кроками, тестовими даними та очікуваним результатом.
+              </p>
 
-  <h3>6.2. Тест-кейс (Test Case)</h3>
-  <p>
-    <strong>Тест-кейс</strong> — формалізований сценарій із чіткими кроками, тестовими
-    даними та очікуваним результатом.
-  </p>
+              <ul class="theory-list">
+                <li><strong>ID</strong> — унікальний номер;</li>
+                <li><strong>Назва</strong> — що перевіряємо;</li>
+                <li><strong>Передумови (Preconditions)</strong>;</li>
+                <li><strong>Кроки (Steps)</strong>;</li>
+                <li><strong>Очікуваний результат</strong>;</li>
+                <li>
+                  <strong>Фактичний результат / Статус</strong> — під час тесту.
+                </li>
+              </ul>
 
-  <ul class="theory-list">
-    <li><strong>ID</strong> — унікальний номер;</li>
-    <li><strong>Назва</strong> — що перевіряємо;</li>
-    <li><strong>Передумови (Preconditions)</strong>;</li>
-    <li><strong>Кроки (Steps)</strong>;</li>
-    <li><strong>Очікуваний результат</strong>;</li>
-    <li><strong>Фактичний результат / Статус</strong> — під час тесту.</li>
-  </ul>
+              <div class="code-block">
+                <strong>GameDev тест-кейс:</strong><br />
+                ID: TC-GAME-001<br />
+                Назва: Створення нового сейву<br />
+                Preconditions: Гра запущена, головне меню<br />
+                Steps:<br />
+                1. Натиснути "New Game"<br />
+                2. Дочекатися завантаження рівня<br />
+                Expected Result: Гра стартує з початкового рівня, створено новий
+                сейв<br /><br />
 
-  <div class="code-block">
-    <strong>GameDev тест-кейс:</strong><br />
-    ID: TC-GAME-001<br />
-    Назва: Створення нового сейву<br />
-    Preconditions: Гра запущена, головне меню<br />
-    Steps:<br />
-    1. Натиснути "New Game"<br />
-    2. Дочекатися завантаження рівня<br />
-    Expected Result: Гра стартує з початкового рівня, створено новий сейв<br /><br />
+                <strong>Web тест-кейс:</strong><br />
+                ID: TC-WEB-002<br />
+                Назва: Авторизація з валідними даними<br />
+                Preconditions: Користувач існує в БД<br />
+                Steps:<br />
+                1. Ввести валідний email<br />
+                2. Ввести валідний пароль<br />
+                3. Натиснути "Login"<br />
+                Expected Result: Користувача перенаправляє на Dashboard
+              </div>
 
-    <strong>Web тест-кейс:</strong><br />
-    ID: TC-WEB-002<br />
-    Назва: Авторизація з валідними даними<br />
-    Preconditions: Користувач існує в БД<br />
-    Steps:<br />
-    1. Ввести валідний email<br />
-    2. Ввести валідний пароль<br />
-    3. Натиснути "Login"<br />
-    Expected Result: Користувача перенаправляє на Dashboard
-  </div>
+              <!-- ========================= -->
+              <!-- 6.3 Баг-репорти -->
+              <!-- ========================= -->
 
-  <!-- ========================= -->
-  <!-- 6.3 Баг-репорти -->
-  <!-- ========================= -->
+              <h3>6.3. Баг-репорт (Bug Report)</h3>
+              <p>
+                <strong>Баг-репорт</strong> — опис дефекту з чіткими кроками
+                відтворення, очікуваним та фактичним результатом.
+              </p>
 
-  <h3>6.3. Баг-репорт (Bug Report)</h3>
-  <p>
-    <strong>Баг-репорт</strong> — опис дефекту з чіткими кроками відтворення,
-    очікуваним та фактичним результатом.
-  </p>
+              <ul class="theory-list">
+                <li><strong>Title</strong> — що зламано і де;</li>
+                <li>
+                  <strong>Environment</strong> — платформа, збірка, браузер;
+                </li>
+                <li><strong>Steps to Reproduce</strong> — нумеровані кроки;</li>
+                <li><strong>Expected / Actual result</strong>;</li>
+                <li><strong>Severity / Priority</strong>;</li>
+                <li><strong>Attachments</strong> — скріни/відео/логи.</li>
+              </ul>
 
-  <ul class="theory-list">
-    <li><strong>Title</strong> — що зламано і де;</li>
-    <li><strong>Environment</strong> — платформа, збірка, браузер;</li>
-    <li><strong>Steps to Reproduce</strong> — нумеровані кроки;</li>
-    <li><strong>Expected / Actual result</strong>;</li>
-    <li><strong>Severity / Priority</strong>;</li>
-    <li><strong>Attachments</strong> — скріни/відео/логи.</li>
-  </ul>
+              <div class="code-block">
+                <strong>GameDev баг-репорт:</strong><br />
+                Title: [PC] Крашається гра при завантаженні сейву "Forest"<br />
+                Environment: PC, build 1.0.0.1234, Win10, RTX 3060<br />
+                Steps:<br />
+                1. Відкрити меню Load Game<br />
+                2. Обрати сейв "Forest_AutoSave_01"<br />
+                3. Натиснути "Load"<br />
+                Expected: Рівень успішно завантажується<br />
+                Actual: Гра крашиться через 3–4 секунди<br />
+                Severity: Critical<br /><br />
 
-  <div class="code-block">
-    <strong>GameDev баг-репорт:</strong><br />
-    Title: [PC] Крашається гра при завантаженні сейву "Forest"<br />
-    Environment: PC, build 1.0.0.1234, Win10, RTX 3060<br />
-    Steps:<br />
-    1. Відкрити меню Load Game<br />
-    2. Обрати сейв "Forest_AutoSave_01"<br />
-    3. Натиснути "Load"<br />
-    Expected: Рівень успішно завантажується<br />
-    Actual: Гра крашиться через 3–4 секунди<br />
-    Severity: Critical<br /><br />
+                <strong>Web баг-репорт:</strong><br />
+                Title: [WEB] 500 Error при відправці форми "Contact Us"<br />
+                Environment: Chrome 124, Win11<br />
+                Steps:<br />
+                1. Заповнити форму<br />
+                2. Натиснути "Send"<br />
+                Expected: Повідомлення "Message sent"<br />
+                Actual: Сервер повертає HTTP 500<br />
+                Severity: Major
+              </div>
+            </div>
+          </div>
 
-    <strong>Web баг-репорт:</strong><br />
-    Title: [WEB] 500 Error при відправці форми "Contact Us"<br />
-    Environment: Chrome 124, Win11<br />
-    Steps:<br />
-    1. Заповнити форму<br />
-    2. Натиснути "Send"<br />
-    Expected: Повідомлення "Message sent"<br />
-    Actual: Сервер повертає HTTP 500<br />
-    Severity: Major
-  </div>
-</div>
+          <!-- SDLC / STLC -->
+          <div id="theorySdlcStlc" class="subtab-content">
+            <!-- 1. SDLC -->
+            <div class="theory-section">
+              <h2>1. SDLC — Software Development Life Cycle</h2>
+              <p>
+                <strong>SDLC (Software Development Life Cycle)</strong> — це
+                <em>життєвий цикл розробки програмного забезпечення</em>.<br />
+                <strong>Definition (EN):</strong> SDLC is a structured process
+                that defines all phases of software development, from idea and
+                requirements to release and maintenance.
+              </p>
 
+              <img
+                src="png/sdlс.png"
+                alt="SDLC phases diagram"
+                class="theory-illustration"
+              />
 
-  </div>
+              <p>
+                SDLC описує <strong>усі етапи створення ПЗ</strong> і допомагає
+                зробити розробку прогнозованою, контрольованою та якісною.
+              </p>
 
-  <!-- SDLC / STLC -->
-  <div id="theorySdlcStlc" class="subtab-content">
-    <!-- 1. SDLC -->
-    <div class="theory-section">
-      <h2>1. SDLC — Software Development Life Cycle</h2>
-      <p>
-        <strong>SDLC (Software Development Life Cycle)</strong> — це
-        <em>життєвий цикл розробки програмного забезпечення</em>.<br />
-        <strong>Definition (EN):</strong> SDLC is a structured process that
-        defines all phases of software development, from idea and requirements to
-        release and maintenance.
-      </p>
+              <h3>Типові етапи SDLC</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>Planning</strong> — визначення цілей продукту,
+                  бізнес-потреб, обсягу робіт, ризиків і приблизних
+                  строків/ресурсів.
+                </li>
+                <li>
+                  <strong>Requirement Analysis</strong> — збір і аналіз вимог,
+                  уточнення функціоналу, узгодження очікувань замовника й
+                  користувачів.
+                </li>
+                <li>
+                  <strong>Design</strong> — розробка архітектури системи,
+                  продумування модулів, інтеграцій, структури БД, інтерфейсів.
+                </li>
+                <li>
+                  <strong>Implementation / Development</strong> — безпосереднє
+                  написання коду, реалізація фіч, unit-тести, інтеграція
+                  модулів.
+                </li>
+                <li>
+                  <strong>Testing</strong> — перевірка продукту (функціональне,
+                  нефункціональне тестування, регрес, UAT тощо).
+                </li>
+                <li>
+                  <strong>Deployment</strong> — розгортання на продакшені, реліз
+                  до кінцевих користувачів.
+                </li>
+                <li>
+                  <strong>Maintenance</strong> — підтримка, фікси, оновлення,
+                  розвиток продукту після релізу.
+                </li>
+              </ul>
+            </div>
 
-      <img
-        src="png/sdlс.png"
-        alt="SDLC phases diagram"
-        class="theory-illustration"
-      />
+            <!-- 2. STLC -->
+            <div class="theory-section">
+              <h2>2. STLC — Software Testing Life Cycle</h2>
+              <p>
+                <strong>STLC (Software Testing Life Cycle)</strong> —
+                <em>життєвий цикл тестування програмного забезпечення</em
+                >.<br />
+                <strong>Definition (EN):</strong> STLC is a set of phases that
+                describe the testing process, from test planning and design to
+                execution and test closure.
+              </p>
 
-      <p>
-        SDLC описує <strong>усі етапи створення ПЗ</strong> і допомагає зробити
-        розробку прогнозованою, контрольованою та якісною.
-      </p>
+              <img
+                src="png/stlc.png"
+                alt="STLC phases diagram"
+                class="theory-illustration"
+              />
 
-      <h3>Типові етапи SDLC</h3>
-      <ul class="theory-list">
-        <li>
-          <strong>Planning</strong> — визначення цілей продукту, бізнес-потреб,
-          обсягу робіт, ризиків і приблизних строків/ресурсів.
-        </li>
-        <li>
-          <strong>Requirement Analysis</strong> — збір і аналіз вимог, уточнення
-          функціоналу, узгодження очікувань замовника й користувачів.
-        </li>
-        <li>
-          <strong>Design</strong> — розробка архітектури системи, продумування
-          модулів, інтеграцій, структури БД, інтерфейсів.
-        </li>
-        <li>
-          <strong>Implementation / Development</strong> — безпосереднє написання
-          коду, реалізація фіч, unit-тести, інтеграція модулів.
-        </li>
-        <li>
-          <strong>Testing</strong> — перевірка продукту (функціональне,
-          нефункціональне тестування, регрес, UAT тощо).
-        </li>
-        <li>
-          <strong>Deployment</strong> — розгортання на продакшені, реліз до
-          кінцевих користувачів.
-        </li>
-        <li>
-          <strong>Maintenance</strong> — підтримка, фікси, оновлення, розвиток
-          продукту після релізу.
-        </li>
-      </ul>
-    </div>
+              <p>
+                STLC зосереджується саме на
+                <strong>процесі тестування</strong> всередині проєкту і є
+                частиною SDLC.
+              </p>
 
-    <!-- 2. STLC -->
-    <div class="theory-section">
-      <h2>2. STLC — Software Testing Life Cycle</h2>
-      <p>
-        <strong>STLC (Software Testing Life Cycle)</strong> — 
-        <em>життєвий цикл тестування програмного забезпечення</em>.<br />
-        <strong>Definition (EN):</strong> STLC is a set of phases that describe
-        the testing process, from test planning and design to execution and test
-        closure.
-      </p>
+              <h3>Основні етапи STLC</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>Requirement Analysis</strong> — тестувальники
+                  аналізують вимоги, шукають прогалини, ризики, уточнюють, що і
+                  як буде тестуватися.
+                </li>
+                <li>
+                  <strong>Test Planning</strong> — визначення стратегії, обсягу,
+                  підходів, ресурсів, інструментів і графіка тестування.
+                </li>
+                <li>
+                  <strong>Test Case Development</strong> — створення
+                  тест-кейсів, чек-листів, підготовка тестових даних та
+                  очікуваних результатів.
+                </li>
+                <li>
+                  <strong>Environment Setup</strong> — підготовка тестового
+                  середовища: стенди, БД, доступи, конфігурації, необхідні
+                  інструменти.
+                </li>
+                <li>
+                  <strong>Test Execution</strong> — виконання тест-кейсів,
+                  логування результатів, заведення баг-репортів.
+                </li>
+                <li>
+                  <strong>Test Cycle Closure</strong> — аналіз результатів,
+                  звіти про якість, висновки й рекомендації для наступних
+                  ітерацій.
+                </li>
+              </ul>
+            </div>
 
-      <img
-        src="png/stlc.png"
-        alt="STLC phases diagram"
-        class="theory-illustration"
-      />
+            <!-- 3. SDLC vs STLC -->
+            <div class="theory-section">
+              <h2>3. SDLC vs STLC</h2>
 
-      <p>
-        STLC зосереджується саме на <strong>процесі тестування</strong> всередині
-        проєкту і є частиною SDLC.
-      </p>
+              <p>
+                <strong>SDLC</strong> і <strong>STLC</strong> тісно пов’язані,
+                але відповідають за різні рівні процесу.
+              </p>
 
-      <h3>Основні етапи STLC</h3>
-      <ul class="theory-list">
-        <li>
-          <strong>Requirement Analysis</strong> — тестувальники аналізують
-          вимоги, шукають прогалини, ризики, уточнюють, що і як буде
-          тестуватися.
-        </li>
-        <li>
-          <strong>Test Planning</strong> — визначення стратегії, обсягу,
-          підходів, ресурсів, інструментів і графіка тестування.
-        </li>
-        <li>
-          <strong>Test Case Development</strong> — створення тест-кейсів, чек-листів,
-          підготовка тестових даних та очікуваних результатів.
-        </li>
-        <li>
-          <strong>Environment Setup</strong> — підготовка тестового середовища:
-          стенди, БД, доступи, конфігурації, необхідні інструменти.
-        </li>
-        <li>
-          <strong>Test Execution</strong> — виконання тест-кейсів, логування
-          результатів, заведення баг-репортів.
-        </li>
-        <li>
-          <strong>Test Cycle Closure</strong> — аналіз результатів, звіти про
-          якість, висновки й рекомендації для наступних ітерацій.
-        </li>
-      </ul>
-    </div>
+              <table class="theory-table">
+                <thead>
+                  <tr>
+                    <th>SDLC</th>
+                    <th>STLC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Описує <strong>повний життєвий цикл</strong> розробки ПЗ:
+                      від ідеї та вимог до підтримки після релізу.
+                    </td>
+                    <td>
+                      Описує <strong>життєвий цикл тестування</strong> в межах
+                      SDLC: що робить QA від аналізу вимог до закриття тестового
+                      циклу.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Охоплює бізнес-аналіз, дизайн, розробку, тестування,
+                      деплой, підтримку.
+                    </td>
+                    <td>
+                      Фокусується на аналізі вимог, плануванні, дизайні тестів,
+                      виконанні, звітності та поліпшенні процесу тестування.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Відповідає за <strong>успіх всього продукту</strong>.
+                    </td>
+                    <td>
+                      Відповідає за <strong>якість продукту</strong> і вчасне
+                      виявлення дефектів.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
-    <!-- 3. SDLC vs STLC -->
-    <div class="theory-section">
-      <h2>3. SDLC vs STLC</h2>
+              <p style="margin-top: 8px">
+                Коротко:
+                <strong>SDLC</strong> — це “велика рамка” всього проєкту, а
+                <strong>STLC</strong> — детальний опис того, як всередині цієї
+                рамки працює тестування.
+              </p>
+            </div>
 
-      <p>
-        <strong>SDLC</strong> і <strong>STLC</strong> тісно пов’язані, але
-        відповідають за різні рівні процесу.
-      </p>
+            <!-- 4. Висновки -->
+            <div class="theory-section">
+              <h2>4. Висновки</h2>
+              <ul class="theory-list">
+                <li>
+                  SDLC without STLC = ризик отримати функціональний, але “сирий”
+                  продукт.
+                </li>
+                <li>
+                  STLC without SDLC = тестування без чіткої стратегії та
+                  контексту проєкту.
+                </li>
+                <li>
+                  У реальному проєкті
+                  <strong>SDLC і STLC працюють разом</strong> і доповнюють одне
+                  одного.
+                </li>
+              </ul>
+            </div>
+          </div>
 
-      <table class="theory-table">
-        <thead>
-          <tr>
-            <th>SDLC</th>
-            <th>STLC</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              Описує <strong>повний життєвий цикл</strong> розробки ПЗ:
-              від ідеї та вимог до підтримки після релізу.
-            </td>
-            <td>
-              Описує <strong>життєвий цикл тестування</strong> в межах SDLC:
-              що робить QA від аналізу вимог до закриття тестового циклу.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Охоплює бізнес-аналіз, дизайн, розробку, тестування, деплой,
-              підтримку.
-            </td>
-            <td>
-              Фокусується на аналізі вимог, плануванні, дизайні тестів,
-              виконанні, звітності та поліпшенні процесу тестування.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Відповідає за <strong>успіх всього продукту</strong>.
-            </td>
-            <td>
-              Відповідає за <strong>якість продукту</strong> і вчасне виявлення
-              дефектів.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <!-- API / SQL -->
+          <div id="theoryApiSql" class="subtab-content">
+            <!-- твій існуючий API/SQL код (я його залишив як є) -->
+            <div class="theory-section">
+              <h2>1. SQL для QA (база)</h2>
+              <h3>Що потрібно знати джуну</h3>
+              <ul class="theory-list">
+                <li>
+                  Розуміти, що таке
+                  <strong>таблиця, row, column, primary key, foreign key</strong
+                  >.
+                </li>
+                <li>
+                  Вміти читати й писати прості <strong>SELECT</strong>-запити.
+                </li>
+                <li>
+                  Фільтрація через <strong>WHERE</strong>: =, &lt;&gt;, &gt;,
+                  &lt;, BETWEEN, LIKE.
+                </li>
+                <li>Сортування через <strong>ORDER BY</strong>.</li>
+                <li>Ліміти: <strong>LIMIT</strong>.</li>
+                <li>
+                  Агрегації: <strong>COUNT, SUM, AVG, MIN, MAX</strong> +
+                  <strong>GROUP BY</strong>.
+                </li>
+                <li>Базове розуміння <strong>JOIN</strong> (INNER, LEFT).</li>
+              </ul>
 
-      <p style="margin-top:8px;">
-        Коротко:
-        <strong>SDLC</strong> — це “велика рамка” всього проєкту,
-        а <strong>STLC</strong> — детальний опис того, як всередині цієї рамки
-        працює тестування.
-      </p>
-    </div>
+              <h3>Приклади базових запитів</h3>
+              <ul class="theory-list">
+                <li>
+                  <code>SELECT * FROM users;</code> — отримати всіх
+                  користувачів.
+                </li>
+                <li>
+                  <code>SELECT id, email FROM users WHERE is_active = 1;</code>
+                  — активні користувачі.
+                </li>
+                <li>
+                  <code
+                    >SELECT * FROM orders WHERE created_at &gt;=
+                    '2025-01-01';</code
+                  >
+                  — замовлення за період.
+                </li>
+                <li>
+                  <code
+                    >SELECT status, COUNT(*) FROM orders GROUP BY status;</code
+                  >
+                  — скільки замовлень у кожному статусі.
+                </li>
+                <li>
+                  <code
+                    >SELECT u.name, o.total FROM users u INNER JOIN orders o ON
+                    u.id = o.user_id;</code
+                  >
+                  — користувачі + їхні замовлення.
+                </li>
+              </ul>
+            </div>
 
-    <!-- 4. Висновки -->
-    <div class="theory-section">
-      <h2>4. Висновки</h2>
-      <ul class="theory-list">
-        <li>SDLC without STLC = ризик отримати функціональний, але “сирий” продукт.</li>
-        <li>STLC without SDLC = тестування без чіткої стратегії та контексту проєкту.</li>
-        <li>У реальному проєкті <strong>SDLC і STLC працюють разом</strong> і доповнюють одне одного.</li>
-      </ul>
-    </div>
-  </div>
+            <div class="theory-section">
+              <h2>2. HTTP та API для QA</h2>
+              <h3>HTTP базові поняття</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>Request</strong> (запит) → що клієнт відправляє на
+                  сервер.
+                </li>
+                <li>
+                  <strong>Response</strong> (відповідь) → що сервер повертає.
+                </li>
+                <li>
+                  <strong>Методи:</strong> GET (отримати), POST (створити),
+                  PUT/PATCH (оновити), DELETE (видалити).
+                </li>
+                <li>
+                  <strong>Статус-коди:</strong>
+                  <ul class="theory-list">
+                    <li>2xx — успіх (200 OK, 201 Created).</li>
+                    <li>
+                      4xx — помилка клієнта (400 Bad Request, 401, 403, 404).
+                    </li>
+                    <li>
+                      5xx — помилка сервера (500 Internal Server Error тощо).
+                    </li>
+                  </ul>
+                </li>
+              </ul>
 
-  <!-- API / SQL -->
-  <div id="theoryApiSql" class="subtab-content">
-    <!-- твій існуючий API/SQL код (я його залишив як є) -->
-    <div class="theory-section">
-      <h2>1. SQL для QA (база)</h2>
-      <h3>Що потрібно знати джуну</h3>
-      <ul class="theory-list">
-        <li>
-          Розуміти, що таке
-          <strong>таблиця, row, column, primary key, foreign key</strong>.
-        </li>
-        <li>
-          Вміти читати й писати прості <strong>SELECT</strong>-запити.
-        </li>
-        <li>
-          Фільтрація через <strong>WHERE</strong>: =, &lt;&gt;, &gt;,
-          &lt;, BETWEEN, LIKE.
-        </li>
-        <li>Сортування через <strong>ORDER BY</strong>.</li>
-        <li>Ліміти: <strong>LIMIT</strong>.</li>
-        <li>
-          Агрегації: <strong>COUNT, SUM, AVG, MIN, MAX</strong> +
-          <strong>GROUP BY</strong>.
-        </li>
-        <li>Базове розуміння <strong>JOIN</strong> (INNER, LEFT).</li>
-      </ul>
+              <h3>Що перевіряє QA в API</h3>
+              <ul class="theory-list">
+                <li>
+                  Чи коректний <strong>статус-код</strong> для кожної операції.
+                </li>
+                <li>
+                  Чи відповідає
+                  <strong>тіло відповіді (JSON)</strong> специфікації (поля,
+                  типи, обов’язкові значення).
+                </li>
+                <li>
+                  Обробка <strong>некоректних даних</strong> (negative testing).
+                </li>
+                <li>
+                  Перевірка
+                  <strong>авторизації / аутентифікації</strong> (доступ без
+                  токена, з неправильним токеном).
+                </li>
+                <li>
+                  Коректність <strong>обмежень</strong> (наприклад, не можна
+                  видалити чужі дані).
+                </li>
+              </ul>
 
-      <h3>Приклади базових запитів</h3>
-      <ul class="theory-list">
-        <li>
-          <code>SELECT * FROM users;</code> — отримати всіх
-          користувачів.
-        </li>
-        <li>
-          <code>SELECT id, email FROM users WHERE is_active = 1;</code>
-          — активні користувачі.
-        </li>
-        <li>
-          <code
-            >SELECT * FROM orders WHERE created_at &gt;=
-            '2025-01-01';</code
-          >
-          — замовлення за період.
-        </li>
-        <li>
-          <code
-            >SELECT status, COUNT(*) FROM orders GROUP BY status;</code
-          >
-          — скільки замовлень у кожному статусі.
-        </li>
-        <li>
-          <code
-            >SELECT u.name, o.total FROM users u INNER JOIN orders o ON
-            u.id = o.user_id;</code
-          >
-          — користувачі + їхні замовлення.
-        </li>
-      </ul>
-    </div>
-
-    <div class="theory-section">
-      <h2>2. HTTP та API для QA</h2>
-      <h3>HTTP базові поняття</h3>
-      <ul class="theory-list">
-        <li>
-          <strong>Request</strong> (запит) → що клієнт відправляє на
-          сервер.
-        </li>
-        <li>
-          <strong>Response</strong> (відповідь) → що сервер повертає.
-        </li>
-        <li>
-          <strong>Методи:</strong> GET (отримати), POST (створити),
-          PUT/PATCH (оновити), DELETE (видалити).
-        </li>
-        <li>
-          <strong>Статус-коди:</strong>
-          <ul class="theory-list">
-            <li>2xx — успіх (200 OK, 201 Created).</li>
-            <li>
-              4xx — помилка клієнта (400 Bad Request, 401, 403, 404).
-            </li>
-            <li>
-              5xx — помилка сервера (500 Internal Server Error тощо).
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-      <h3>Що перевіряє QA в API</h3>
-      <ul class="theory-list">
-        <li>
-          Чи коректний <strong>статус-код</strong> для кожної операції.
-        </li>
-        <li>
-          Чи відповідає
-          <strong>тіло відповіді (JSON)</strong> специфікації (поля,
-          типи, обов’язкові значення).
-        </li>
-        <li>
-          Обробка <strong>некоректних даних</strong> (negative testing).
-        </li>
-        <li>
-          Перевірка
-          <strong>авторизації / аутентифікації</strong> (доступ без
-          токена, з неправильним токеном).
-        </li>
-        <li>
-          Коректність <strong>обмежень</strong> (наприклад, не можна
-          видалити чужі дані).
-        </li>
-      </ul>
-
-      <h3>Приклад запиту (JSON)</h3>
-      <ul class="theory-list">
-        <li>POST <code>/api/login</code></li>
-      </ul>
-      <pre class="code-block">
+              <h3>Приклад запиту (JSON)</h3>
+              <ul class="theory-list">
+                <li>POST <code>/api/login</code></li>
+              </ul>
+              <pre class="code-block">
 {
   "email": "user@example.com",
   "password": "Secret123"
 }
-      </pre>
-    </div>
-  </div>
+      </pre
+              >
+            </div>
+          </div>
 
-  <!-- GAMEDEV QA -->
-  <div id="theoryGameDev" class="subtab-content">
-        <div class="theory-section">
-      <h2>0. Game Development Life Cycle (GDLC)</h2>
-      <p>
-        <strong>Game Development Life Cycle</strong> — це послідовність етапів, через які проходить
-        гра від ідеї до підтримки після релізу. Для QA важливо розуміти, <em>на якому етапі які ризики</em>
-        і що саме тестується.
-      </p>
+          <!-- GAMEDEV QA -->
+          <div id="theoryGameDev" class="subtab-content">
+            <div class="theory-section">
+              <h2>0. Game Development Life Cycle (GDLC)</h2>
+              <p>
+                <strong>Game Development Life Cycle</strong> — це послідовність
+                етапів, через які проходить гра від ідеї до підтримки після
+                релізу. Для QA важливо розуміти,
+                <em>на якому етапі які ризики</em>
+                і що саме тестується.
+              </p>
 
-      <img
-        src="png/gdlc.png"
-        alt="Game Development Life Cycle"
-        class="theory-illustration"
-      />
+              <img
+                src="png/gdlc.png"
+                alt="Game Development Life Cycle"
+                class="theory-illustration"
+              />
 
-      <h3>Основні етапи GDLC</h3>
-      <ul class="theory-list">
-        <li>
-          <strong>Planning</strong> — ідея гри, цілі, цільова аудиторія, платформи, високорівневий
-          віжн, ризики та приблизний бюджет.
-        </li>
-        <li>
-          <strong>Pre-production</strong> — концепт-документи, GDD, прототипи, вибір технологій,
-          чорнові UX/UI, планування пайплайнів контенту.
-        </li>
-        <li>
-          <strong>Production</strong> — активна розробка: рівні, механіки, AI, анімації, контент,
-          інтеграція систем, перші повноцінні збірки.
-        </li>
-        <li>
-          <strong>Testing</strong> — інтенсивне функціональне тестування, баланс, перфоманс,
-          стабільність, регресія build-to-build, підготовка до релізу.
-        </li>
-        <li>
-          <strong>Launch</strong> — реліз гри на платформи, моніторинг метрик, гарячі фікси
-          критичних багів, підтримка користувачів.
-        </li>
-        <li>
-          <strong>Post-production</strong> — патчі, DLC, сезонні івенти, live ops, технічна підтримка
-          й розвиток гри після запуску.
-        </li>
-      </ul>
+              <h3>Основні етапи GDLC</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>Planning</strong> — ідея гри, цілі, цільова аудиторія,
+                  платформи, високорівневий віжн, ризики та приблизний бюджет.
+                </li>
+                <li>
+                  <strong>Pre-production</strong> — концепт-документи, GDD,
+                  прототипи, вибір технологій, чорнові UX/UI, планування
+                  пайплайнів контенту.
+                </li>
+                <li>
+                  <strong>Production</strong> — активна розробка: рівні,
+                  механіки, AI, анімації, контент, інтеграція систем, перші
+                  повноцінні збірки.
+                </li>
+                <li>
+                  <strong>Testing</strong> — інтенсивне функціональне
+                  тестування, баланс, перфоманс, стабільність, регресія
+                  build-to-build, підготовка до релізу.
+                </li>
+                <li>
+                  <strong>Launch</strong> — реліз гри на платформи, моніторинг
+                  метрик, гарячі фікси критичних багів, підтримка користувачів.
+                </li>
+                <li>
+                  <strong>Post-production</strong> — патчі, DLC, сезонні івенти,
+                  live ops, технічна підтримка й розвиток гри після запуску.
+                </li>
+              </ul>
 
-      <p>
-        QA може залучатися <strong>на кожному етапі</strong> — від рев’ю документації на Pre-production
-        до аналізу реальних краш-логів і відгуків гравців на Post-production.
-      </p>
-    </div>
+              <p>
+                QA може залучатися <strong>на кожному етапі</strong> — від рев’ю
+                документації на Pre-production до аналізу реальних краш-логів і
+                відгуків гравців на Post-production.
+              </p>
+            </div>
 
-    <div class="theory-section">
-      <h2>1. GameDev QA: що тут особливого</h2>
-      <ul class="theory-list">
-        <li>
-          Багато уваги до <strong>ігрового досвіду</strong>: геймплей,
-          баланс, відчуття керування.
-        </li>
-        <li>
-          Критично важливі <strong>перфоманс та стабільність</strong> на
-          різних платформах (PC, консолі, мобілки).
-        </li>
-        <li>
-          Дуже багато <strong>візуальних багів</strong>: анімації,
-          текстури, освітлення, UI, ефекти.
-        </li>
-        <li>
-          <strong>Фізика та колізії</strong>: застрягання в геометрії,
-          провал у текстури, некоректні стрибки.
-        </li>
-        <li>
-          <strong>Сейви</strong> та прогрес: втрата прогресу — один із
-          найболючіших багів.
-        </li>
-        <li>
-          <strong>Мережеві режими</strong> (якщо є мультиплеєр):
-          синхронізація, лаги, десинк, кік з сервера.
-        </li>
-      </ul>
-    </div>
+            <div class="theory-section">
+              <h2>1. GameDev QA: що тут особливого</h2>
+              <ul class="theory-list">
+                <li>
+                  Багато уваги до <strong>ігрового досвіду</strong>: геймплей,
+                  баланс, відчуття керування.
+                </li>
+                <li>
+                  Критично важливі <strong>перфоманс та стабільність</strong> на
+                  різних платформах (PC, консолі, мобілки).
+                </li>
+                <li>
+                  Дуже багато <strong>візуальних багів</strong>: анімації,
+                  текстури, освітлення, UI, ефекти.
+                </li>
+                <li>
+                  <strong>Фізика та колізії</strong>: застрягання в геометрії,
+                  провал у текстури, некоректні стрибки.
+                </li>
+                <li>
+                  <strong>Сейви</strong> та прогрес: втрата прогресу — один із
+                  найболючіших багів.
+                </li>
+                <li>
+                  <strong>Мережеві режими</strong> (якщо є мультиплеєр):
+                  синхронізація, лаги, десинк, кік з сервера.
+                </li>
+              </ul>
+            </div>
 
-    <div class="theory-section">
-      <h2>2. Типові види тестування в GameDev QA</h2>
-      <table class="theory-table">
-        <thead>
-          <tr>
-            <th>Тип</th>
-            <th>Що перевіряється</th>
-            <th>Приклад</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Gameplay / Functional</strong></td>
-            <td>Квести, механіки, боївка, інвентар, AI.</td>
-            <td>
-              Квест коректно стартує, оновлює цілі, правильно
-              завершується й дає нагороду.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Balance</strong></td>
-            <td>Складність, дамаг, економіка, прогрес.</td>
-            <td>
-              Бос не вбиває з двох ударів на найнижчій складності;
-              валюта не фармиться надто легко.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Graphics / Visual</strong></td>
-            <td>Моделі, текстури, шейдери, освітлення, UI.</td>
-            <td>
-              У персонажа не відлітають очі; немає миготіння текстур;
-              текст не вилазить за межі кнопки.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Physics / Collision</strong></td>
-            <td>Зіткнення, стрибки, падіння, взаємодія з об’єктами.</td>
-            <td>
-              Гравець не може пройти крізь стіну; не провалюється під
-              мапу; предмети не літають рандомно.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Performance</strong></td>
-            <td>FPS, фрізи, лаги, час завантаження рівнів.</td>
-            <td>
-              FPS не падає нижче умовних 30/60 у критичних сценах;
-              рівень вантажиться за адекватний час.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Compatibility</strong></td>
-            <td>Робота на різних платформах / конфігураціях.</td>
-            <td>
-              Гра стартує на мінімалках, не крашиться на конкретних
-              відеокартах / консолях.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Network / Multiplayer</strong></td>
-            <td>
-              Синхронізація, матчмейкінг, відновлення підключення.
-            </td>
-            <td>
-              Якщо один гравець виходить, сесія не ламається; стани
-              персонажів однакові в усіх клієнтів.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Regression (build-to-build)</strong></td>
-            <td>Старі фічі після нової збірки.</td>
-            <td>
-              Після фіксу одного квеста не зламались інші; сейви з
-              попередньої версії коректно відкриваються.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <div class="theory-section">
+              <h2>2. Типові види тестування в GameDev QA</h2>
+              <table class="theory-table">
+                <thead>
+                  <tr>
+                    <th>Тип</th>
+                    <th>Що перевіряється</th>
+                    <th>Приклад</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Gameplay / Functional</strong></td>
+                    <td>Квести, механіки, боївка, інвентар, AI.</td>
+                    <td>
+                      Квест коректно стартує, оновлює цілі, правильно
+                      завершується й дає нагороду.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Balance</strong></td>
+                    <td>Складність, дамаг, економіка, прогрес.</td>
+                    <td>
+                      Бос не вбиває з двох ударів на найнижчій складності;
+                      валюта не фармиться надто легко.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Graphics / Visual</strong></td>
+                    <td>Моделі, текстури, шейдери, освітлення, UI.</td>
+                    <td>
+                      У персонажа не відлітають очі; немає миготіння текстур;
+                      текст не вилазить за межі кнопки.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Physics / Collision</strong></td>
+                    <td>Зіткнення, стрибки, падіння, взаємодія з об’єктами.</td>
+                    <td>
+                      Гравець не може пройти крізь стіну; не провалюється під
+                      мапу; предмети не літають рандомно.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Performance</strong></td>
+                    <td>FPS, фрізи, лаги, час завантаження рівнів.</td>
+                    <td>
+                      FPS не падає нижче умовних 30/60 у критичних сценах;
+                      рівень вантажиться за адекватний час.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Compatibility</strong></td>
+                    <td>Робота на різних платформах / конфігураціях.</td>
+                    <td>
+                      Гра стартує на мінімалках, не крашиться на конкретних
+                      відеокартах / консолях.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Network / Multiplayer</strong></td>
+                    <td>
+                      Синхронізація, матчмейкінг, відновлення підключення.
+                    </td>
+                    <td>
+                      Якщо один гравець виходить, сесія не ламається; стани
+                      персонажів однакові в усіх клієнтів.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Regression (build-to-build)</strong></td>
+                    <td>Старі фічі після нової збірки.</td>
+                    <td>
+                      Після фіксу одного квеста не зламались інші; сейви з
+                      попередньої версії коректно відкриваються.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-    <div class="theory-section">
-      <h2>3. Особливості баг-репортів у GameDev</h2>
-      <ul class="theory-list">
-        <li>
-          <strong>Точний build / версія</strong> гри (наприклад,
-          1.0.0.1234 QA).
-        </li>
-        <li>
-          <strong>Платформа</strong>: PC (конфіг), PS5, Xbox, Switch
-          тощо.
-        </li>
-        <li><strong>Рівень / локація</strong>: назва або ID мапи.</li>
-        <li>
-          <strong>Чіткі кроки відтворення</strong> (особливо для
-          складних скриптових сцен).
-        </li>
-        <li>
-          <strong>Expected vs Actual</strong>: що мало б статися і що
-          сталося реально.
-        </li>
-        <li>
-          <strong>Додатки</strong>: скріни, відео, сейви, логи (якщо
-          доступні).
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
+            <div class="theory-section">
+              <h2>3. Особливості баг-репортів у GameDev</h2>
+              <ul class="theory-list">
+                <li>
+                  <strong>Точний build / версія</strong> гри (наприклад,
+                  1.0.0.1234 QA).
+                </li>
+                <li>
+                  <strong>Платформа</strong>: PC (конфіг), PS5, Xbox, Switch
+                  тощо.
+                </li>
+                <li><strong>Рівень / локація</strong>: назва або ID мапи.</li>
+                <li>
+                  <strong>Чіткі кроки відтворення</strong> (особливо для
+                  складних скриптових сцен).
+                </li>
+                <li>
+                  <strong>Expected vs Actual</strong>: що мало б статися і що
+                  сталося реально.
+                </li>
+                <li>
+                  <strong>Додатки</strong>: скріни, відео, сейви, логи (якщо
+                  доступні).
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <!-- ===== Карточки ===== -->
-<div id="cardsTab" class="tab-content">
+        <div id="cardsTab" class="tab-content">
+          <section class="memory-section">
+            <div class="carousel-container">
+              <!-- Сюди JS буде підкидати карточки -->
+              <div class="carousel" id="memory-carousel"></div>
+            </div>
 
+            <div class="carousel-controls">
+              <button id="prev-btn" class="control-btn">&lsaquo;</button>
+              <button id="next-btn" class="control-btn">&rsaquo;</button>
+            </div>
+          </section>
+        </div>
+        <!-- ===== Тести / Quiz ===== -->
+        <div id="quizTab" class="tab-content">
+          <section class="quiz-section">
+            <div class="quiz-header">
+              <h2>Тести / Quiz</h2>
+              <p>
+                Обери тему і пройди невеликий тест. Обирай варіанти відповідей,
+                а потім переходь до наступного питання.
+              </p>
+            </div>
 
-  <section class="memory-section">
-    <div class="carousel-container">
-      <!-- Сюди JS буде підкидати карточки -->
-      <div class="carousel" id="memory-carousel"></div>
-    </div>
-    
-    <div class="carousel-controls">
-        <button id="prev-btn" class="control-btn">&lsaquo;</button>
-        <button id="next-btn" class="control-btn">&rsaquo;</button>
-      </div>
-  </section>
-</div>
-<!-- ===== Тести / Quiz ===== -->
-<div id="quizTab" class="tab-content">
-  <section class="quiz-section">
-    <div class="quiz-header">
-      <h2>Тести / Quiz</h2>
-      <p>
-        Обери тему і пройди невеликий тест. Обирай варіанти відповідей, 
-        а потім переходь до наступного питання.
-      </p>
-    </div>
+            <div class="quiz-controls">
+              <div class="quiz-select-wrap">
+                <label for="quizTopicSelect">Тема:</label>
+                <select id="quizTopicSelect">
+                  <option value="all">Усі теми впереміш</option>
+                  <option value="База">Базова теорія</option>
+                  <option value="STLC">STLC / процеси</option>
+                  <option value="SQL/API">SQL / API</option>
+                  <option value="GameDev">GameDev QA</option>
+                </select>
+              </div>
 
-    <div class="quiz-controls">
-      <div class="quiz-select-wrap">
-        <label for="quizTopicSelect">Тема:</label>
-        <select id="quizTopicSelect">
-          <option value="all">Усі теми впереміш</option>
-          <option value="База">Базова теорія</option>
-          <option value="STLC">STLC / процеси</option>
-          <option value="SQL/API">SQL / API</option>
-          <option value="GameDev">GameDev QA</option>
-        </select>
-      </div>
+              <button id="quizStartBtn">Почати заново</button>
+            </div>
 
-      <button id="quizStartBtn">Почати заново</button>
-    </div>
+            <div id="quizCard" class="quiz-card">
+              <div class="quiz-meta">
+                <span id="quizQuestionCounter">Питання 0 / 0</span>
+                <span id="quizScore">Рахунок: 0</span>
+              </div>
 
-    <div id="quizCard" class="quiz-card">
-      <div class="quiz-meta">
-        <span id="quizQuestionCounter">Питання 0 / 0</span>
-        <span id="quizScore">Рахунок: 0</span>
-      </div>
+              <div id="quizQuestionText" class="quiz-question">
+                Обери тему і натисни «Почати заново», щоб почати тест.
+              </div>
 
-      <div id="quizQuestionText" class="quiz-question">
-        Обери тему і натисни «Почати заново», щоб почати тест.
-      </div>
+              <div id="quizOptions" class="quiz-options">
+                <!-- Сюди JS додасть кнопки з варіантами -->
+              </div>
 
-      <div id="quizOptions" class="quiz-options">
-        <!-- Сюди JS додасть кнопки з варіантами -->
-      </div>
+              <div id="quizFeedback" class="quiz-feedback"></div>
 
-      <div id="quizFeedback" class="quiz-feedback"></div>
-
-      <button id="quizNextBtn" class="quiz-next-btn" disabled>
-        Наступне питання
-      </button>
-    </div>
-  </section>
-</div>
-
-<!-- ===== ПРАКТИКА ===== -->
-<div id="practiceTab" class="tab-content">
-  <div class="practice-tabs">
-    <button class="practice-tab-btn active" data-practice="bugs">Баг-репорти</button>
-    <button class="practice-tab-btn" data-practice="cases">Тест-кейси</button>
-    <button class="practice-tab-btn" data-practice="checklists">Чек-листи</button>
-  </div>
-
-  <!-- === 1. Практика баг-репортів === -->
-  <section id="practice-bugs" class="practice-pane active">
-    <div class="practice-layout">
-      <!-- Ліва панель: сценарій -->
-      <div class="practice-scenario">
-        <h2>Сценарій</h2>
-        <label>
-          Об’єкт:
-          <select id="bugScenarioSelect">
-            <option value="game-save">GameDev: краш при завантаженні сейву</option>
-            <option value="web-login">Web: неправильний логін без помилки</option>
-          </select>
-        </label>
-        <p id="bugScenarioDescription" class="scenario-text"></p>
-        <button id="bugShowSampleBtn" class="secondary-btn">
-          Показати зразок баг-репорту
-        </button>
-      </div>
-
-      <!-- Права панель: форма як у Jira -->
-      <div class="practice-form">
-        <h2>Твій баг-репорт</h2>
-
-        <label>
-          Title
-          <input type="text" id="bugTitle" placeholder="[PC] Коротко: що зламано + де" />
-        </label>
-
-        <label>
-          Environment
-          <input
-            type="text"
-            id="bugEnvironment"
-            placeholder="PC, build 1.0.0.1234 QA, Win10, Chrome / RTX 3060"
-          />
-        </label>
-
-        <label>
-          Steps to Reproduce
-          <textarea
-            id="bugSteps"
-            rows="5"
-            placeholder="1. ...&#10;2. ...&#10;3. ..."
-          ></textarea>
-        </label>
-
-        <label>
-          Expected result
-          <textarea id="bugExpected" rows="3"></textarea>
-        </label>
-
-        <label>
-          Actual result
-          <textarea id="bugActual" rows="3"></textarea>
-        </label>
-
-        <div class="two-cols">
-          <label>
-            Severity
-            <select id="bugSeverity">
-              <option value="">-- вибрати --</option>
-              <option>Blocker</option>
-              <option>Critical</option>
-              <option>Major</option>
-              <option>Minor</option>
-              <option>Trivial</option>
-            </select>
-          </label>
-          <label>
-            Priority
-            <select id="bugPriority">
-              <option value="">-- вибрати --</option>
-              <option>High</option>
-              <option>Medium</option>
-              <option>Low</option>
-            </select>
-          </label>
+              <button id="quizNextBtn" class="quiz-next-btn" disabled>
+                Наступне питання
+              </button>
+            </div>
+          </section>
         </div>
 
-        <div class="practice-actions">
-          <button id="bugValidateBtn" class="primary-btn">
-            Перевірити локально
-          </button>
-          <button id="bugAiCheckBtn" class="ghost-btn" disabled>
-            Перевірити ШІ (пізніше)
-          </button>
-        </div>
+        <!-- ===== ПРАКТИКА ===== -->
+        <div id="practiceTab" class="tab-content">
+          <div class="practice-tabs">
+            <button class="practice-tab-btn active" data-practice="bugs">
+              Баг-репорти
+            </button>
+            <button class="practice-tab-btn" data-practice="cases">
+              Тест-кейси
+            </button>
+            <button class="practice-tab-btn" data-practice="checklists">
+              Чек-листи
+            </button>
+          </div>
 
-        <div id="bugFeedback" class="practice-feedback"></div>
-        <details id="bugSample" class="sample-block">
-          <summary>Зразок відповіді</summary>
-          <pre class="code-block" id="bugSampleText"></pre>
-        </details>
-      </div>
-    </div>
-  </section>
+          <section id="practice-bugs" class="practice-pane active">
+            <div class="practice-layout">
+              <!-- ЗЛІВА: форма -->
+              <div class="practice-form">
+                <h2>Твій баг-репорт</h2>
 
-  <!-- === 2. Практика тест-кейсів (каркас) === -->
-  <section id="practice-cases" class="practice-pane">
-    <div class="practice-layout">
-      <div class="practice-scenario">
-        <h2>Сценарій</h2>
-        <label>
-          Об’єкт:
-          <select id="caseScenarioSelect">
-            <option value="game-character">GameDev: створення персонажа</option>
-            <option value="web-register">Web: форма реєстрації</option>
-          </select>
-        </label>
-        <p id="caseScenarioDescription" class="scenario-text"></p>
-        <button id="caseShowSampleBtn" class="secondary-btn">
-          Показати зразок тест-кейсу
-        </button>
-      </div>
+                <label>
+                  Title
+                  <input
+                    type="text"
+                    id="bugTitle"
+                    placeholder="[PC] Коротко: що зламано + де"
+                  />
+                </label>
 
-      <div class="practice-form">
-        <h2>Твій тест-кейс</h2>
+                <label>
+                  Environment
+                  <input
+                    type="text"
+                    id="bugEnvironment"
+                    placeholder="PC, build 1.0.0.1234 QA, Win10, Chrome / RTX 3060"
+                  />
+                </label>
 
-        <label> ID <input type="text" id="caseId" placeholder="TC-GAME-001" /> </label>
-        <label> Назва <input type="text" id="caseTitle" /> </label>
-        <label>
-          Передумови
-          <textarea id="casePre" rows="2"></textarea>
-        </label>
-        <label>
-          Кроки
-          <textarea
-            id="caseSteps"
-            rows="5"
-            placeholder="1. ...&#10;2. ...&#10;3. ..."
-          ></textarea>
-        </label>
-        <label>
-          Очікуваний результат
-          <textarea id="caseExpected" rows="3"></textarea>
-        </label>
+                <label>
+                  Steps to Reproduce
+                  <textarea
+                    id="bugSteps"
+                    rows="5"
+                    placeholder="1. ...&#10;2. ...&#10;3. ..."
+                  ></textarea>
+                </label>
 
-        <div class="practice-actions">
-          <button id="caseValidateBtn" class="primary-btn">
-            Перевірити локально
-          </button>
-        </div>
+                <label>
+                  Expected result
+                  <textarea id="bugExpected" rows="3"></textarea>
+                </label>
 
-        <div id="caseFeedback" class="practice-feedback"></div>
-        <details id="caseSample" class="sample-block">
-          <summary>Зразок відповіді</summary>
-          <pre class="code-block" id="caseSampleText"></pre>
-        </details>
-      </div>
-    </div>
-  </section>
+                <label>
+                  Actual result
+                  <textarea id="bugActual" rows="3"></textarea>
+                </label>
 
-  <!-- === 3. Практика чек-листів (каркас) === -->
-  <section id="practice-checklists" class="practice-pane">
-    <div class="practice-layout">
-      <div class="practice-scenario">
-        <h2>Сценарій</h2>
-        <label>
-          Об’єкт:
-          <select id="checkScenarioSelect">
-            <option value="game-main-menu">GameDev: головне меню гри</option>
-            <option value="web-login-form">Web: форма логіну</option>
-          </select>
-        </label>
-        <p id="checkScenarioDescription" class="scenario-text"></p>
-        <button id="checkShowSampleBtn" class="secondary-btn">
-          Показати зразок чек-листа
-        </button>
-      </div>
+                <div class="two-cols">
+                  <label>
+                    Severity
+                    <select id="bugSeverity">
+                      <option value="">-- вибрати --</option>
+                      <option>Blocker</option>
+                      <option>Critical</option>
+                      <option>Major</option>
+                      <option>Minor</option>
+                      <option>Trivial</option>
+                    </select>
+                  </label>
+                  <label>
+                    Priority
+                    <select id="bugPriority">
+                      <option value="">-- вибрати --</option>
+                      <option>High</option>
+                      <option>Medium</option>
+                      <option>Low</option>
+                    </select>
+                  </label>
+                </div>
 
-      <div class="practice-form">
-        <h2>Твій чек-лист</h2>
-        <label>
-          Пункти (один рядок = одна перевірка)
-          <textarea
-            id="checkItems"
-            rows="10"
-            placeholder="[ ] Пункт 1&#10;[ ] Пункт 2&#10;[ ] Пункт 3"
-          ></textarea>
-        </label>
+                <div class="practice-actions">
+                  <button id="bugValidateBtn" class="primary-btn">
+                    Перевірити локально
+                  </button>
+                  <button id="bugAiCheckBtn" class="ghost-btn" disabled>
+                    Перевірити ШІ (пізніше)
+                  </button>
+                </div>
 
-        <div class="practice-actions">
-          <button id="checkValidateBtn" class="primary-btn">
-            Перевірити локально
-          </button>
-        </div>
+                <div id="bugFeedback" class="practice-feedback"></div>
+              </div>
 
-        <div id="checkFeedback" class="practice-feedback"></div>
-        <details id="checkSample" class="sample-block">
-          <summary>Зразок відповіді</summary>
-          <pre class="code-block" id="checkSampleText"></pre>
-        </details>
-      </div>
-    </div>
-  </section>
-</div>
+              <!-- СПРАВА: сценарій + зразок -->
+              <div class="practice-scenario">
+                <h2>Сценарій</h2>
+                <label>
+                  Об’єкт:
+                  <select id="bugScenarioSelect">
+                    <option value="game-save">
+                      GameDev: краш при завантаженні сейву
+                    </option>
+                    <option value="web-login">
+                      Web: неправильний логін без помилки
+                    </option>
+                  </select>
+                </label>
+                <p id="bugScenarioDescription" class="scenario-text"></p>
 
+                <details id="bugSample" class="sample-block">
+                  <summary>Зразок відповіді</summary>
+                  <pre class="code-block" id="bugSampleText"></pre>
+                </details>
+              </div>
+            </div>
+          </section>
 
+          <section id="practice-cases" class="practice-pane">
+            <div class="practice-layout">
+              <!-- ЗЛІВА: форма -->
+              <div class="practice-form">
+                <h2>Твій тест-кейс</h2>
 
-          
+                <label>
+                  ID <input type="text" id="caseId" placeholder="TC-GAME-001" />
+                </label>
+                <label> Назва <input type="text" id="caseTitle" /> </label>
+                <label>
+                  Передумови
+                  <textarea id="casePre" rows="2"></textarea>
+                </label>
+                <label>
+                  Кроки
+                  <textarea
+                    id="caseSteps"
+                    rows="5"
+                    placeholder="1. ...&#10;2. ...&#10;3. ..."
+                  ></textarea>
+                </label>
+                <label>
+                  Очікуваний результат
+                  <textarea id="caseExpected" rows="3"></textarea>
+                </label>
+
+                <div class="practice-actions">
+                  <button id="caseValidateBtn" class="primary-btn">
+                    Перевірити локально
+                  </button>
+                </div>
+
+                <div id="caseFeedback" class="practice-feedback"></div>
+              </div>
+
+              <!-- СПРАВА: сценарій + зразок -->
+              <div class="practice-scenario">
+                <h2>Сценарій</h2>
+                <label>
+                  Об’єкт:
+                  <select id="caseScenarioSelect">
+                    <option value="game-character">
+                      GameDev: створення персонажа
+                    </option>
+                    <option value="web-register">Web: форма реєстрації</option>
+                  </select>
+                </label>
+                <p id="caseScenarioDescription" class="scenario-text"></p>
+
+                <details id="caseSample" class="sample-block">
+                  <summary>Зразок відповіді</summary>
+                  <pre class="code-block" id="caseSampleText"></pre>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <section id="practice-checklists" class="practice-pane">
+            <div class="practice-layout">
+              <!-- ЗЛІВА: форма -->
+              <div class="practice-form">
+                <h2>Твій чек-лист</h2>
+                <label>
+                  Пункти (один рядок = одна перевірка)
+                  <textarea
+                    id="checkItems"
+                    rows="10"
+                    placeholder="[ ] Пункт 1&#10;[ ] Пункт 2&#10;[ ] Пункт 3"
+                  ></textarea>
+                </label>
+
+                <div class="practice-actions">
+                  <button id="checkValidateBtn" class="primary-btn">
+                    Перевірити локально
+                  </button>
+                </div>
+
+                <div id="checkFeedback" class="practice-feedback"></div>
+              </div>
+
+              <!-- СПРАВА: сценарій + зразок -->
+              <div class="practice-scenario">
+                <h2>Сценарій</h2>
+                <label>
+                  Об’єкт:
+                  <select id="checkScenarioSelect">
+                    <option value="game-main-menu">
+                      GameDev: головне меню гри
+                    </option>
+                    <option value="web-login-form">Web: форма логіну</option>
+                  </select>
+                </label>
+                <p id="checkScenarioDescription" class="scenario-text"></p>
+
+                <details id="checkSample" class="sample-block">
+                  <summary>Зразок відповіді</summary>
+                  <pre class="code-block" id="checkSampleText"></pre>
+                </details>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </main>

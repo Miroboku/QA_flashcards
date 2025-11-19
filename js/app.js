@@ -1249,67 +1249,61 @@ function initPracticeScenarios() {
   // Баг-репорти
   const bugScenarioSelect = document.getElementById('bugScenarioSelect');
   const bugScenarioDescription = document.getElementById('bugScenarioDescription');
-  const bugShowSampleBtn = document.getElementById('bugShowSampleBtn');
   const bugSampleText = document.getElementById('bugSampleText');
 
-  if (bugScenarioSelect && bugScenarioDescription && bugShowSampleBtn && bugSampleText) {
+  if (bugScenarioSelect && bugScenarioDescription && bugSampleText) {
     const updateBugScenario = () => {
-      const key = bugScenarioSelect.value;
-      const data = bugScenarios[key];
+      const data = bugScenarios[bugScenarioSelect.value];
       if (!data) return;
       bugScenarioDescription.textContent = data.description;
       bugSampleText.textContent = data.sample;
+      // якщо хочеш, щоб sample був одразу відкритий:
+      // document.getElementById('bugSample')?.setAttribute('open', 'open');
     };
+
     bugScenarioSelect.addEventListener('change', updateBugScenario);
-    bugShowSampleBtn.addEventListener('click', () => {
-      document.getElementById('bugSample')?.setAttribute('open', 'open');
-    });
     updateBugScenario();
   }
 
   // Тест-кейси
   const caseScenarioSelect = document.getElementById('caseScenarioSelect');
   const caseScenarioDescription = document.getElementById('caseScenarioDescription');
-  const caseShowSampleBtn = document.getElementById('caseShowSampleBtn');
   const caseSampleText = document.getElementById('caseSampleText');
 
-  if (caseScenarioSelect && caseScenarioDescription && caseShowSampleBtn && caseSampleText) {
+  if (caseScenarioSelect && caseScenarioDescription && caseSampleText) {
     const updateCaseScenario = () => {
-      const key = caseScenarioSelect.value;
-      const data = caseScenarios[key];
+      const data = caseScenarios[caseScenarioSelect.value];
       if (!data) return;
       caseScenarioDescription.textContent = data.description;
       caseSampleText.textContent = data.sample;
+      // document.getElementById('caseSample')?.setAttribute('open', 'open');
     };
+
     caseScenarioSelect.addEventListener('change', updateCaseScenario);
-    caseShowSampleBtn.addEventListener('click', () => {
-      document.getElementById('caseSample')?.setAttribute('open', 'open');
-    });
     updateCaseScenario();
   }
 
   // Чек-листи
   const checkScenarioSelect = document.getElementById('checkScenarioSelect');
   const checkScenarioDescription = document.getElementById('checkScenarioDescription');
-  const checkShowSampleBtn = document.getElementById('checkShowSampleBtn');
   const checkSampleText = document.getElementById('checkSampleText');
 
-  if (checkScenarioSelect && checkScenarioDescription && checkShowSampleBtn && checkSampleText) {
+  if (checkScenarioSelect && checkScenarioDescription && checkSampleText) {
     const updateCheckScenario = () => {
-      const key = checkScenarioSelect.value;
-      const data = checkScenarios[key];
+      const data = checkScenarios[checkScenarioSelect.value];
       if (!data) return;
       checkScenarioDescription.textContent = data.description;
       checkSampleText.textContent = data.sample;
+      // document.getElementById('checkSample')?.setAttribute('open', 'open');
     };
+
     checkScenarioSelect.addEventListener('change', updateCheckScenario);
-    checkShowSampleBtn.addEventListener('click', () => {
-      document.getElementById('checkSample')?.setAttribute('open', 'open');
-    });
     updateCheckScenario();
   }
 }
+
 initPracticeScenarios();
+
 
 // ===== Локальна перевірка полів =====
 function validateBugReport() {
