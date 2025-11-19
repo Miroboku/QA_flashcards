@@ -84,7 +84,7 @@
             </svg>
           </button>
           <ul class="sub-menu show">
-            <div>
+
     <li>
       <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryBase">
         Базова теорія
@@ -1123,6 +1123,211 @@
       <button id="quizNextBtn" class="quiz-next-btn" disabled>
         Наступне питання
       </button>
+    </div>
+  </section>
+</div>
+
+<!-- ===== ПРАКТИКА ===== -->
+<div id="practiceTab" class="tab-content">
+  <div class="practice-tabs">
+    <button class="practice-tab-btn active" data-practice="bugs">Баг-репорти</button>
+    <button class="practice-tab-btn" data-practice="cases">Тест-кейси</button>
+    <button class="practice-tab-btn" data-practice="checklists">Чек-листи</button>
+  </div>
+
+  <!-- === 1. Практика баг-репортів === -->
+  <section id="practice-bugs" class="practice-pane active">
+    <div class="practice-layout">
+      <!-- Ліва панель: сценарій -->
+      <div class="practice-scenario">
+        <h2>Сценарій</h2>
+        <label>
+          Об’єкт:
+          <select id="bugScenarioSelect">
+            <option value="game-save">GameDev: краш при завантаженні сейву</option>
+            <option value="web-login">Web: неправильний логін без помилки</option>
+          </select>
+        </label>
+        <p id="bugScenarioDescription" class="scenario-text"></p>
+        <button id="bugShowSampleBtn" class="secondary-btn">
+          Показати зразок баг-репорту
+        </button>
+      </div>
+
+      <!-- Права панель: форма як у Jira -->
+      <div class="practice-form">
+        <h2>Твій баг-репорт</h2>
+
+        <label>
+          Title
+          <input type="text" id="bugTitle" placeholder="[PC] Коротко: що зламано + де" />
+        </label>
+
+        <label>
+          Environment
+          <input
+            type="text"
+            id="bugEnvironment"
+            placeholder="PC, build 1.0.0.1234 QA, Win10, Chrome / RTX 3060"
+          />
+        </label>
+
+        <label>
+          Steps to Reproduce
+          <textarea
+            id="bugSteps"
+            rows="5"
+            placeholder="1. ...&#10;2. ...&#10;3. ..."
+          ></textarea>
+        </label>
+
+        <label>
+          Expected result
+          <textarea id="bugExpected" rows="3"></textarea>
+        </label>
+
+        <label>
+          Actual result
+          <textarea id="bugActual" rows="3"></textarea>
+        </label>
+
+        <div class="two-cols">
+          <label>
+            Severity
+            <select id="bugSeverity">
+              <option value="">-- вибрати --</option>
+              <option>Blocker</option>
+              <option>Critical</option>
+              <option>Major</option>
+              <option>Minor</option>
+              <option>Trivial</option>
+            </select>
+          </label>
+          <label>
+            Priority
+            <select id="bugPriority">
+              <option value="">-- вибрати --</option>
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="practice-actions">
+          <button id="bugValidateBtn" class="primary-btn">
+            Перевірити локально
+          </button>
+          <button id="bugAiCheckBtn" class="ghost-btn" disabled>
+            Перевірити ШІ (пізніше)
+          </button>
+        </div>
+
+        <div id="bugFeedback" class="practice-feedback"></div>
+        <details id="bugSample" class="sample-block">
+          <summary>Зразок відповіді</summary>
+          <pre class="code-block" id="bugSampleText"></pre>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- === 2. Практика тест-кейсів (каркас) === -->
+  <section id="practice-cases" class="practice-pane">
+    <div class="practice-layout">
+      <div class="practice-scenario">
+        <h2>Сценарій</h2>
+        <label>
+          Об’єкт:
+          <select id="caseScenarioSelect">
+            <option value="game-character">GameDev: створення персонажа</option>
+            <option value="web-register">Web: форма реєстрації</option>
+          </select>
+        </label>
+        <p id="caseScenarioDescription" class="scenario-text"></p>
+        <button id="caseShowSampleBtn" class="secondary-btn">
+          Показати зразок тест-кейсу
+        </button>
+      </div>
+
+      <div class="practice-form">
+        <h2>Твій тест-кейс</h2>
+
+        <label> ID <input type="text" id="caseId" placeholder="TC-GAME-001" /> </label>
+        <label> Назва <input type="text" id="caseTitle" /> </label>
+        <label>
+          Передумови
+          <textarea id="casePre" rows="2"></textarea>
+        </label>
+        <label>
+          Кроки
+          <textarea
+            id="caseSteps"
+            rows="5"
+            placeholder="1. ...&#10;2. ...&#10;3. ..."
+          ></textarea>
+        </label>
+        <label>
+          Очікуваний результат
+          <textarea id="caseExpected" rows="3"></textarea>
+        </label>
+
+        <div class="practice-actions">
+          <button id="caseValidateBtn" class="primary-btn">
+            Перевірити локально
+          </button>
+        </div>
+
+        <div id="caseFeedback" class="practice-feedback"></div>
+        <details id="caseSample" class="sample-block">
+          <summary>Зразок відповіді</summary>
+          <pre class="code-block" id="caseSampleText"></pre>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- === 3. Практика чек-листів (каркас) === -->
+  <section id="practice-checklists" class="practice-pane">
+    <div class="practice-layout">
+      <div class="practice-scenario">
+        <h2>Сценарій</h2>
+        <label>
+          Об’єкт:
+          <select id="checkScenarioSelect">
+            <option value="game-main-menu">GameDev: головне меню гри</option>
+            <option value="web-login-form">Web: форма логіну</option>
+          </select>
+        </label>
+        <p id="checkScenarioDescription" class="scenario-text"></p>
+        <button id="checkShowSampleBtn" class="secondary-btn">
+          Показати зразок чек-листа
+        </button>
+      </div>
+
+      <div class="practice-form">
+        <h2>Твій чек-лист</h2>
+        <label>
+          Пункти (один рядок = одна перевірка)
+          <textarea
+            id="checkItems"
+            rows="10"
+            placeholder="[ ] Пункт 1&#10;[ ] Пункт 2&#10;[ ] Пункт 3"
+          ></textarea>
+        </label>
+
+        <div class="practice-actions">
+          <button id="checkValidateBtn" class="primary-btn">
+            Перевірити локально
+          </button>
+        </div>
+
+        <div id="checkFeedback" class="practice-feedback"></div>
+        <details id="checkSample" class="sample-block">
+          <summary>Зразок відповіді</summary>
+          <pre class="code-block" id="checkSampleText"></pre>
+        </details>
+      </div>
     </div>
   </section>
 </div>

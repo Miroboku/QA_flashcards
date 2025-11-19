@@ -1127,3 +1127,283 @@ if (quizTopicSelect && quizStartBtn && quizNextBtn) {
   quizNextBtn.addEventListener('click', goToNextQuestion);
   quizTopicSelect.addEventListener('change', startQuiz);
 }
+
+// ===== PRACTICE TABS =====
+const practiceTabButtons = document.querySelectorAll('.practice-tab-btn');
+const practicePanes = document.querySelectorAll('.practice-pane');
+
+practiceTabButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const target = btn.getAttribute('data-practice');
+
+    practiceTabButtons.forEach((b) => b.classList.remove('active'));
+    practicePanes.forEach((p) => p.classList.remove('active'));
+
+    btn.classList.add('active');
+    document.getElementById(`practice-${target}`).classList.add('active');
+  });
+});
+
+// ===== Дані сценаріїв + зразків =====
+const bugScenarios = {
+  'game-save': {
+    description:
+      'Після завантаження сейву гравець зʼявляється під мапою й безкінечно падає. Платформа: PC.',
+    sample: `Title: [PC] Player spawns under the map after loading save on "Forest"
+Environment: PC, build 1.0.0.1234 QA, Win10, RTX 3060
+Steps to Reproduce:
+1. Launch the game and go to Load Game.
+2. Select save "Forest_AutoSave_01".
+3. Click "Load".
+Expected result:
+Player spawns on the ground at the last checkpoint on "Forest" level.
+Actual result:
+Player spawns under the map and falls infinitely, no way to recover progress.
+Severity: Critical
+Priority: High
+Attachments: video.mp4, save file, logs/crash_1234.txt`
+  },
+  'web-login': {
+    description:
+      'На сторінці логіну при введенні неправильного пароля сторінка просто перезавантажується без повідомлення про помилку.',
+    sample: `Title: [WEB] Login page reloads with no error message on invalid password
+Environment: Web, https://example.com/login, Chrome 130, Win10
+Steps to Reproduce:
+1. Open the login page.
+2. Enter a valid email and invalid password.
+3. Click "Login".
+Expected result:
+User stays on the login page and sees a clear error message like "Invalid email or password".
+Actual result:
+Page reloads with no visible error message; user does not understand what went wrong.
+Severity: Major
+Priority: High
+Attachments: screenshot, console log`
+  }
+};
+
+const caseScenarios = {
+  'game-character': {
+    description:
+      'Екран створення персонажа: вибір класу, імені, складності. Потрібен тест-кейс для успішного створення персонажа.',
+    sample: `ID: TC-GAME-CHAR-001
+Назва: Успішне створення нового персонажа з валідними даними
+Передумови: Гра запущена, користувач на екрані створення персонажа
+Кроки:
+1. Обрати клас "Warrior".
+2. Ввести імʼя "Arthas".
+3. Обрати складність "Normal".
+4. Натиснути "Start Game".
+Очікуваний результат:
+Створюється новий персонаж з обраними параметрами, гравець потрапляє на стартову локацію.`
+  },
+  'web-register': {
+    description:
+      'Форма реєстрації з полями Email, Password, Confirm Password. Потрібен тест-кейс для ситуації, коли паролі не співпадають.',
+    sample: `ID: TC-WEB-REG-002
+Назва: Повідомлення про помилку, якщо паролі не співпадають
+Передумови: Користувач на сторінці реєстрації
+Кроки:
+1. У полі Email ввести "user@example.com".
+2. У полі Password ввести "Password123".
+3. У полі Confirm Password ввести "Password124".
+4. Натиснути "Sign Up".
+Очікуваний результат:
+Форма не відправляється. Під полем пароля/підтвердження зʼявляється повідомлення "Passwords do not match".`
+  }
+};
+
+const checkScenarios = {
+  'game-main-menu': {
+    description:
+      'Головне меню гри: New Game, Continue, Settings, Exit. Склади чек-лист з 10–15 пунктів.',
+    sample: `[ ] Кнопка "New Game" активна та запускає нову гру
+[ ] "Continue" недоступна, якщо немає сейвів
+[ ] "Continue" завантажує останній сейв
+[ ] Відкриття "Settings" не скидає музик/ефектів
+[ ] Кнопка "Exit" показує підтвердження перед виходом
+[ ] Локалізація тексту меню відповідає обраній мові
+[ ] Фокус коректно рухається між пунктами за допомогою клавіатури/геймпада
+[ ] Фонова музика відтворюється без обривів
+[ ] Лого гри відображається без артефактів
+[ ] Після виходу в меню з гри всі кнопки працюють коректно`
+  },
+  'web-login-form': {
+    description:
+      'Проста форма логіну (email, password, кнопка Login). Склади чек-лист для базових перевірок.',
+    sample: `[ ] Поле email обовʼязкове
+[ ] Поле password обовʼязкове
+[ ] При порожньому email показується валідне повідомлення про помилку
+[ ] При email без @ показується помилка формату
+[ ] При неправильній парі email+password показується повідомлення "Invalid credentials"
+[ ] Кнопка "Login" неактивна, поки поля порожні
+[ ] Натискання Enter у полі password тригерить логін
+[ ] Після успішного логіну відбувається редірект на /dashboard
+[ ] Пароль не видно у звичайному тексті (тип input=password)
+[ ] На мобільній роздільній здатності форма не розлазиться`
+  }
+};
+
+// ===== Ініціалізація сценаріїв / зразків =====
+function initPracticeScenarios() {
+  // Баг-репорти
+  const bugScenarioSelect = document.getElementById('bugScenarioSelect');
+  const bugScenarioDescription = document.getElementById('bugScenarioDescription');
+  const bugShowSampleBtn = document.getElementById('bugShowSampleBtn');
+  const bugSampleText = document.getElementById('bugSampleText');
+
+  if (bugScenarioSelect && bugScenarioDescription && bugShowSampleBtn && bugSampleText) {
+    const updateBugScenario = () => {
+      const key = bugScenarioSelect.value;
+      const data = bugScenarios[key];
+      if (!data) return;
+      bugScenarioDescription.textContent = data.description;
+      bugSampleText.textContent = data.sample;
+    };
+    bugScenarioSelect.addEventListener('change', updateBugScenario);
+    bugShowSampleBtn.addEventListener('click', () => {
+      document.getElementById('bugSample')?.setAttribute('open', 'open');
+    });
+    updateBugScenario();
+  }
+
+  // Тест-кейси
+  const caseScenarioSelect = document.getElementById('caseScenarioSelect');
+  const caseScenarioDescription = document.getElementById('caseScenarioDescription');
+  const caseShowSampleBtn = document.getElementById('caseShowSampleBtn');
+  const caseSampleText = document.getElementById('caseSampleText');
+
+  if (caseScenarioSelect && caseScenarioDescription && caseShowSampleBtn && caseSampleText) {
+    const updateCaseScenario = () => {
+      const key = caseScenarioSelect.value;
+      const data = caseScenarios[key];
+      if (!data) return;
+      caseScenarioDescription.textContent = data.description;
+      caseSampleText.textContent = data.sample;
+    };
+    caseScenarioSelect.addEventListener('change', updateCaseScenario);
+    caseShowSampleBtn.addEventListener('click', () => {
+      document.getElementById('caseSample')?.setAttribute('open', 'open');
+    });
+    updateCaseScenario();
+  }
+
+  // Чек-листи
+  const checkScenarioSelect = document.getElementById('checkScenarioSelect');
+  const checkScenarioDescription = document.getElementById('checkScenarioDescription');
+  const checkShowSampleBtn = document.getElementById('checkShowSampleBtn');
+  const checkSampleText = document.getElementById('checkSampleText');
+
+  if (checkScenarioSelect && checkScenarioDescription && checkShowSampleBtn && checkSampleText) {
+    const updateCheckScenario = () => {
+      const key = checkScenarioSelect.value;
+      const data = checkScenarios[key];
+      if (!data) return;
+      checkScenarioDescription.textContent = data.description;
+      checkSampleText.textContent = data.sample;
+    };
+    checkScenarioSelect.addEventListener('change', updateCheckScenario);
+    checkShowSampleBtn.addEventListener('click', () => {
+      document.getElementById('checkSample')?.setAttribute('open', 'open');
+    });
+    updateCheckScenario();
+  }
+}
+initPracticeScenarios();
+
+// ===== Локальна перевірка полів =====
+function validateBugReport() {
+  const title = document.getElementById('bugTitle')?.value.trim();
+  const env = document.getElementById('bugEnvironment')?.value.trim();
+  const steps = document.getElementById('bugSteps')?.value.trim();
+  const exp = document.getElementById('bugExpected')?.value.trim();
+  const act = document.getElementById('bugActual')?.value.trim();
+  const sev = document.getElementById('bugSeverity')?.value;
+  const pri = document.getElementById('bugPriority')?.value;
+  const feedbackEl = document.getElementById('bugFeedback');
+
+  if (!feedbackEl) return;
+
+  const issues = [];
+
+  if (!title || title.length < 15) {
+    issues.push('• Title занадто короткий або порожній. Опиши що зламано + де.');
+  }
+  if (!env) {
+    issues.push('• Заповни Environment (платформа, build, OS / браузер / відеокарта).');
+  }
+  const stepLines = steps.split('\n').filter((l) => l.trim() !== '');
+  if (stepLines.length < 3) {
+    issues.push('• Має бути хоча б 3 кроки відтворення (1., 2., 3. ...).');
+  }
+  if (!exp) issues.push('• Немає Expected result.');
+  if (!act) issues.push('• Немає Actual result.');
+  if (!sev) issues.push('• Вибери Severity.');
+  if (!pri) issues.push('• Вибери Priority.');
+
+  if (issues.length === 0) {
+    feedbackEl.textContent =
+      '✅ Добре! Структура заповнена. Далі можна порівняти зі зразком або віддати це ШІ на глибший фідбек.';
+  } else {
+    feedbackEl.textContent =
+      '⚠ Підкоригуй баг-репорт:\n' + issues.join('\n');
+  }
+}
+
+const bugValidateBtn = document.getElementById('bugValidateBtn');
+if (bugValidateBtn) {
+  bugValidateBtn.addEventListener('click', validateBugReport);
+}
+
+// Аналогічно можна зробити прості перевірки для тест-кейсів і чек-листів:
+function validateTestCase() {
+  const id = document.getElementById('caseId')?.value.trim();
+  const title = document.getElementById('caseTitle')?.value.trim();
+  const pre = document.getElementById('casePre')?.value.trim();
+  const steps = document.getElementById('caseSteps')?.value.trim();
+  const exp = document.getElementById('caseExpected')?.value.trim();
+  const feedbackEl = document.getElementById('caseFeedback');
+  if (!feedbackEl) return;
+
+  const issues = [];
+  if (!id) issues.push('• Заповни ID тест-кейсу.');
+  if (!title) issues.push('• Додай зрозумілу назву.');
+  if (!pre) issues.push('• Опиши передумови.');
+  const stepLines = steps.split('\n').filter((l) => l.trim() !== '');
+  if (stepLines.length < 3) issues.push('• Розпиши хоча б 3 кроки.');
+  if (!exp) issues.push('• Додай очікуваний результат.');
+
+  feedbackEl.textContent =
+    issues.length === 0
+      ? '✅ Структура тест-кейсу ок. Тепер можна шліфувати формулювання.'
+      : '⚠ Підкоригуй тест-кейс:\n' + issues.join('\n');
+}
+const caseValidateBtn = document.getElementById('caseValidateBtn');
+if (caseValidateBtn) {
+  caseValidateBtn.addEventListener('click', validateTestCase);
+}
+
+function validateChecklist() {
+  const items = document.getElementById('checkItems')?.value.trim();
+  const feedbackEl = document.getElementById('checkFeedback');
+  if (!feedbackEl) return;
+
+  const lines = items.split('\n').filter((l) => l.trim() !== '');
+  const issues = [];
+  if (lines.length < 8) {
+    issues.push('• Спробуй додати хоча б 8–10 пунктів.');
+  }
+  const withoutCheckbox = lines.filter((l) => !l.trim().startsWith('[ ]'));
+  if (withoutCheckbox.length > 0) {
+    issues.push('• Не всі рядки починаються з "[ ]". Зроби формат єдиним.');
+  }
+
+  feedbackEl.textContent =
+    issues.length === 0
+      ? '✅ Непоганий чек-лист. Далі порівняй із зразком і подумай, що ще можна покрити.'
+      : '⚠ Підкоригуй чек-лист:\n' + issues.join('\n');
+}
+const checkValidateBtn = document.getElementById('checkValidateBtn');
+if (checkValidateBtn) {
+  checkValidateBtn.addEventListener('click', validateChecklist);
+}

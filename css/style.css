@@ -1363,3 +1363,134 @@ body.darkmode {
     font-size: 13px;
   }
 }
+
+/* ==== PRACTICE: layout + inputs ==== */
+
+.practice-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.practice-scenario,
+.practice-form {
+  flex: 1 1 340px;
+  min-width: 320px;
+}
+
+.practice-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 640px;
+}
+
+/* лейбли */
+
+.practice-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted, #b0b3c1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* інпути / textarea / select */
+
+.practice-form input,
+.practice-form textarea,
+.practice-form select {
+  margin-top: 0.1rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 0.75rem; /* м’які краї */
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  padding: 0.55rem 0.75rem;
+  color: var(--text-main, #ffffff);
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 2.4rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease, transform 0.05s ease;
+}
+
+.practice-form textarea {
+  min-height: 5rem;
+}
+
+.practice-form input:focus,
+.practice-form textarea:focus,
+.practice-form select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.9),
+    0 0 18px rgba(56, 189, 248, 0.5);
+  background: rgba(15, 23, 42, 1);
+  transform: translateY(-1px);
+}
+
+/* Severity / Priority в два стовпці */
+
+.two-cols {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.two-cols label {
+  flex: 1 1 160px;
+}
+
+/* ==== PRACTICE TABS ==== */
+
+.practice-tabs {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  display: inline-flex;
+  gap: 0.5rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: var(--card-bg, #050816);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.practice-tab-btn {
+  border: none;
+  background: transparent;
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text-muted, #b0b3c1);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.05s ease;
+}
+
+.practice-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-main, #ffffff);
+}
+
+/* зроблено під стиль вкладок теорії: градієнт + glow */
+
+.practice-tab-btn.active {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(129, 140, 248, 0.8),
+    0 0 25px rgba(236, 72, 153, 0.65);
+  transform: translateY(-1px);
+}
+
+/* перемикання панелей практики */
+
+.practice-pane {
+  display: none;
+}
+
+.practice-pane.active {
+  display: block;
+}
