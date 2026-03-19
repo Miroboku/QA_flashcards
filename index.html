@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QA Flashcards – Теорія тестування</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/data.js" defer></script>
     <script src="js/app.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +43,7 @@
       <ul>
         <li>
           <span class="logo">QA Flashcards</span>
-          <button onclick="toggleSidebar()" id="toggle-btn">
+          <button onclick="toggleSidebar()" id="toggle-btn" aria-label="Toggle Sidebar" title="Toggle Sidebar">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -84,65 +85,58 @@
             </svg>
           </button>
           <ul class="sub-menu show">
-            <div>
-    <li>
-      <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryBase">
-        Базова теорія
-      </a>
-    </li>
-    <li>
-      <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryApiSql">
-        API / SQL
-      </a>
-    </li>
-    <li>
-      <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryGameDev">
-        GameDev QA
-      </a>
-    </li>
-    <li>
-      <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theorySdlcStlc">
-        SDLC / STLC
-      </a>
-    </li>
-  </ul>
-</li>
-        
+            <li>
+              <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryBase">Базова теорія</a>
+            </li>
+            <li>
+              <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryApiSql">API / SQL</a>
+            </li>
+            <li>
+              <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryGameDev">GameDev QA</a>
+            </li>
+            <li>
+              <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theorySdlcStlc">SDLC / STLC</a>
+            </li>
+            <li>
+              <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryMethodologies">Waterfall / Agile / Scrum</a>
+            </li>
+            <li>
+              <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryCourse" class="course-link">Курс QA <span class="badge">Нове</span></a>
+            </li>
+          </ul>
+        </li>
 
-<!-- Карточки -->
-<li>
-  <a href="#cardsTab" data-main-tab="cardsTab">
-    <!-- Іконка карточок -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-    >
-      <path
-        d="M240-160q-33 0-56.5-23.5T160-240v-480q0-33 23.5-56.5T240-800h360q33 0 56.5 23.5T680-720v80h80q33 0 56.5 23.5T840-560v320q0 33-23.5 56.5T760-160H240Zm0-80h520v-320h-80v240q0 33-23.5 56.5T600-240H240v80Zm0-160h360v-320H240v320Zm80-80v-80h200v80H320Z"
-      />
-    </svg>
-    <span>Карточки</span>
-  </a>
-</li>
-<!-- Тести / Quiz -->
-<li>
-  <a href="#quizTab" data-main-tab="quizTab">
-    <!-- Іконка тестів (чекбокси) -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-    >
-      <path
-        d="M200-160q-33 0-56.5-23.5T120-240v-480q0-33 23.5-56.5T200-800h400l200 200v360q0 33-23.5 56.5T720-160H200Zm280-80h240v-280H640v-160H200v440h280Zm-180-80 80-80-56-56-24 24-24-24-56 56 80 80Zm0-200 80-80-56-56-24 24-24-24-56 56 80 80Zm200 80h160v-80H500v80Zm0 200h160v-80H500v80Z"
-      />
-    </svg>
-    <span>Тести / Quiz</span>
-  </a>
-</li>
+        <!-- Карточки -->
+        <li>
+          <a href="#cardsTab" data-main-tab="cardsTab">
+            <!-- Іконка карточок -->
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+              <path d="M240-160q-33 0-56.5-23.5T160-240v-480q0-33 23.5-56.5T240-800h360q33 0 56.5 23.5T680-720v80h80q33 0 56.5 23.5T840-560v320q0 33-23.5 56.5T760-160H240Zm0-80h520v-320h-80v240q0 33-23.5 56.5T600-240H240v80Zm0-160h360v-320H240v320Zm80-80v-80h200v80H320Z"/>
+            </svg>
+            <span>Карточки</span>
+          </a>
+        </li>
+        <!-- Тести / Quiz -->
+        <li>
+          <a href="#quizTab" data-main-tab="quizTab">
+            <!-- Іконка тестів (чекбокси) -->
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+              <path d="M200-160q-33 0-56.5-23.5T120-240v-480q0-33 23.5-56.5T200-800h400l200 200v360q0 33-23.5 56.5T720-160H200Zm280-80h240v-280H640v-160H200v440h280Zm-180-80 80-80-56-56-24 24-24-24-56 56 80 80Zm0-200 80-80-56-56-24 24-24-24-56 56 80 80Zm200 80h160v-80H500v80Zm0 200h160v-80H500v80Z"/>
+            </svg>
+            <span>Тести / Quiz</span>
+          </a>
+        </li>
+        <!-- Практика -->
+        <li>
+          <a href="#practiceTab" data-main-tab="practiceTab">
+            <!-- Іконка практики (умовно "кліпборд") -->
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+              <path d="M320-120q-33 0-56.5-23.5T240-200v-520q0-33 23.5-56.5T320-800h80q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800h80q33 0 56.5 23.5T720-720v520q0 33-23.5 56.5T640-120H320Zm0-80h320v-520h-80v80H400v-80h-80v520Zm80-440h160v-80H400v80Z"/>
+            </svg>
+            <span>Практика</span>
+          </a>
+        </li>
+
 
 
       </ul>
@@ -163,25 +157,18 @@
           </div>
         </div>
 
+        <div id="theoryTab" class="tab-content active">
+          <!-- Кнопки сабвкладок -->
+          <div class="subtabs">
+            <button class="subtab-btn active" data-subtab="theoryBase">Базова теорія</button>
+            <button class="subtab-btn" data-subtab="theoryApiSql">API / SQL</button>
+            <button class="subtab-btn" data-subtab="theoryGameDev">GameDev QA</button>
+            <button class="subtab-btn" data-subtab="theorySdlcStlc">SDLC / STLC</button>
+            <button class="subtab-btn" data-subtab="theoryMethodologies">Waterfall / Agile / Scrum</button>
+            <button class="subtab-btn course-btn" data-subtab="theoryCourse">Курс QA ✨</button>
+          </div>
 
-<div id="theoryTab" class="tab-content active">
-  <!-- Кнопки сабвкладок -->
-  <div class="subtabs">
-    <button class="subtab-btn active" data-subtab="theoryBase">
-      Базова теорія
-    </button>
-    <button class="subtab-btn" data-subtab="theoryApiSql">
-      API / SQL
-    </button>
-    <button class="subtab-btn" data-subtab="theoryGameDev">
-      GameDev QA
-    </button>
-    <button class="subtab-btn" data-subtab="theorySdlcStlc">
-      SDLC / STLC
-    </button>
-  </div>
-
-  <!-- БАЗОВА ТЕОРІЯ -->
+          <!-- БАЗОВА ТЕОРІЯ -->
   <div id="theoryBase" class="subtab-content active">
     <div class="theory-section">
       <h2>1. База: що таке тестування</h2>
@@ -430,6 +417,124 @@
         <li>ретельно ретестити після фіксу та вирішувати, чи можна закривати дефект.</li>
       </ul>
     </div>
+<div class="theory-section">
+  <h2>6. Чек-листи, тест-кейси та баг-репорти</h2>
+
+  <!-- ========================= -->
+  <!-- 6.1 Чек-листи -->
+  <!-- ========================= -->
+
+  <h3>6.1. Чек-лист (Checklist)</h3>
+  <p>
+    <strong>Чек-лист</strong> — перелік коротких перевірок без детальних кроків.
+    Використовується для швидких проходів, smoke, sanity, дослідницького тестування.
+  </p>
+
+  <ul class="theory-list">
+    <li>одна перевірка — один пункт;</li>
+    <li>мінімум тексту, максимум конкретики;</li>
+    <li>добре підходить як для GameDev, так і Web UI.</li>
+  </ul>
+
+  <div class="code-block">
+    <strong>Приклад GameDev чек-листа:</strong><br />
+    [ ] Головне меню: кнопка "New Game" активна та працює<br />
+    [ ] Модель персонажа не провалюється під землю на старті<br />
+    [ ] Налаштування гучності зберігаються після рестарту гри<br />
+    [ ] Квест-трекер оновлюється після виконання завдання<br /><br />
+
+    <strong>Приклад Web чек-листа:</strong><br />
+    [ ] Логотип на головній сторінці відображається коректно<br />
+    [ ] Поля Email / Password помітні та активні<br />
+    [ ] Кнопка Login активна при валідних даних<br />
+    [ ] Верстка не ламається на ширині 360px<br />
+    [ ] Валідація Email працює (некоректні значення блокуються)
+  </div>
+
+  <!-- ========================= -->
+  <!-- 6.2 Тест-кейси -->
+  <!-- ========================= -->
+
+  <h3>6.2. Тест-кейс (Test Case)</h3>
+  <p>
+    <strong>Тест-кейс</strong> — формалізований сценарій із чіткими кроками, тестовими
+    даними та очікуваним результатом.
+  </p>
+
+  <ul class="theory-list">
+    <li><strong>ID</strong> — унікальний номер;</li>
+    <li><strong>Назва</strong> — що перевіряємо;</li>
+    <li><strong>Передумови (Preconditions)</strong>;</li>
+    <li><strong>Кроки (Steps)</strong>;</li>
+    <li><strong>Очікуваний результат</strong>;</li>
+    <li><strong>Фактичний результат / Статус</strong> — під час тесту.</li>
+  </ul>
+
+  <div class="code-block">
+    <strong>GameDev тест-кейс:</strong><br />
+    ID: TC-GAME-001<br />
+    Назва: Створення нового сейву<br />
+    Preconditions: Гра запущена, головне меню<br />
+    Steps:<br />
+    1. Натиснути "New Game"<br />
+    2. Дочекатися завантаження рівня<br />
+    Expected Result: Гра стартує з початкового рівня, створено новий сейв<br /><br />
+
+    <strong>Web тест-кейс:</strong><br />
+    ID: TC-WEB-002<br />
+    Назва: Авторизація з валідними даними<br />
+    Preconditions: Користувач існує в БД<br />
+    Steps:<br />
+    1. Ввести валідний email<br />
+    2. Ввести валідний пароль<br />
+    3. Натиснути "Login"<br />
+    Expected Result: Користувача перенаправляє на Dashboard
+  </div>
+
+  <!-- ========================= -->
+  <!-- 6.3 Баг-репорти -->
+  <!-- ========================= -->
+
+  <h3>6.3. Баг-репорт (Bug Report)</h3>
+  <p>
+    <strong>Баг-репорт</strong> — опис дефекту з чіткими кроками відтворення,
+    очікуваним та фактичним результатом.
+  </p>
+
+  <ul class="theory-list">
+    <li><strong>Title</strong> — що зламано і де;</li>
+    <li><strong>Environment</strong> — платформа, збірка, браузер;</li>
+    <li><strong>Steps to Reproduce</strong> — нумеровані кроки;</li>
+    <li><strong>Expected / Actual result</strong>;</li>
+    <li><strong>Severity / Priority</strong>;</li>
+    <li><strong>Attachments</strong> — скріни/відео/логи.</li>
+  </ul>
+
+  <div class="code-block">
+    <strong>GameDev баг-репорт:</strong><br />
+    Title: [PC] Крашається гра при завантаженні сейву "Forest"<br />
+    Environment: PC, build 1.0.0.1234, Win10, RTX 3060<br />
+    Steps:<br />
+    1. Відкрити меню Load Game<br />
+    2. Обрати сейв "Forest_AutoSave_01"<br />
+    3. Натиснути "Load"<br />
+    Expected: Рівень успішно завантажується<br />
+    Actual: Гра крашиться через 3–4 секунди<br />
+    Severity: Critical<br /><br />
+
+    <strong>Web баг-репорт:</strong><br />
+    Title: [WEB] 500 Error при відправці форми "Contact Us"<br />
+    Environment: Chrome 124, Win11<br />
+    Steps:<br />
+    1. Заповнити форму<br />
+    2. Натиснути "Send"<br />
+    Expected: Повідомлення "Message sent"<br />
+    Actual: Сервер повертає HTTP 500<br />
+    Severity: Major
+  </div>
+</div>
+
+
   </div>
 
   <!-- SDLC / STLC -->
@@ -590,7 +695,7 @@
         </tbody>
       </table>
 
-      <p style="margin-top:8px;">
+      <p class="mt-8">
         Коротко:
         <strong>SDLC</strong> — це “велика рамка” всього проєкту,
         а <strong>STLC</strong> — детальний опис того, як всередині цієї рамки
@@ -737,6 +842,54 @@
 
   <!-- GAMEDEV QA -->
   <div id="theoryGameDev" class="subtab-content">
+        <div class="theory-section">
+      <h2>0. Game Development Life Cycle (GDLC)</h2>
+      <p>
+        <strong>Game Development Life Cycle</strong> — це послідовність етапів, через які проходить
+        гра від ідеї до підтримки після релізу. Для QA важливо розуміти, <em>на якому етапі які ризики</em>
+        і що саме тестується.
+      </p>
+
+      <img
+        src="png/gdlc.png"
+        alt="Game Development Life Cycle"
+        class="theory-illustration"
+      />
+
+      <h3>Основні етапи GDLC</h3>
+      <ul class="theory-list">
+        <li>
+          <strong>Planning</strong> — ідея гри, цілі, цільова аудиторія, платформи, високорівневий
+          віжн, ризики та приблизний бюджет.
+        </li>
+        <li>
+          <strong>Pre-production</strong> — концепт-документи, GDD, прототипи, вибір технологій,
+          чорнові UX/UI, планування пайплайнів контенту.
+        </li>
+        <li>
+          <strong>Production</strong> — активна розробка: рівні, механіки, AI, анімації, контент,
+          інтеграція систем, перші повноцінні збірки.
+        </li>
+        <li>
+          <strong>Testing</strong> — інтенсивне функціональне тестування, баланс, перфоманс,
+          стабільність, регресія build-to-build, підготовка до релізу.
+        </li>
+        <li>
+          <strong>Launch</strong> — реліз гри на платформи, моніторинг метрик, гарячі фікси
+          критичних багів, підтримка користувачів.
+        </li>
+        <li>
+          <strong>Post-production</strong> — патчі, DLC, сезонні івенти, live ops, технічна підтримка
+          й розвиток гри після запуску.
+        </li>
+      </ul>
+
+      <p>
+        QA може залучатися <strong>на кожному етапі</strong> — від рев’ю документації на Pre-production
+        до аналізу реальних краш-логів і відгуків гравців на Post-production.
+      </p>
+    </div>
+
     <div class="theory-section">
       <h2>1. GameDev QA: що тут особливого</h2>
       <ul class="theory-list">
@@ -877,8 +1030,347 @@
   </div>
 </div>
 
+<div id="theoryMethodologies" class="subtab-content">
+            <div class="theory-section">
+              <h2>Методології розробки: Waterfall, Agile та Scrum</h2>
 
+
+              <p>
+                Тестувальник повинен розуміти різницю між Waterfall, Agile і
+                Scrum, тому що процес тестування, обсяг документації та
+                взаємодія з командою залежать від вибраної методології.
+              </p>
+
+              <!-- ===== WATERFALL ===== -->
+              <h3>1. Waterfall (каскадна модель)</h3>
+              <p>
+                <strong>Waterfall</strong> — лінійна послідовна модель. Кожен
+                етап має бути завершений повністю перед тим, як починається
+                наступний. Підходить для проєктів з фіксованими вимогами.
+              </p>
+
+              <ul class="theory-list">
+                <li>Requirements — збір вимог;</li>
+                <li>Design — проєктування;</li>
+                <li>Implementation — написання коду;</li>
+                <li>Testing — тестування тільки після завершення розробки;</li>
+                <li>Deployment — реліз;</li>
+                <li>Maintenance — підтримка.</li>
+              </ul>
+
+              <div class="image-block">
+                <img
+                  src="png/waterfall.png"
+                  alt="Waterfall model"
+                  class="theory-img"
+                />
+              </div>
+
+              <!-- ===== AGILE ===== -->
+              <h3>2. Agile (гнучка методологія)</h3>
+              <p>
+                <strong>Agile</strong> — гнучкий підхід, заснований на швидких
+                ітераціях, постійному фідбеку й адаптації до змін. Замість
+                великого релізу — інкременти кожні 1–4 тижні.
+              </p>
+
+              <ul class="theory-list">
+                <li>Швидкі ітерації (iterations / sprints);</li>
+                <li>Можна змінювати пріоритети;</li>
+                <li>Мінімум зайвої документації;</li>
+                <li>Регулярні поставки цінності (working product).</li>
+              </ul>
+
+              <p>
+                Agile — це загальний підхід, під яким існують фреймворки: Scrum,
+                Kanban, XP. Найпопулярніший — <strong>Scrum</strong>.
+              </p>
+
+              <!-- ===== SCRUM ===== -->
+              <h3>3. Scrum (найпоширеніший Agile-фреймворк)</h3>
+              <p>
+                Scrum працює короткими циклами — спринтами (1–4 тижні). Команда
+                працює як одна група: QA, деви, дизайнери, аналітики.
+              </p>
+
+              <h4>Ролі:</h4>
+              <ul class="theory-list">
+                <li>
+                  <strong>Product Owner</strong> — відповідає за пріоритети;
+                </li>
+                <li>
+                  <strong>Scrum Master</strong> — допомагає команді й усуває
+                  блокери;
+                </li>
+                <li><strong>Development Team</strong> — виконує роботу.</li>
+              </ul>
+
+              <h4>Артефакти:</h4>
+              <ul class="theory-list">
+                <li>Product Backlog — повний список фіч;</li>
+                <li>Sprint Backlog — задачі на спринт;</li>
+                <li>Increment — готовий результат спринту.</li>
+              </ul>
+
+              <h4>Церемонії:</h4>
+              <ul class="theory-list">
+                <li>Sprint Planning</li>
+                <li>Daily Standup</li>
+                <li>Sprint Review</li>
+                <li>Sprint Retrospective</li>
+              </ul>
+
+              <div class="image-block">
+                <img
+                  src="png/agile.jpg"
+                  alt="Agile Scrum Framework"
+                  class="theory-img"
+                />
+              </div>
+
+              <!-- ===== COMPARISON ===== -->
+              <h3>4. Порівняння Waterfall vs Agile vs Scrum</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>Waterfall</strong> — фіксований план, нуль гнучкості.
+                </li>
+                <li><strong>Agile</strong> — постійні зміни, інкременти.</li>
+                <li>
+                  <strong>Scrum</strong> — Agile з чіткими правилами, спринтами
+                  і ролями.
+                </li>
+              </ul>
+
+              <p>
+                У GameDev, Web та Mobile команда майже завжди працює за Scrum
+                або схожими Agile-практиками. Тестування триває протягом усього
+                спринту, а не наприкінці.
+              </p>
+            </div>
+          </div>
+        </div>
         <!-- ===== Карточки ===== -->
+
+  <!-- КУРС QA -->
+  <div id="theoryCourse" class="subtab-content">
+    <div class="theory-section course-section">
+      <h2>Мій конспект курсу QA</h2>
+      <p>Тут ви можете розгортати кожне заняття і зберігати свої власні нотатки для нього. Все зберігається прямо у вас у браузері!</p>
+      
+      <div class="course-accordion">
+        
+        <details class="course-module">
+          <summary>Заняття 1: Знайомство. Процес розробки ПЗ (SDLC)</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(1, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 2: Професія QA. Види тестування</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(2, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 3: Аналіз вимог. Загальне уявлення. STLC</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(3, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 4: Техніки тест-дизайну. Рівні тестування</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(4, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 5: Тестова документація: Test Cases, Checklists. Робота з вимогами</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(5, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 6: Локалізація та життєвий цикл дефекту. Репортинг багів</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(6, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 7: Системи відстеження помилок (Jira). Трекінг роботи</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(7, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 8: Практика: написання баг-репортів та тест-кейсів</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(8, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 9: Клієнт-серверна архітектура. HTTP протокол</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(9, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 10: API Testing: Basics & Postman (частина 1)</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(10, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 11: API Testing: Postman Practice (частина 2)</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(11, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 12: Бази даних та SQL (частина 1)</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(12, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 13: Бази даних та SQL (частина 2)</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(13, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 14: Основи фронтенду (HTML/CSS/JS) та Developer Tools</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(14, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 15: Mobile Testing (Android & iOS)</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(15, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 16: Нефункціональне тестування: Performance, Security, Usability</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(16, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 17: Основи Git та контролю версій</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(17, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 18: Журналювання помилок (Logs, Crashlytics)</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(18, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 19: Автоматизація тестування: Вступ (Continuous Integration)</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(19, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 20: Практична робота: Проєкт 1</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(20, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 21: Практична робота: Проєкт 2</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(21, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 22: Практична робота: Підсумок</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(22, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 23: Особистий бренд тестувальника. Як шукати роботу</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(23, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 24: Резюме, LinkedIn та Cover Letter</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(24, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 25: Співбесіди: Софт скіли та підготовка</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(25, this.value)"></textarea>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Заняття 26: Симуляція співбесіди. Підведення підсумків</summary>
+          <div class="module-content">
+            <p><em>Конспект для цього заняття ще не додано.</em></p>
+            <textarea class="course-notes" placeholder="Пиши свій конспект тут..." oninput="saveCourseNote(26, this.value)"></textarea>
+          </div>
+        </details>
+    
+      </div>
+    </div>
+  </div>
+    
 <div id="cardsTab" class="tab-content">
 
 
@@ -944,8 +1436,228 @@
 </div>
 
 
-          
-        </div>
+
+<label>
+                  Environment
+                  <input
+                    type="text"
+                    id="bugEnvironment"
+                    placeholder="PC, build 1.0.0.1234 QA, Win10, Chrome / RTX 3060"
+                  />
+                </label>
+
+                <label>
+                  Steps to Reproduce
+                  <textarea
+                    id="bugSteps"
+                    rows="5"
+                    placeholder="1. ...&#10;2. ...&#10;3. ..."
+                  ></textarea>
+                </label>
+
+                <label>
+                  Expected result
+                  <textarea id="bugExpected" rows="3"></textarea>
+                </label>
+
+                <label>
+                  Actual result
+                  <textarea id="bugActual" rows="3"></textarea>
+                </label>
+
+                <div class="two-cols">
+                  <label>
+                    Severity
+                    <select id="bugSeverity">
+                      <option value="">-- вибрати --</option>
+                      <option>Blocker</option>
+                      <option>Critical</option>
+                      <option>Major</option>
+                      <option>Minor</option>
+                      <option>Trivial</option>
+                    </select>
+                  </label>
+                  <label>
+                    Priority
+                    <select id="bugPriority">
+                      <option value="">-- вибрати --</option>
+                      <option>High</option>
+                      <option>Medium</option>
+                      <option>Low</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="practice-actions">
+                  <button id="bugValidateBtn" type="button" class="primary-btn">
+                    Перевірити локально
+                  </button>
+                  <button id="bugExportMd" type="button" class="secondary">
+                    Експорт MD
+                  </button>
+                  <button id="bugExportCsv" type="button" class="secondary">
+                    Експорт CSV
+                  </button>
+                  <button
+                    id="bugAiCheckBtn"
+                    type="button"
+                    class="ghost-btn"
+                    disabled
+                  >
+                    Перевірити ШІ (пізніше)
+                  </button>
+                </div>
+
+                <div id="bugFeedback" class="practice-feedback"></div>
+              </div>
+
+              <!-- СПРАВА: сценарій + зразок -->
+              <div class="practice-scenario">
+                <h2>Сценарій</h2>
+                <label>
+                  Об’єкт:
+                  <select id="bugScenarioSelect">
+                    <option value="game-save">
+                      GameDev: краш при завантаженні сейву
+                    </option>
+                    <option value="web-login">
+                      Web: неправильний логін без помилки
+                    </option>
+                  </select>
+                </label>
+                <p id="bugScenarioDescription" class="scenario-text"></p>
+
+                <details id="bugSample" class="sample-block">
+                  <summary>Зразок відповіді</summary>
+                  <pre class="code-block" id="bugSampleText"></pre>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <section id="practice-cases" class="practice-pane">
+            <div class="practice-layout">
+              <!-- ЗЛІВА: форма -->
+              <div class="practice-form">
+                <h2>Твій тест-кейс</h2>
+
+                <label>
+                  ID <input type="text" id="caseId" placeholder="TC-GAME-001" />
+                </label>
+                <label> Summary <input type="text" id="caseTitle" /> </label>
+                <label>
+                  Pre-conditions
+                  <textarea id="casePre" rows="2"></textarea>
+                </label>
+                <label>
+                  Steps
+                  <textarea
+                    id="caseSteps"
+                    rows="5"
+                    placeholder="1. ...&#10;2. ...&#10;3. ..."
+                  ></textarea>
+                </label>
+                <label>
+                  Expected result
+                  <textarea id="caseExpected" rows="3"></textarea>
+                </label>
+
+                <div class="practice-actions">
+                  <button
+                    id="caseValidateBtn"
+                    type="button"
+                    class="primary-btn"
+                  >
+                    Перевірити локально
+                  </button>
+                  <button id="caseExportMd" type="button" class="secondary">
+                    Експорт MD
+                  </button>
+                  <button id="caseExportCsv" type="button" class="secondary">
+                    Експорт CSV
+                  </button>
+                </div>
+
+                <div id="caseFeedback" class="practice-feedback"></div>
+              </div>
+
+              <!-- СПРАВА: сценарій + зразок -->
+              <div class="practice-scenario">
+                <h2>Сценарій</h2>
+                <label>
+                  Об’єкт:
+                  <select id="caseScenarioSelect">
+                    <option value="game-character">
+                      GameDev: створення персонажа
+                    </option>
+                    <option value="web-register">Web: форма реєстрації</option>
+                  </select>
+                </label>
+                <p id="caseScenarioDescription" class="scenario-text"></p>
+
+                <details id="caseSample" class="sample-block">
+                  <summary>Зразок відповіді</summary>
+                  <pre class="code-block" id="caseSampleText"></pre>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <section id="practice-checklists" class="practice-pane">
+            <div class="practice-layout">
+              <!-- ЗЛІВА: форма -->
+              <div class="practice-form">
+                <h2>Твій чек-лист</h2>
+                <label>
+                  Пункти (один рядок = одна перевірка)
+                  <textarea
+                    id="checkItems"
+                    rows="10"
+                    placeholder="[ ] Пункт 1&#10;[ ] Пункт 2&#10;[ ] Пункт 3"
+                  ></textarea>
+                </label>
+
+                <div class="practice-actions">
+                  <button
+                    id="checkValidateBtn"
+                    type="button"
+                    class="primary-btn"
+                  >
+                    Перевірити локально
+                  </button>
+                  <button id="checkExportMd" type="button" class="secondary">
+                    Експорт MD
+                  </button>
+                  <button id="checkExportCsv" type="button" class="secondary">
+                    Експорт CSV
+                  </button>
+                </div>
+
+                <div id="checkFeedback" class="practice-feedback"></div>
+              </div>
+
+              <!-- СПРАВА: сценарій + зразок -->
+              <div class="practice-scenario">
+                <h2>Сценарій</h2>
+                <label>
+                  Об’єкт:
+                  <select id="checkScenarioSelect">
+                    <option value="game-main-menu">
+                      GameDev: головне меню гри
+                    </option>
+                    <option value="web-login-form">Web: форма логіну</option>
+                  </select>
+                </label>
+                <p id="checkScenarioDescription" class="scenario-text"></p>
+
+                <details id="checkSample" class="sample-block">
+                  <summary>Зразок відповіді</summary>
+                  <pre class="code-block" id="checkSampleText"></pre>
+                </details>
+              </div>
+            </div>
+          </section>
+</div>
       </div>
     </main>
   </body>
