@@ -102,7 +102,7 @@
               <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryMethodologies">Waterfall / Agile / Scrum</a>
             </li>
             <li>
-              <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryCourse" class="course-link">Курс QA <span class="badge">Нове</span></a>
+              <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryCourse" class="course-link">Курс QA</a>
             </li>
           </ul>
         </li>
@@ -962,10 +962,324 @@
       </ul>
     </div>
   </div>
-</div>
 
 
+<<<<<<< Updated upstream
         <!-- ===== Карточки ===== -->
+=======
+
+              <p>
+                Тестувальник повинен розуміти різницю між Waterfall, Agile і
+                Scrum, тому що процес тестування, обсяг документації та
+                взаємодія з командою залежать від вибраної методології.
+              </p>
+
+              <!-- ===== WATERFALL ===== -->
+              <h3>1. Waterfall (каскадна модель)</h3>
+              <p>
+                <strong>Waterfall</strong> — лінійна послідовна модель. Кожен
+                етап має бути завершений повністю перед тим, як починається
+                наступний. Підходить для проєктів з фіксованими вимогами.
+              </p>
+
+              <ul class="theory-list">
+                <li>Requirements — збір вимог;</li>
+                <li>Design — проєктування;</li>
+                <li>Implementation — написання коду;</li>
+                <li>Testing — тестування тільки після завершення розробки;</li>
+                <li>Deployment — реліз;</li>
+                <li>Maintenance — підтримка.</li>
+              </ul>
+
+              <div class="image-block">
+                <img
+                  src="png/waterfall.png"
+                  alt="Waterfall model"
+                  class="theory-img"
+                />
+              </div>
+
+              <!-- ===== AGILE ===== -->
+              <h3>2. Agile (гнучка методологія)</h3>
+              <p>
+                <strong>Agile</strong> — гнучкий підхід, заснований на швидких
+                ітераціях, постійному фідбеку й адаптації до змін. Замість
+                великого релізу — інкременти кожні 1–4 тижні.
+              </p>
+
+              <ul class="theory-list">
+                <li>Швидкі ітерації (iterations / sprints);</li>
+                <li>Можна змінювати пріоритети;</li>
+                <li>Мінімум зайвої документації;</li>
+                <li>Регулярні поставки цінності (working product).</li>
+              </ul>
+
+              <p>
+                Agile — це загальний підхід, під яким існують фреймворки: Scrum,
+                Kanban, XP. Найпопулярніший — <strong>Scrum</strong>.
+              </p>
+
+              <!-- ===== SCRUM ===== -->
+              <h3>3. Scrum (найпоширеніший Agile-фреймворк)</h3>
+              <p>
+                Scrum працює короткими циклами — спринтами (1–4 тижні). Команда
+                працює як одна група: QA, деви, дизайнери, аналітики.
+              </p>
+
+              <h4>Ролі:</h4>
+              <ul class="theory-list">
+                <li>
+                  <strong>Product Owner</strong> — відповідає за пріоритети;
+                </li>
+                <li>
+                  <strong>Scrum Master</strong> — допомагає команді й усуває
+                  блокери;
+                </li>
+                <li><strong>Development Team</strong> — виконує роботу.</li>
+              </ul>
+
+              <h4>Артефакти:</h4>
+              <ul class="theory-list">
+                <li>Product Backlog — повний список фіч;</li>
+                <li>Sprint Backlog — задачі на спринт;</li>
+                <li>Increment — готовий результат спринту.</li>
+              </ul>
+
+              <h4>Церемонії:</h4>
+              <ul class="theory-list">
+                <li>Sprint Planning</li>
+                <li>Daily Standup</li>
+                <li>Sprint Review</li>
+                <li>Sprint Retrospective</li>
+              </ul>
+
+              <div class="image-block">
+                <img
+                  src="png/agile.jpg"
+                  alt="Agile Scrum Framework"
+                  class="theory-img"
+                />
+              </div>
+
+              <!-- ===== COMPARISON ===== -->
+              <h3>4. Порівняння Waterfall vs Agile vs Scrum</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>Waterfall</strong> — фіксований план, нуль гнучкості.
+                </li>
+                <li><strong>Agile</strong> — постійні зміни, інкременти.</li>
+                <li>
+                  <strong>Scrum</strong> — Agile з чіткими правилами, спринтами
+                  і ролями.
+                </li>
+              </ul>
+
+              <p>
+                У GameDev, Web та Mobile команда майже завжди працює за Scrum
+                або схожими Agile-практиками. Тестування триває протягом усього
+                спринту, а не наприкінці.
+              </p>
+            </div>
+          </div>
+
+<!-- КУРС QA -->
+  <!-- КУРС QA -->
+  <div id="theoryCourse" class="subtab-content">
+    <div class="theory-section course-section">
+      <h2>Теорія курсу QA</h2>
+      <p>Структурований матеріал та короткі конспекти по кожному модулю навчальної програми.</p>
+      
+      <div class="course-accordion">
+
+        <details class="course-module">
+          <summary>Модуль 1: Знайомство. Процес розробки ПЗ (SDLC)</summary>
+          <div class="module-content">
+            <p><strong>SDLC (Software Development Life Cycle)</strong> — процес створення ПЗ від ідеї до підтримки.</p><ul><li><strong>Requirement Analysis</strong> (Збір вимог)</li><li><strong>Design</strong> (Проєктування архітектури та UI/UX)</li><li><strong>Implementation</strong> (Кодування)</li><li><strong>Testing</strong> (Перевірка якості, пошук багів)</li><li><strong>Deployment</strong> (Реліз на продакшен)</li><li><strong>Maintenance</strong> (Підтримка та випуск патчів)</li></ul>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 2: Професія QA. Види тестування</summary>
+          <div class="module-content">
+            <p><strong>QA (Quality Assurance)</strong> фокусується на покращенні процесів розробки для запобігання дефектам. <strong>QC (Quality Control)</strong> — перевірка самого продукту на наявність дефектів.</p><p>Основні види тестування:</p><ul><li><strong>Функціональне:</strong> перевірка, ЩО робить система (Smoke, Sanity, Regression).</li><li><strong>Нефункціональне:</strong> перевірка, ЯК працює система (продуктивність, безпека, юзабіліті).</li></ul>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 3: Аналіз вимог. Загальне уявлення. STLC</summary>
+          <div class="module-content">
+            <p><strong>STLC (Software Testing Life Cycle)</strong> — послідовність дій команди тестування.</p><ol><li>Requirement Analysis (Аналіз вимог на повноту і несуперечливість).</li><li>Test Planning (Створення тест-плану, оцінка часу).</li><li>Test Design (Написання та рев'ю тест-кейсів).</li><li>Environment Setup (Підготовка тестового середовища).</li><li>Test Execution (Проходження тестів, репортинг багів).</li><li>Test Closure (Оцінка результатів, звіт про тестування).</li></ol>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 4: Техніки тест-дизайну. Рівні тестування</summary>
+          <div class="module-content">
+            <p><strong>Рівні тестування:</strong> Unit (модульне) -> Integration (інтеграційне) -> System (системне) -> UAT (приймальне).</p><p><strong>Техніки тест-дизайну (Black-box):</strong></p><ul><li><strong>Еквівалентне розділення (EP):</strong> розбиття даних на класи, де достатньо перевірити 1 значення з класу.</li><li><strong>Аналіз граничних значень (BVA):</strong> перевірка меж діапазонів (наприклад, якщо діапазон 1-10, перевіряємо 0, 1, 10, 11).</li><li><strong>State Transition:</strong> тестування переходів станів об'єкта.</li><li><strong>Pairwise:</strong> метод попарного тестування (комбінаторика).</li></ul>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 5: Тестова документація: Test Cases, Checklists. Робота з вимогами</summary>
+          <div class="module-content">
+            <p><strong>Checklist</strong> — список загальних перевірок без детальних кроків. Легко підтримувати, але вимагає знання продукту.</p><p><strong>Test Case</strong> — детальний опис перевірки. Містить:</p><ul><li>ID та Title (Короткий опис)</li><li>Pre-conditions (Що має бути готове до початку)</li><li>Steps to reproduce (Кроки)</li><li>Expected result (Очікуваний результат)</li></ul>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 6: Локалізація та життєвий цикл дефекту. Репортинг багів</summary>
+          <div class="module-content">
+            <p><strong>Дефект (Bug)</strong> — розбіжність між очікуваним і фактичним результатом.</p><p><strong>Життєвий цикл:</strong> New -> Assigned -> In Progress -> Fixed -> Ready for QA -> Verified / Close (або Reopened).</p><p>Правило локалізації: знайти мінімальні кроки для відтворення. Завжди перевіряти на інших девайсах чи браузерах.</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 7: Системи відстеження помилок (Jira). Трекінг роботи</summary>
+          <div class="module-content">
+            <p><strong>Jira</strong> — популярний інструмент трекінгу задач (Issue Tracker). Дозволяє вести беклог, створювати спринти, репортити баги.</p><p>Типи задач у Jira: Story (новий функціонал), Task (технічна задача), Bug (дефект), Epic (велика глобальна фіча).</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 8: Практика: написання баг-репортів та тест-кейсів</summary>
+          <div class="module-content">
+            <p>Основа якісного тест-кейсу — однозначність очікуваного результату. Основа баг-репорту — чіткість: <ul><li>Що сталося?</li><li>Де сталося?</li><li>За яких умов (кроки)?</li><li>Який Impact (Severity) і скільки часу маємо на фікс (Priority).</li></ul></p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 9: Клієнт-серверна архітектура. HTTP протокол</summary>
+          <div class="module-content">
+            <p>Клієнт (браузер/мобільний додаток) посилає <strong>Request</strong> на Сервер, а Сервер повертає <strong>Response</strong>.</p><p><strong>HTTP-методи:</strong> GET (отримати), POST (створити), PUT (оновити повністю), PATCH (оновити частково), DELETE (видалити).</p><p><strong>Статус-коди:</strong> 2xx (Success), 3xx (Redirection), 4xx (Client Error, напр. 400 Bad Request, 404 Not Found), 5xx (Server Error, 500 Internal Server Error).</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 10: API Testing: Basics & Postman (частина 1)</summary>
+          <div class="module-content">
+            <p>API (Application Programming Interface) дозволяє програмам спілкуватися одна з одною без UI.</p><p><strong>Postman</strong> — інструмент для відправки HTTP запитів. В ньому можна задати Headers (напр. Authorization: Bearer token), Body (формат JSON), Params (Query parameters).</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 11: API Testing: Postman Practice (частина 2)</summary>
+          <div class="module-content">
+            <p>У Postman можна автоматизувати перевірки за допомогою вкладки <strong>Tests</strong>. Використовуються скрипти на JavaScript.</p><p>Корисно використовувати <strong>Environment Variables</strong> для зберігання токенів чи базових URL (`{{baseUrl}}/users`). Це дозволяє легко перемикатися між DEV і PROD.</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 12: Бази даних та SQL (частина 1)</summary>
+          <div class="module-content">
+            <p><strong>Реляційні БД (SQL):</strong> таблиці зі зв'язками (PostgreSQL, MySQL). <strong>Нереляційні (NoSQL):</strong> документи, колекції (MongoDB).</p><p>Основи SQL (CRUD):</p><ul><li><strong>C</strong>reate: `INSERT INTO table...`</li><li><strong>R</strong>ead: `SELECT * FROM table...`</li><li><strong>U</strong>pdate: `UPDATE table SET...`</li><li><strong>D</strong>elete: `DELETE FROM table...`</li></ul>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 13: Бази даних та SQL (частина 2)</summary>
+          <div class="module-content">
+            <p><strong>JOINs:</strong> з'єднання двох таблиць по спільному ключу.</p><ul><li>INNER JOIN — лише записи, що є в обох таблицях.</li><li>LEFT JOIN — усі з лівої таблиці, і збіги з правої.</li></ul><p>Агрегатні функції: COUNT(), SUM(), AVG(), MIN(), MAX() у комбінації з GROUP BY.</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 14: Основи фронтенду (HTML/CSS/JS) та Developer Tools</summary>
+          <div class="module-content">
+            <p><strong>Chrome DevTools:</strong></p><ul><li><strong>Elements:</strong> перевірка HTML-верстки та CSS.</li><li><strong>Console:</strong> JS помилки фронтенду.</li><li><strong>Network:</strong> перехоплення API-запитів клієнта до бекенду, аналіз статусів HTTP.</li><li><strong>Application:</strong> робота з LocalStorage, Cookies (напр. очищення кешу чи видалення токена сесії).</li></ul>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 15: Mobile Testing (Android & iOS)</summary>
+          <div class="module-content">
+            <p>Мобільне тестування відрізняється від вебу через: різноманіття екранів, мережеві переривання (3G/4G, втрата зв'язку), стан батареї, пам'ять, жести (свайпи, зум), взаємодію з іншими апками (дзвінки) та гайдлайни ОС.</p><p>Інструменти: Android Studio (Logcat для логів), Xcode, Charles Proxy (для перехоплення трафіку на телефоні).</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 16: Нефункціональне тестування: Performance, Security, Usability</summary>
+          <div class="module-content">
+            <p><strong>Performance (Продуктивність):</strong> Load (навантажувальне - очікуване навантаження), Stress (стресове - перевищення норми, щоб зламати систему), Spike (різкий стрибок користувачів). Інструменти: JMeter, Gatling.</p><p><strong>Usability:</strong> перевірка того, наскільки зручно користуватися застосунком (UI/UX).</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 17: Основи Git та контролю версій</summary>
+          <div class="module-content">
+            <p><strong>Git</strong> — розподілена система контролю версій.</p><ul><li>`git clone` — скопіювати репозиторій.</li><li>`git pull` — затягнути зміни з сервера.</li><li>`git status` — перевірити змінені файли.</li><li>`git add`, `git commit -m` — додати та зафіксувати зміни.</li><li>`git push` — відправити зміни на сервер.</li></ul>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 18: Журналювання помилок (Logs, Crashlytics)</summary>
+          <div class="module-content">
+            <p>Коли виникає помилка, тестувальник повинен зібрати <strong>логи</strong>. На вебі це Console або Network. На мобайлі — Logcat для Android або Console для iOS. Для продакшену використовуються інструменти на кшталт Kibana, Datadog або Firebase Crashlytics.</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 19: Автоматизація тестування: Вступ (Continuous Integration)</summary>
+          <div class="module-content">
+            <p><strong>Continuous Integration (CI) / Continuous Delivery (CD):</strong> практика автоматичного складання, тестування і деплою коду. Кожен пул-реквест запускає набір автотестів. Якщо тести падають — код не змержиться.</p><p>Інструменти: Jenkins, GitLab CI, GitHub Actions.</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 20: Практична робота: Проєкт 1</summary>
+          <div class="module-content">
+            <p><em>У цьому модулі зазвичай відбувається наскрізне тестування реального веб-додатку. Від аналізу вимог до складання тест-плану і заведення багів у Jira.</em></p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 21: Практична робота: Проєкт 2</summary>
+          <div class="module-content">
+            <p><em>Розширений фокус на API-тестування за допомогою Postman та роботу з SQL запитами до бази даних на основі тестового стенду.</em></p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 22: Практична робота: Підсумок</summary>
+          <div class="module-content">
+            <p><em>Фінальне епічне тестування змішаного функціоналу (Web + API), підготовка релізного звіту (Release Notes, Test Summary Report).</em></p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 23: Особистий бренд тестувальника. Як шукати роботу</summary>
+          <div class="module-content">
+            <p>Важливо мати портфоліо на GitHub (наприклад, зразки баг-репортів, колекції Postman або тестовий фреймворк). Створіть професійний профіль на LinkedIn, показуючи навички: API Testing, SQL, Jira, Agile.</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 24: Резюме, LinkedIn та Cover Letter</summary>
+          <div class="module-content">
+            <p><strong>Резюме:</strong> Робіть акцент на тому, ЩО ви вмієте і З ЧИМ працювали (стек технологій). Замість "відповідальний і комунікабельний", пишіть "створив 100+ тест-кейсів, знайшов 50+ багів у REST API".</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 25: Співбесіди: Софт скіли та підготовка</summary>
+          <div class="module-content">
+            <p>На співбесіді перевіряють не лише хард-скіли, а й вашу реакцію на критику, конфліктні ситуації ("Що робити, якщо розробник каже, що це не баг, а фіча?"). Відповідь завжди має аргументуватися вимогами та бізнес-логікою.</p>
+          </div>
+        </details>
+    
+        <details class="course-module">
+          <summary>Модуль 26: Симуляція співбесіди. Підведення підсумків</summary>
+          <div class="module-content">
+            <p>Найпопулярніші питання на джуна: "Що таке баг?", "Різниця між Severity і Priority?", "Розкажіть про життєвий цикл дефекту", "Чим відрізняється GET від POST?", "Як би ви протестували чайник або олівець (перевірка мислення)?"</p>
+          </div>
+        </details>
+    
+      </div>
+    </div>
+  </div>
+        </div>
+        <!-- ===== Карточки ===== -->
+
+>>>>>>> Stashed changes
 <div id="cardsTab" class="tab-content">
 
 
@@ -1032,8 +1346,33 @@
 
 
 
-<label>
-                  Environment
+<!-- ===== Практика ===== -->
+<div id="practiceTab" class="tab-content">
+  <section class="practice-section">
+    <div class="practice-header">
+      <h2>Практика: Баги, Тест-кейси, Чек-листи</h2>
+      <p>Обирай вкладку і тренуйся писати артефакти або генеруй їх.</p>
+    </div>
+
+    <div class="subtabs" style="margin-bottom: 20px;">
+      <button class="subtab-btn active" data-subtab="practiceBugs">Баг-репорти</button>
+      <button class="subtab-btn" data-subtab="practiceCases">Тест-кейси</button>
+      <button class="subtab-btn" data-subtab="practiceChecklists">Чек-листи</button>
+    </div>
+
+    <!-- БАГ-РЕПОРТИ -->
+    <div id="practiceBugs" class="subtab-content active">
+      <div class="practice-layout">
+        <div class="practice-form">
+          <h2>Твій баг-репорт</h2>
+
+          <label>
+            Title
+            <input type="text" id="bugTitle" placeholder="e.g. Crash when changing resolution to 4k" />
+          </label>
+
+          <label>
+            Environment
                   <input
                     type="text"
                     id="bugEnvironment"
@@ -1128,9 +1467,9 @@
                 </details>
               </div>
             </div>
-          </section>
+          </div>
 
-          <section id="practice-cases" class="practice-pane">
+          <div id="practiceCases" class="subtab-content">
             <div class="practice-layout">
               <!-- ЗЛІВА: форма -->
               <div class="practice-form">
@@ -1196,9 +1535,9 @@
                 </details>
               </div>
             </div>
-          </section>
+          </div>
 
-          <section id="practice-checklists" class="practice-pane">
+          <div id="practiceChecklists" class="subtab-content">
             <div class="practice-layout">
               <!-- ЗЛІВА: форма -->
               <div class="practice-form">
@@ -1251,7 +1590,8 @@
                 </details>
               </div>
             </div>
-          </section>
+          </div>
+  </section>
 </div>
       </div>
     </main>
