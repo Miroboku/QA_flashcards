@@ -84,6 +84,7 @@
             </svg>
           </button>
           <ul class="sub-menu show">
+<<<<<<< Updated upstream
             <div>
     <li>
       <a href="#theoryTab" data-main-tab="theoryTab" data-subtab="theoryBase">
@@ -161,6 +162,55 @@
   </a>
 </li>
 
+=======
+            <li>
+              <a
+                href="#theoryTab"
+                data-main-tab="theoryTab"
+                data-subtab="theoryBase"
+              >
+                Базова теорія
+              </a>
+            </li>
+            <li>
+              <a
+                href="#theoryTab"
+                data-main-tab="theoryTab"
+                data-subtab="theoryApiSql"
+              >
+                API / SQL
+              </a>
+            </li>
+            <li>
+              <a
+                href="#theoryTab"
+                data-main-tab="theoryTab"
+                data-subtab="theoryGameDev"
+              >
+                GameDev QA
+              </a>
+            </li>
+            <li>
+              <a
+                href="#theoryTab"
+                data-main-tab="theoryTab"
+                data-subtab="theorySdlcStlc"
+              >
+                SDLC / STLC
+              </a>
+            </li>
+            <li>
+              <a
+                href="#theoryTab"
+                data-main-tab="theoryTab"
+                data-subtab="theoryMethodologies"
+              >
+                Waterfall / Agile / Scrum
+              </a>
+            </li>
+          </ul>
+        </li>
+>>>>>>> Stashed changes
 
 
       </ul>
@@ -181,6 +231,28 @@
           </div>
         </div>
 
+<<<<<<< Updated upstream
+=======
+        <div id="theoryTab" class="tab-content active">
+          <!-- Кнопки сабвкладок -->
+          <div class="subtabs">
+            <button class="subtab-btn active" data-subtab="theoryBase">
+              Базова теорія
+            </button>
+            <button class="subtab-btn" data-subtab="theoryApiSql">
+              API / SQL
+            </button>
+            <button class="subtab-btn" data-subtab="theoryGameDev">
+              GameDev QA
+            </button>
+            <button class="subtab-btn" data-subtab="theorySdlcStlc">
+              SDLC / STLC
+            </button>
+            <button class="subtab-btn" data-subtab="theoryMethodologies">
+              Waterfall / Agile / Scrum
+            </button>
+          </div>
+>>>>>>> Stashed changes
 
 <div id="theoryTab" class="tab-content active">
   <!-- Кнопки сабвкладок -->
@@ -1061,7 +1133,154 @@
   </div>
 </div>
 
+<<<<<<< Updated upstream
+=======
+            <div class="theory-section">
+              <h2>3. Особливості баг-репортів у GameDev</h2>
+              <ul class="theory-list">
+                <li>
+                  <strong>Точний build / версія</strong> гри (наприклад,
+                  1.0.0.1234 QA).
+                </li>
+                <li>
+                  <strong>Платформа</strong>: PC (конфіг), PS5, Xbox, Switch
+                  тощо.
+                </li>
+                <li><strong>Рівень / локація</strong>: назва або ID мапи.</li>
+                <li>
+                  <strong>Чіткі кроки відтворення</strong> (особливо для
+                  складних скриптових сцен).
+                </li>
+                <li>
+                  <strong>Expected vs Actual</strong>: що мало б статися і що
+                  сталося реально.
+                </li>
+                <li>
+                  <strong>Додатки</strong>: скріни, відео, сейви, логи (якщо
+                  доступні).
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="theoryMethodologies" class="subtab-content">
+            <div class="theory-section">
+              <h2>Методології розробки: Waterfall, Agile та Scrum</h2>
+>>>>>>> Stashed changes
 
+              <p>
+                Тестувальник повинен розуміти різницю між Waterfall, Agile і
+                Scrum, тому що процес тестування, обсяг документації та
+                взаємодія з командою залежать від вибраної методології.
+              </p>
+
+              <!-- ===== WATERFALL ===== -->
+              <h3>1. Waterfall (каскадна модель)</h3>
+              <p>
+                <strong>Waterfall</strong> — лінійна послідовна модель. Кожен
+                етап має бути завершений повністю перед тим, як починається
+                наступний. Підходить для проєктів з фіксованими вимогами.
+              </p>
+
+              <ul class="theory-list">
+                <li>Requirements — збір вимог;</li>
+                <li>Design — проєктування;</li>
+                <li>Implementation — написання коду;</li>
+                <li>Testing — тестування тільки після завершення розробки;</li>
+                <li>Deployment — реліз;</li>
+                <li>Maintenance — підтримка.</li>
+              </ul>
+
+              <div class="image-block">
+                <img
+                  src="png/waterfall.png"
+                  alt="Waterfall model"
+                  class="theory-img"
+                />
+              </div>
+
+              <!-- ===== AGILE ===== -->
+              <h3>2. Agile (гнучка методологія)</h3>
+              <p>
+                <strong>Agile</strong> — гнучкий підхід, заснований на швидких
+                ітераціях, постійному фідбеку й адаптації до змін. Замість
+                великого релізу — інкременти кожні 1–4 тижні.
+              </p>
+
+              <ul class="theory-list">
+                <li>Швидкі ітерації (iterations / sprints);</li>
+                <li>Можна змінювати пріоритети;</li>
+                <li>Мінімум зайвої документації;</li>
+                <li>Регулярні поставки цінності (working product).</li>
+              </ul>
+
+              <p>
+                Agile — це загальний підхід, під яким існують фреймворки: Scrum,
+                Kanban, XP. Найпопулярніший — <strong>Scrum</strong>.
+              </p>
+
+              <!-- ===== SCRUM ===== -->
+              <h3>3. Scrum (найпоширеніший Agile-фреймворк)</h3>
+              <p>
+                Scrum працює короткими циклами — спринтами (1–4 тижні). Команда
+                працює як одна група: QA, деви, дизайнери, аналітики.
+              </p>
+
+              <h4>Ролі:</h4>
+              <ul class="theory-list">
+                <li>
+                  <strong>Product Owner</strong> — відповідає за пріоритети;
+                </li>
+                <li>
+                  <strong>Scrum Master</strong> — допомагає команді й усуває
+                  блокери;
+                </li>
+                <li><strong>Development Team</strong> — виконує роботу.</li>
+              </ul>
+
+              <h4>Артефакти:</h4>
+              <ul class="theory-list">
+                <li>Product Backlog — повний список фіч;</li>
+                <li>Sprint Backlog — задачі на спринт;</li>
+                <li>Increment — готовий результат спринту.</li>
+              </ul>
+
+              <h4>Церемонії:</h4>
+              <ul class="theory-list">
+                <li>Sprint Planning</li>
+                <li>Daily Standup</li>
+                <li>Sprint Review</li>
+                <li>Sprint Retrospective</li>
+              </ul>
+
+              <div class="image-block">
+                <img
+                  src="png/agile.jpg"
+                  alt="Agile Scrum Framework"
+                  class="theory-img"
+                />
+              </div>
+
+              <!-- ===== COMPARISON ===== -->
+              <h3>4. Порівняння Waterfall vs Agile vs Scrum</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>Waterfall</strong> — фіксований план, нуль гнучкості.
+                </li>
+                <li><strong>Agile</strong> — постійні зміни, інкременти.</li>
+                <li>
+                  <strong>Scrum</strong> — Agile з чіткими правилами, спринтами
+                  і ролями.
+                </li>
+              </ul>
+
+              <p>
+                У GameDev, Web та Mobile команда майже завжди працює за Scrum
+                або схожими Agile-практиками. Тестування триває протягом усього
+                спринту, а не наприкінці.
+              </p>
+            </div>
+          </div>
+        </div>
         <!-- ===== Карточки ===== -->
 <div id="cardsTab" class="tab-content">
 
@@ -1129,7 +1348,230 @@
 
 
 
+<<<<<<< Updated upstream
           
+=======
+                <label>
+                  Environment
+                  <input
+                    type="text"
+                    id="bugEnvironment"
+                    placeholder="PC, build 1.0.0.1234 QA, Win10, Chrome / RTX 3060"
+                  />
+                </label>
+
+                <label>
+                  Steps to Reproduce
+                  <textarea
+                    id="bugSteps"
+                    rows="5"
+                    placeholder="1. ...&#10;2. ...&#10;3. ..."
+                  ></textarea>
+                </label>
+
+                <label>
+                  Expected result
+                  <textarea id="bugExpected" rows="3"></textarea>
+                </label>
+
+                <label>
+                  Actual result
+                  <textarea id="bugActual" rows="3"></textarea>
+                </label>
+
+                <div class="two-cols">
+                  <label>
+                    Severity
+                    <select id="bugSeverity">
+                      <option value="">-- вибрати --</option>
+                      <option>Blocker</option>
+                      <option>Critical</option>
+                      <option>Major</option>
+                      <option>Minor</option>
+                      <option>Trivial</option>
+                    </select>
+                  </label>
+                  <label>
+                    Priority
+                    <select id="bugPriority">
+                      <option value="">-- вибрати --</option>
+                      <option>High</option>
+                      <option>Medium</option>
+                      <option>Low</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="practice-actions">
+                  <button id="bugValidateBtn" type="button" class="primary-btn">
+                    Перевірити локально
+                  </button>
+                  <button id="bugExportMd" type="button" class="secondary">
+                    Експорт MD
+                  </button>
+                  <button id="bugExportCsv" type="button" class="secondary">
+                    Експорт CSV
+                  </button>
+                  <button
+                    id="bugAiCheckBtn"
+                    type="button"
+                    class="ghost-btn"
+                    disabled
+                  >
+                    Перевірити ШІ (пізніше)
+                  </button>
+                </div>
+
+                <div id="bugFeedback" class="practice-feedback"></div>
+              </div>
+
+              <!-- СПРАВА: сценарій + зразок -->
+              <div class="practice-scenario">
+                <h2>Сценарій</h2>
+                <label>
+                  Об’єкт:
+                  <select id="bugScenarioSelect">
+                    <option value="game-save">
+                      GameDev: краш при завантаженні сейву
+                    </option>
+                    <option value="web-login">
+                      Web: неправильний логін без помилки
+                    </option>
+                  </select>
+                </label>
+                <p id="bugScenarioDescription" class="scenario-text"></p>
+
+                <details id="bugSample" class="sample-block">
+                  <summary>Зразок відповіді</summary>
+                  <pre class="code-block" id="bugSampleText"></pre>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <section id="practice-cases" class="practice-pane">
+            <div class="practice-layout">
+              <!-- ЗЛІВА: форма -->
+              <div class="practice-form">
+                <h2>Твій тест-кейс</h2>
+
+                <label>
+                  ID <input type="text" id="caseId" placeholder="TC-GAME-001" />
+                </label>
+                <label> Summary <input type="text" id="caseTitle" /> </label>
+                <label>
+                  Pre-conditions
+                  <textarea id="casePre" rows="2"></textarea>
+                </label>
+                <label>
+                  Steps
+                  <textarea
+                    id="caseSteps"
+                    rows="5"
+                    placeholder="1. ...&#10;2. ...&#10;3. ..."
+                  ></textarea>
+                </label>
+                <label>
+                  Expected result
+                  <textarea id="caseExpected" rows="3"></textarea>
+                </label>
+
+                <div class="practice-actions">
+                  <button
+                    id="caseValidateBtn"
+                    type="button"
+                    class="primary-btn"
+                  >
+                    Перевірити локально
+                  </button>
+                  <button id="caseExportMd" type="button" class="secondary">
+                    Експорт MD
+                  </button>
+                  <button id="caseExportCsv" type="button" class="secondary">
+                    Експорт CSV
+                  </button>
+                </div>
+
+                <div id="caseFeedback" class="practice-feedback"></div>
+              </div>
+
+              <!-- СПРАВА: сценарій + зразок -->
+              <div class="practice-scenario">
+                <h2>Сценарій</h2>
+                <label>
+                  Об’єкт:
+                  <select id="caseScenarioSelect">
+                    <option value="game-character">
+                      GameDev: створення персонажа
+                    </option>
+                    <option value="web-register">Web: форма реєстрації</option>
+                  </select>
+                </label>
+                <p id="caseScenarioDescription" class="scenario-text"></p>
+
+                <details id="caseSample" class="sample-block">
+                  <summary>Зразок відповіді</summary>
+                  <pre class="code-block" id="caseSampleText"></pre>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <section id="practice-checklists" class="practice-pane">
+            <div class="practice-layout">
+              <!-- ЗЛІВА: форма -->
+              <div class="practice-form">
+                <h2>Твій чек-лист</h2>
+                <label>
+                  Пункти (один рядок = одна перевірка)
+                  <textarea
+                    id="checkItems"
+                    rows="10"
+                    placeholder="[ ] Пункт 1&#10;[ ] Пункт 2&#10;[ ] Пункт 3"
+                  ></textarea>
+                </label>
+
+                <div class="practice-actions">
+                  <button
+                    id="checkValidateBtn"
+                    type="button"
+                    class="primary-btn"
+                  >
+                    Перевірити локально
+                  </button>
+                  <button id="checkExportMd" type="button" class="secondary">
+                    Експорт MD
+                  </button>
+                  <button id="checkExportCsv" type="button" class="secondary">
+                    Експорт CSV
+                  </button>
+                </div>
+
+                <div id="checkFeedback" class="practice-feedback"></div>
+              </div>
+
+              <!-- СПРАВА: сценарій + зразок -->
+              <div class="practice-scenario">
+                <h2>Сценарій</h2>
+                <label>
+                  Об’єкт:
+                  <select id="checkScenarioSelect">
+                    <option value="game-main-menu">
+                      GameDev: головне меню гри
+                    </option>
+                    <option value="web-login-form">Web: форма логіну</option>
+                  </select>
+                </label>
+                <p id="checkScenarioDescription" class="scenario-text"></p>
+
+                <details id="checkSample" class="sample-block">
+                  <summary>Зразок відповіді</summary>
+                  <pre class="code-block" id="checkSampleText"></pre>
+                </details>
+              </div>
+            </div>
+          </section>
+>>>>>>> Stashed changes
         </div>
       </div>
     </main>

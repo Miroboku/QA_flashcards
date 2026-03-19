@@ -564,21 +564,19 @@ body.sidebar-layout main {
   border-radius: 0.5em;
 }
 
-/* Підменю */
+/* Підменю приховано за замовчуванням */
 #sidebar .sub-menu {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: 300ms ease-in-out;
+  display: none;
+  padding-left: 0;
+  margin: 0;
 }
 
-#sidebar .sub-menu > div {
-  overflow: hidden;
-}
-
+/* Показуємо, коли є клас show */
 #sidebar .sub-menu.show {
-  grid-template-rows: 1fr;
+  display: block;
 }
 
+/* Відступ для пунктів підменю */
 #sidebar .sub-menu a {
   padding-left: 2em;
 }
