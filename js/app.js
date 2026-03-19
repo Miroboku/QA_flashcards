@@ -136,482 +136,7 @@ subtabButtons.forEach((btn) => {
 });
 
 
-// ===== Flashcards =====
-const cards = [
-  // ===== БАЗА =====
-  {
-    topic: 'База',
-    question: 'Що таке Software Testing?',
-    answer:
-      'Це процес перевірки програмного забезпечення, щоб виявити дефекти та переконатися, що продукт відповідає вимогам.',
-  },
-  {
-    topic: 'База',
-    question: 'Чим відрізняється дефект (defect) від бага (bug)?',
-    answer:
-      'Defect — помилка в коді, вимогах або дизайні. Bug — прояв дефекту під час виконання програми (коли система поводиться неправильно).',
-  },
-  {
-    topic: 'База',
-    question: 'Що таке QA (Quality Assurance)?',
-    answer:
-      'Це діяльність, орієнтована на процеси: планування, стандарти, покращення процесу розробки, щоб запобігати дефектам.',
-  },
-  {
-    topic: 'База',
-    question: 'Що таке QC (Quality Control)?',
-    answer:
-      'Це діяльність, орієнтована на сам продукт: тестування, рев’ю, інспекції, щоб знайти дефекти у вже створеному продукті.',
-  },
-  {
-    topic: 'База',
-    question: 'Що таке Black Box Testing?',
-    answer:
-      'Метод тестування без знання внутрішньої реалізації. Тестувальник працює з вхідними даними та очікуваними результатами.',
-  },
-  {
-    topic: 'База',
-    question: 'Що таке White Box Testing?',
-    answer:
-      'Метод тестування з повним доступом до коду та внутрішньої логіки. Перевіряються гілки, умови, покриття коду.',
-  },
-  {
-    topic: 'База',
-    question: 'Що таке Grey Box Testing?',
-    answer:
-      'Метод тестування з частковим знанням внутрішньої логіки системи (наприклад, знання структури БД, API, архітектури).',
-  },
-  {
-    topic: 'База',
-    question: 'Що таке Functional Testing?',
-    answer:
-      'Тестування, яке перевіряє функції системи згідно з вимогами: чи робить система те, що повинна робити.',
-  },
-  {
-    topic: 'База',
-    question: 'Що таке Non-functional Testing?',
-    answer:
-      'Тестування нефункціональних характеристик: продуктивність, безпека, навантаження, юзабіліті, надійність тощо.',
-  },
-  {
-    topic: 'База',
-    question: 'Назви основні рівні тестування.',
-    answer: 'Unit Testing, Integration Testing, System Testing, Acceptance Testing (UAT).',
-  },
-  {
-    topic: 'База',
-    question: 'Що перевіряється на рівні Unit Testing?',
-    answer:
-      'Окремі модулі: функції, методи, класи в ізоляції від інших частин системи.',
-  },
-  {
-    topic: 'База',
-    question: 'Що перевіряється на рівні Integration Testing?',
-    answer:
-      'Взаємодія між окремими модулями/сервісами: наприклад, фронтенд ↔ бекенд, бекенд ↔ база даних.',
-  },
-  {
-    topic: 'База',
-    question: 'Що таке System Testing?',
-    answer:
-      'Тестування всієї системи цілком у середовищі, максимально наближеному до продакшену.',
-  },
-  {
-    topic: 'База',
-    question: 'Що таке Acceptance Testing (UAT)?',
-    answer:
-      'Приймальне тестування, яке зазвичай проводиться замовником або кінцевими користувачами, щоб підтвердити готовність до релізу.',
-  },
-
-  // ===== ФУНКЦІОНАЛЬНЕ =====
-  {
-    topic: 'Функціональне',
-    question: 'Що таке Smoke Testing?',
-    answer:
-      'Це поверхнева перевірка критично важливого функціоналу після нової збірки, щоб визначити, чи придатна вона для більш глибокого тестування.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Коли зазвичай проводиться Smoke Testing?',
-    answer:
-      'Одразу після деплою нової збірки на тестове середовище, перед повноцінним регресом або детальним тестуванням.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Що таке Sanity Testing?',
-    answer:
-      'Це швидка перевірка конкретних змін або виправлень, щоб переконатися, що потрібний функціонал працює після фіксу.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Чим відрізняється Smoke Testing від Sanity Testing?',
-    answer:
-      'Smoke — широка поверхнева перевірка всієї системи; Sanity — вузька перевірка конкретних змін/функцій після фіксу.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Що таке Regression Testing?',
-    answer:
-      'Повторне тестування раніше перевіреного функціоналу після змін у коді, щоб переконатися, що нічого не зламалося.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Коли проводиться Regression Testing?',
-    answer:
-      'Після додавання нових фіч, виправлення багів, рефакторингу або змін у залежностях.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Що таке Exploratory Testing?',
-    answer:
-      'Дослідницьке тестування без жорстко прописаних сценаріїв: тестувальник паралельно вивчає продукт і придумує нові тести.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Що таке Ad-hoc Testing?',
-    answer:
-      'Неформальне тестування без документації й детального плану, часто базується на досвіді та інтуїції тестувальника.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Що таке Positive Testing?',
-    answer:
-      'Тестування з використанням коректних даних і очікуваної поведінки користувача, щоб перевірити, що система працює за вимогами.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Що таке Negative Testing?',
-    answer:
-      'Тестування з некоректними даними або діями, щоб перевірити, як система обробляє помилки та невалідні введення.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Що таке Boundary Value Testing?',
-    answer:
-      'Тестування граничних значень (мінімальні, максимальні, трохи нижче та вище меж), щоб перевірити поведінку системи на краях діапазону.',
-  },
-  {
-    topic: 'Функціональне',
-    question: 'Що таке Equivalence Partitioning?',
-    answer:
-      'Метод, коли вхідні дані діляться на класи еквівалентності (валідні/невалідні), і з кожного класу береться кілька представників для тестів.',
-  },
-
-  // ===== STLC / ДОКУМЕНТАЦІЯ =====
-  {
-    topic: 'STLC',
-    question: 'Що таке Test Case?',
-    answer:
-      'Це опис тесту, який містить кроки, вхідні дані, очікуваний результат і фактичний результат виконання.',
-  },
-  {
-    topic: 'STLC',
-    question: 'Що таке Test Suite?',
-    answer:
-      'Набір пов’язаних між собою тест-кейсів, об’єднаних за певною ознакою (модуль, функціонал, регресія).',
-  },
-  {
-    topic: 'STLC',
-    question: 'Що таке Test Plan?',
-    answer:
-      'Документ, який описує стратегію, обсяг, підходи, ресурси й графік тестування для проєкту або релізу.',
-  },
-  {
-    topic: 'STLC',
-    question: 'Назви основні етапи STLC (Software Testing Life Cycle).',
-    answer:
-      'Requirement Analysis, Test Planning, Test Design, Test Execution, Test Reporting/Closure.',
-  },
-  {
-    topic: 'STLC',
-    question: 'Що відбувається на етапі Requirement Analysis у STLC?',
-    answer:
-      'Аналізуються вимоги, виявляються прогалини та ризики, визначається, що саме і як буде тестуватися.',
-  },
-  {
-    topic: 'STLC',
-    question: 'Що відбувається на етапі Test Design у STLC?',
-    answer:
-      'Створюються тест-кейси, готуються тестові дані, налаштовується тестове середовище.',
-  },
-  {
-    topic: 'STLC',
-    question: 'Що таке Bug Life Cycle?',
-    answer:
-      'Це послідовність статусів, через які проходить баг: від створення до виправлення й закриття.',
-  },
-  {
-    topic: 'STLC',
-    question: 'Назви типові статуси бага.',
-    answer:
-      'New, Assigned, In Progress, Fixed, Retest, Closed, Reopened (можуть бути додаткові, залежно від проєкту).',
-  },
-  {
-    topic: 'STLC',
-    question: 'Коли баг отримує статус Reopened?',
-    answer:
-      'Коли після фіксу під час ретесту проблема знову відтворюється.',
-  },
-  {
-    topic: 'STLC',
-    question: 'Хто зазвичай змінює статус бага на Fixed?',
-    answer:
-      'Розробник, коли вносить зміни в код і вважає, що дефект виправлено.',
-  },
-
-  // ===== SQL / HTTP / API =====
-  {
-    topic: 'SQL/API',
-    question: 'Що таке SQL і навіщо він QA?',
-    answer:
-      'SQL — мова запитів до баз даних. QA потрібен, щоб перевіряти дані, шукати причини багів, підтверджувати, що бекенд зберігає все коректно.',
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Що робить запит: SELECT * FROM users;',
-    answer: 'Повертає всі стовпці та всі рядки з таблиці users.',
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Для чого використовується WHERE у SQL?',
-    answer:
-      'Для фільтрації рядків за умовою, наприклад: SELECT * FROM users WHERE is_active = 1;',
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Що робить GROUP BY у SQL?',
-    answer:
-      'Групує рядки за значенням одного або кількох полів, щоб використовувати агрегатні функції (COUNT, SUM тощо) по групах.',
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Що таке INNER JOIN?',
-    answer:
-      'JOIN, який повертає тільки ті рядки, для яких знайшлися співпадіння в обох таблицях.',
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Що таке HTTP request і HTTP response?',
-    answer:
-      'Request — запит від клієнта до сервера. Response — відповідь сервера на цей запит.',
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Назви основні HTTP-методи для REST API.',
-    answer: 'GET (отримати), POST (створити), PUT/PATCH (оновити), DELETE (видалити).',
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Що означає статус-код 200, 404, 500?',
-    answer:
-      '200 — успіх, 404 — ресурс не знайдено, 500 — внутрішня помилка сервера.',
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Що таке JSON у контексті API?',
-    answer:
-      'Формат передачі даних (JavaScript Object Notation), у якому найчастіше приходять відповіді від REST API.',
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Що перевіряє QA в API-тестуванні?',
-    answer:
-      'Статус-коди, структуру та вміст JSON, обробку помилок, авторизацію, валідацію даних, коректність змін у БД.',
-  },
-
-  // ===== GameDev QA =====
-  {
-    topic: 'GameDev',
-    question: 'Чим GameDev QA відрізняється від звичайного веб-QA?',
-    answer:
-      'У GameDev QA більше уваги до геймплею, перфомансу, стабільності, візуальних багів, фізики, сейвів і кросплатформенності.',
-  },
-  {
-    topic: 'GameDev',
-    question: 'Які основні види тестування є в GameDev QA?',
-    answer:
-      'Gameplay/functional, balance, graphics/visual, physics/collision, performance, compatibility, network/multiplayer, regression.',
-  },
-  {
-    topic: 'GameDev',
-    question: 'Що таке gameplay testing?',
-    answer:
-      'Перевірка ігрових механік: квести, боївка, інвентар, AI, прогрес, щоб усе працювало логічно та цікаво.',
-  },
-  {
-    topic: 'GameDev',
-    question: 'Що таке visual bug у грі?',
-    answer:
-      'Будь-яка проблема з картинкою: зламані моделі, текстури, анімації, освітлення, UI, неправильний текст, кліппінг тощо.',
-  },
-  {
-    topic: 'GameDev',
-    question: 'Назви приклади багів з колізіями.',
-    answer:
-      'Гравець проходить крізь стіну, застрягає в дверях, провалюється під мапу, вороги не можуть правильно підійти.',
-  },
-  {
-    topic: 'GameDev',
-    question: 'Чому тестування сейвів важливе в іграх?',
-    answer:
-      'Бо втрата прогресу дуже критична для гравця; потрібно перевіряти збереження/завантаження в різних ситуаціях і після оновлень.',
-  },
-  {
-    topic: 'GameDev',
-    question: 'Що зазвичай вказують у баг-репорті для гри, окрім кроків?',
-    answer:
-      'Build/версію, платформу, локацію/рівень, частоту відтворення, очікуваний і фактичний результат, додатки (відео, скріни, сейви).',
-  },
-  {
-    topic: 'GameDev',
-    question: 'Що таке performance testing у GameDev?',
-    answer:
-      'Перевірка FPS, фрізів, часу завантаження рівнів, нагріву/ресурсів, особливо на слабших пристроях.',
-  },
-  {
-    topic: 'GameDev',
-    question: 'Що таке network / multiplayer testing?',
-    answer:
-      'Перевірка матчмейкінгу, підключення до сесій, синхронізації гравців, обробки лагів, reconnection після розриву мережі.',
-  },
-  {
-    topic: 'GameDev',
-    question: 'Що таке build-to-build regression у GameDev?',
-    answer:
-      'Перевірка того, що між збірками нові зміни не зламали вже працюючі фічі, квести, сейви та перфоманс.',
-  },
-];
-// ===== Quiz questions (множинний вибір) =====
-const quizQuestions = [
-  // ==== БАЗА ====
-  {
-    topic: 'База',
-    question: 'Що найкраще описує Software Testing?',
-    options: [
-      'Процес перевірки ПЗ, щоб виявити дефекти та перевірити відповідність вимогам',
-      'Процес написання коду розробниками',
-      'Створення дизайну інтерфейсу користувача',
-      'Розгортання застосунку на продакшені'
-    ],
-    correctIndex: 0
-  },
-  {
-    topic: 'База',
-    question: 'Що таке Black Box Testing?',
-    options: [
-      'Тестування з повним доступом до коду',
-      'Тестування без знання внутрішньої реалізації, лише за вхідними/вихідними даними',
-      'Тестування тільки інтерфейсу без бекенду',
-      'Тестування тільки бази даних'
-    ],
-    correctIndex: 1
-  },
-  {
-    topic: 'База',
-    question: 'Що відноситься до Functional testing?',
-    options: [
-      'Перевірка продуктивності під навантаженням',
-      'Перевірка безпеки мережевих підключень',
-      'Перевірка, що система робить те, що прописано у вимогах',
-      'Перевірка юзабіліті інтерфейсу'
-    ],
-    correctIndex: 2
-  },
-  {
-    topic: 'База',
-    question: 'Що таке Regression Testing?',
-    options: [
-      'Тестування тільки нових фіч',
-      'Повторне тестування, щоб переконатися, що зміни не зламали існуючий функціонал',
-      'Тестування лише критичних сценаріїв',
-      'Перевірка UI на різних браузерах'
-    ],
-    correctIndex: 1
-  },
-  {
-    topic: 'База',
-    question: 'Що з цього приклад Boundary Value Testing?',
-    options: [
-      'Тестувати випадкові значення в середині діапазону',
-      'Тестувати тільки валідні дані',
-      'Перевіряти мінімум, максимум, значення трохи нижче та трохи вище меж',
-      'Перевіряти лише негативні сценарії'
-    ],
-    correctIndex: 2
-  },
-
-  // ==== STLC ====
-  {
-    topic: 'STLC',
-    question: 'Що таке STLC?',
-    options: [
-      'Життєвий цикл розробки ПЗ',
-      'Набір фаз, що описують процес тестування від планування до закриття тестового циклу',
-      'Методологія управління проєктами',
-      'Окремий тип регресійного тестування'
-    ],
-    correctIndex: 1
-  },
-  {
-    topic: 'STLC',
-    question: 'Що відбувається на етапі Requirement Analysis у STLC?',
-    options: [
-      'Пишеться код і запускаються юніт-тести',
-      'Формується план релізу',
-      'Тестувальники аналізують вимоги, шукають прогалини та ризики',
-      'Виконується навантажувальне тестування'
-    ],
-    correctIndex: 2
-  },
-
-  // ==== SQL / API ====
-  {
-    topic: 'SQL/API',
-    question: 'Для чого QA знати SQL?',
-    options: [
-      'Щоб писати бекенд-логіку',
-      'Щоб редагувати макети дизайну',
-      'Щоб перевіряти дані в БД, шукати причини багів і валідувати результати',
-      'Щоб налаштовувати CI/CD'
-    ],
-    correctIndex: 2
-  },
-  {
-    topic: 'SQL/API',
-    question: 'Що означає HTTP-метод POST у REST API?',
-    options: [
-      'Отримати ресурс',
-      'Оновити існуючий ресурс',
-      'Створити новий ресурс',
-      'Видалити ресурс'
-    ],
-    correctIndex: 2
-  },
-
-  // ==== GameDev ====
-  {
-    topic: 'GameDev',
-    question: 'Що найхарактерніше для GameDev QA?',
-    options: [
-      'Тільки тестування API',
-      'Фокус на геймплеї, перфомансі, візуальних багах, фізиці та сейвах',
-      'Тільки тестування бекенду',
-      'Тільки тестування баз даних'
-    ],
-    correctIndex: 1
-  },
-  {
-    topic: 'GameDev',
-    question: 'Що з цього приклад візуального бага в грі?',
-    options: [
-      'Гра крашиться при запуску',
-      'Неправильний статус-код від API',
-      'Персонаж проходить крізь стіну',
-      'Текст вилазить за межі кнопки'
-    ],
-    correctIndex: 3
-  }
-];
+/* Data arrays (cards, quizQuestions) moved to data.js */
 
 let filteredCards = cards.slice();
 let currentIndex = -1;
@@ -1023,6 +548,39 @@ function shuffleArray(arr) {
   }
 }
 
+function saveQuizProgress() {
+  const progress = {
+    quizFiltered,
+    quizCurrentIndex,
+    quizScore,
+    topic: quizTopicSelect ? quizTopicSelect.value : 'all'
+  };
+  localStorage.setItem('qa_quizProgress', JSON.stringify(progress));
+}
+
+function clearQuizProgress() {
+  localStorage.removeItem('qa_quizProgress');
+}
+
+function loadQuizProgress() {
+  const saved = localStorage.getItem('qa_quizProgress');
+  if (saved) {
+    try {
+      const data = JSON.parse(saved);
+      if (data.quizFiltered && data.quizFiltered.length > 0) {
+        quizFiltered = data.quizFiltered;
+        quizCurrentIndex = data.quizCurrentIndex;
+        quizScore = data.quizScore;
+        if (quizTopicSelect) quizTopicSelect.value = data.topic;
+        return true;
+      }
+    } catch (e) {
+      console.error('Error parsing quiz progress', e);
+    }
+  }
+  return false;
+}
+
 // Оновлення тексту рахунку
 function updateQuizScore() {
   if (quizScoreElem) {
@@ -1044,10 +602,25 @@ function showQuizQuestion() {
   }
 
   if (quizCurrentIndex >= quizFiltered.length) {
+    clearQuizProgress();
+    
+    // Зберігаємо найкращий результат
+    const topic = quizTopicSelect ? quizTopicSelect.value : 'all';
+    const bestScores = JSON.parse(localStorage.getItem('qa_quizBestScores') || '{}');
+    let bestScoreMsg = '';
+    
+    if (!bestScores[topic] || quizScore > bestScores[topic]) {
+      bestScores[topic] = quizScore;
+      localStorage.setItem('qa_quizBestScores', JSON.stringify(bestScores));
+      bestScoreMsg = ' 🎉 Новий рекорд!';
+    } else {
+      bestScoreMsg = ` (Твій найкращий результат: ${bestScores[topic]})`;
+    }
+
     quizQuestionText.textContent = 'Тест завершено 🎉';
     quizOptionsContainer.innerHTML = '';
     quizQuestionCounter.textContent = `Питання ${quizFiltered.length} / ${quizFiltered.length}`;
-    quizFeedback.textContent = `Твій результат: ${quizScore} з ${quizFiltered.length}.`;
+    quizFeedback.textContent = `Твій результат: ${quizScore} з ${quizFiltered.length}.${bestScoreMsg}`;
     if (quizNextBtn) quizNextBtn.disabled = true;
     return;
   }
@@ -1084,6 +657,7 @@ function showQuizQuestion() {
         }
       }
       updateQuizScore();
+      saveQuizProgress();
     });
 
     quizOptionsContainer.appendChild(btn);
@@ -1100,15 +674,16 @@ function startQuiz() {
 
   const topic = quizTopicSelect.value;
   if (topic === 'all') {
-    quizFiltered = quizQuestions.slice();
+    quizFiltered = typeof quizQuestions !== 'undefined' ? quizQuestions.slice() : [];
   } else {
-    quizFiltered = quizQuestions.filter((q) => q.topic === topic);
+    quizFiltered = typeof quizQuestions !== 'undefined' ? quizQuestions.filter((q) => q.topic === topic) : [];
   }
 
   shuffleArray(quizFiltered);
   quizCurrentIndex = 0;
   quizScore = 0;
   updateQuizScore();
+  saveQuizProgress();
   showQuizQuestion();
 }
 
@@ -1117,6 +692,7 @@ function goToNextQuestion() {
   if (quizFiltered.length === 0) return;
 
   quizCurrentIndex++;
+  saveQuizProgress();
   showQuizQuestion();
 }
 
@@ -1125,9 +701,13 @@ if (quizTopicSelect && quizStartBtn && quizNextBtn) {
   quizStartBtn.addEventListener('click', startQuiz);
   quizNextBtn.addEventListener('click', goToNextQuestion);
   quizTopicSelect.addEventListener('change', startQuiz);
+  
+  // Спроба відновити прогрес після перезавантаження сторінки
+  if (loadQuizProgress()) {
+    updateQuizScore();
+    showQuizQuestion();
+  }
 }
-<<<<<<< Updated upstream
-=======
 
 // ===== PRACTICE TABS =====
 const practiceTabButtons = document.querySelectorAll('.practice-tab-btn');
@@ -1145,105 +725,7 @@ practiceTabButtons.forEach((btn) => {
   });
 });
 
-// ===== Дані сценаріїв + зразків =====
-const bugScenarios = {
-  'game-save': {
-    description:
-      'Після завантаження сейву гравець зʼявляється під мапою й безкінечно падає. Платформа: PC.',
-    sample: `Title: [PC] Player spawns under the map after loading save on "Forest"
-Environment: PC, build 1.0.0.1234 QA, Win10, RTX 3060
-Steps to Reproduce:
-1. Launch the game and go to Load Game.
-2. Select save "Forest_AutoSave_01".
-3. Click "Load".
-Expected result:
-Player spawns on the ground at the last checkpoint on "Forest" level.
-Actual result:
-Player spawns under the map and falls infinitely, no way to recover progress.
-Severity: Critical
-Priority: High
-Attachments: video.mp4, save file, logs/crash_1234.txt`
-  },
-  'web-login': {
-    description:
-      'На сторінці логіну при введенні неправильного пароля сторінка просто перезавантажується без повідомлення про помилку.',
-    sample: `Title: [WEB] Login page reloads with no error message on invalid password
-Environment: Web, https://example.com/login, Chrome 130, Win10
-Steps to Reproduce:
-1. Open the login page.
-2. Enter a valid email and invalid password.
-3. Click "Login".
-Expected result:
-User stays on the login page and sees a clear error message like "Invalid email or password".
-Actual result:
-Page reloads with no visible error message; user does not understand what went wrong.
-Severity: Major
-Priority: High
-Attachments: screenshot, console log`
-  }
-};
-
-const caseScenarios = {
-  'game-character': {
-    description:
-      'Екран створення персонажа: вибір класу, імені, складності. Потрібен тест-кейс для успішного створення персонажа.',
-    sample: `ID: TC-GAME-CHAR-001
-Назва: Успішне створення нового персонажа з валідними даними
-Передумови: Гра запущена, користувач на екрані створення персонажа
-Кроки:
-1. Обрати клас "Warrior".
-2. Ввести імʼя "Arthas".
-3. Обрати складність "Normal".
-4. Натиснути "Start Game".
-Очікуваний результат:
-Створюється новий персонаж з обраними параметрами, гравець потрапляє на стартову локацію.`
-  },
-  'web-register': {
-    description:
-      'Форма реєстрації з полями Email, Password, Confirm Password. Потрібен тест-кейс для ситуації, коли паролі не співпадають.',
-    sample: `ID: TC-WEB-REG-002
-Назва: Повідомлення про помилку, якщо паролі не співпадають
-Передумови: Користувач на сторінці реєстрації
-Кроки:
-1. У полі Email ввести "user@example.com".
-2. У полі Password ввести "Password123".
-3. У полі Confirm Password ввести "Password124".
-4. Натиснути "Sign Up".
-Очікуваний результат:
-Форма не відправляється. Під полем пароля/підтвердження зʼявляється повідомлення "Passwords do not match".`
-  }
-};
-
-const checkScenarios = {
-  'game-main-menu': {
-    description:
-      'Головне меню гри: New Game, Continue, Settings, Exit. Склади чек-лист з 10–15 пунктів.',
-    sample: `[ ] Кнопка "New Game" активна та запускає нову гру
-[ ] "Continue" недоступна, якщо немає сейвів
-[ ] "Continue" завантажує останній сейв
-[ ] Відкриття "Settings" не скидає музик/ефектів
-[ ] Кнопка "Exit" показує підтвердження перед виходом
-[ ] Локалізація тексту меню відповідає обраній мові
-[ ] Фокус коректно рухається між пунктами за допомогою клавіатури/геймпада
-[ ] Фонова музика відтворюється без обривів
-[ ] Лого гри відображається без артефактів
-[ ] Після виходу в меню з гри всі кнопки працюють коректно`
-  },
-  'web-login-form': {
-    description:
-      'Проста форма логіну (email, password, кнопка Login). Склади чек-лист для базових перевірок.',
-    sample: `[ ] Поле email обовʼязкове
-[ ] Поле password обовʼязкове
-[ ] При порожньому email показується валідне повідомлення про помилку
-[ ] При email без @ показується помилка формату
-[ ] При неправильній парі email+password показується повідомлення "Invalid credentials"
-[ ] Кнопка "Login" неактивна, поки поля порожні
-[ ] Натискання Enter у полі password тригерить логін
-[ ] Після успішного логіну відбувається редірект на /dashboard
-[ ] Пароль не видно у звичайному тексті (тип input=password)
-[ ] На мобільній роздільній здатності форма не розлазиться`
-  }
-};
+/* Scenarios moved to data.js */
 
 // ===== Ініціалізація сценаріїв / зразків =====
 function initPracticeScenarios() {
@@ -1543,4 +1025,21 @@ if ($("checkExportCsv")) $("checkExportCsv").addEventListener("click", () => {
   const csv = "Item\n" + items.map(escCSV).join("\n") + "\n";
   dl("checklist.csv", csv, "text/csv;charset=utf-8");
 });
->>>>>>> Stashed changes
+
+/* ========= COURSE NOTES (LOCALSTORAGE) ========= */
+function saveCourseNote(moduleId, text) {
+  const notes = JSON.parse(localStorage.getItem('qa_courseNotes') || '{}');
+  notes[moduleId] = text;
+  localStorage.setItem('qa_courseNotes', JSON.stringify(notes));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const notes = JSON.parse(localStorage.getItem('qa_courseNotes') || '{}');
+  const textareas = document.querySelectorAll('.course-notes');
+  textareas.forEach((ta, index) => {
+    const moduleId = index + 1; // Our 1-based index from python loop
+    if (notes[moduleId]) {
+      ta.value = notes[moduleId];
+    }
+  });
+});
