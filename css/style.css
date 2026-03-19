@@ -504,7 +504,7 @@ body.sidebar-layout main {
   align-self: start;
   transition: 300ms ease-in-out;
   overflow: hidden;
-  text-wrap: nowrap;
+  white-space: nowrap;
   z-index: 10;
 }
 
@@ -667,7 +667,7 @@ body.sidebar-layout main {
 
   .app {
     padding: 16px 14px 80px;
-    min-height: auto;
+    min-height: unset;
   }
 
   #sidebar {
@@ -1461,4 +1461,9 @@ body.darkmode {
   color: #4f46e5 !important;
   border-color: #4f46e5 !important;
   font-weight: 600;
+}
+
+/* Utilities */
+.mt-8 {
+  margin-top: 8px;
 }
