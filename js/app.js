@@ -1120,4 +1120,345 @@ if (quizTopicSelect && quizStartBtn && quizNextBtn) {
   quizStartBtn.addEventListener('click', startQuiz);
   quizNextBtn.addEventListener('click', goToNextQuestion);
   quizTopicSelect.addEventListener('change', startQuiz);
+  
+  // Спроба відновити прогрес після перезавантаження сторінки
+  if (loadQuizProgress()) {
+    updateQuizScore();
+    showQuizQuestion();
+  }
 }
+
+// ===== PRACTICE TABS =====
+const practiceTabButtons = document.querySelectorAll('.practice-tab-btn');
+const practicePanes = document.querySelectorAll('.practice-pane');
+
+practiceTabButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const target = btn.getAttribute('data-practice');
+
+    practiceTabButtons.forEach((b) => b.classList.remove('active'));
+    practicePanes.forEach((p) => p.classList.remove('active'));
+
+    btn.classList.add('active');
+    document.getElementById(`practice-${target}`).classList.add('active');
+  });
+});
+
+/* Scenarios moved to data.js */
+
+// ===== Ініціалізація сценаріїв / зразків =====
+function initPracticeScenarios() {
+  // Баг-репорти
+  const bugScenarioSelect = document.getElementById('bugScenarioSelect');
+  const bugScenarioDescription = document.getElementById('bugScenarioDescription');
+  const bugSampleText = document.getElementById('bugSampleText');
+
+  if (bugScenarioSelect && bugScenarioDescription && bugSampleText) {
+    const updateBugScenario = () => {
+      const data = bugScenarios[bugScenarioSelect.value];
+      if (!data) return;
+      bugScenarioDescription.textContent = data.description;
+      bugSampleText.textContent = data.sample;
+      // якщо хочеш, щоб sample був одразу відкритий:
+      // document.getElementById('bugSample')?.setAttribute('open', 'open');
+    };
+
+    bugScenarioSelect.addEventListener('change', updateBugScenario);
+    updateBugScenario();
+  }
+
+  // Тест-кейси
+  const caseScenarioSelect = document.getElementById('caseScenarioSelect');
+  const caseScenarioDescription = document.getElementById('caseScenarioDescription');
+  const caseSampleText = document.getElementById('caseSampleText');
+
+  if (caseScenarioSelect && caseScenarioDescription && caseSampleText) {
+    const updateCaseScenario = () => {
+      const data = caseScenarios[caseScenarioSelect.value];
+      if (!data) return;
+      caseScenarioDescription.textContent = data.description;
+      caseSampleText.textContent = data.sample;
+      // document.getElementById('caseSample')?.setAttribute('open', 'open');
+    };
+
+    caseScenarioSelect.addEventListener('change', updateCaseScenario);
+    updateCaseScenario();
+  }
+
+  // Чек-листи
+  const checkScenarioSelect = document.getElementById('checkScenarioSelect');
+  const checkScenarioDescription = document.getElementById('checkScenarioDescription');
+  const checkSampleText = document.getElementById('checkSampleText');
+
+  if (checkScenarioSelect && checkScenarioDescription && checkSampleText) {
+    const updateCheckScenario = () => {
+      const data = checkScenarios[checkScenarioSelect.value];
+      if (!data) return;
+      checkScenarioDescription.textContent = data.description;
+      checkSampleText.textContent = data.sample;
+      // document.getElementById('checkSample')?.setAttribute('open', 'open');
+    };
+
+    checkScenarioSelect.addEventListener('change', updateCheckScenario);
+    updateCheckScenario();
+  }
+}
+
+initPracticeScenarios();
+
+
+// ===== Локальна перевірка полів =====
+function validateBugReport() {
+  const title = document.getElementById('bugTitle')?.value.trim();
+  const env = document.getElementById('bugEnvironment')?.value.trim();
+  const steps = document.getElementById('bugSteps')?.value.trim();
+  const exp = document.getElementById('bugExpected')?.value.trim();
+  const act = document.getElementById('bugActual')?.value.trim();
+  const sev = document.getElementById('bugSeverity')?.value;
+  const pri = document.getElementById('bugPriority')?.value;
+  const feedbackEl = document.getElementById('bugFeedback');
+
+  if (!feedbackEl) return;
+
+  const issues = [];
+
+  if (!title || title.length < 15) {
+    issues.push('• Title занадто короткий або порожній. Опиши що зламано + де.');
+  }
+  if (!env) {
+    issues.push('• Заповни Environment (платформа, build, OS / браузер / відеокарта).');
+  }
+  const stepLines = steps.split('\n').filter((l) => l.trim() !== '');
+  if (stepLines.length < 3) {
+    issues.push('• Має бути хоча б 3 кроки відтворення (1., 2., 3. ...).');
+  }
+  if (!exp) issues.push('• Немає Expected result.');
+  if (!act) issues.push('• Немає Actual result.');
+  if (!sev) issues.push('• Вибери Severity.');
+  if (!pri) issues.push('• Вибери Priority.');
+
+  if (issues.length === 0) {
+    feedbackEl.textContent =
+      '✅ Добре! Структура заповнена. Далі можна порівняти зі зразком або віддати це ШІ на глибший фідбек.';
+  } else {
+    feedbackEl.textContent =
+      '⚠ Підкоригуй баг-репорт:\n' + issues.join('\n');
+  }
+}
+
+const bugValidateBtn = document.getElementById('bugValidateBtn');
+if (bugValidateBtn) {
+  bugValidateBtn.addEventListener('click', validateBugReport);
+}
+
+// Аналогічно можна зробити прості перевірки для тест-кейсів і чек-листів:
+function validateTestCase() {
+  const id = document.getElementById('caseId')?.value.trim();
+  const title = document.getElementById('caseTitle')?.value.trim();
+  const pre = document.getElementById('casePre')?.value.trim();
+  const steps = document.getElementById('caseSteps')?.value.trim();
+  const exp = document.getElementById('caseExpected')?.value.trim();
+  const feedbackEl = document.getElementById('caseFeedback');
+  if (!feedbackEl) return;
+
+  const issues = [];
+  if (!id) issues.push('• Заповни ID тест-кейсу.');
+  if (!title) issues.push('• Додай зрозумілу назву.');
+  if (!pre) issues.push('• Опиши передумови.');
+  const stepLines = steps.split('\n').filter((l) => l.trim() !== '');
+  if (stepLines.length < 3) issues.push('• Розпиши хоча б 3 кроки.');
+  if (!exp) issues.push('• Додай очікуваний результат.');
+
+  feedbackEl.textContent =
+    issues.length === 0
+      ? '✅ Структура тест-кейсу ок. Тепер можна шліфувати формулювання.'
+      : '⚠ Підкоригуй тест-кейс:\n' + issues.join('\n');
+}
+const caseValidateBtn = document.getElementById('caseValidateBtn');
+if (caseValidateBtn) {
+  caseValidateBtn.addEventListener('click', validateTestCase);
+}
+
+function validateChecklist() {
+  const items = document.getElementById('checkItems')?.value.trim();
+  const feedbackEl = document.getElementById('checkFeedback');
+  if (!feedbackEl) return;
+
+  const lines = items.split('\n').filter((l) => l.trim() !== '');
+  const issues = [];
+  if (lines.length < 8) {
+    issues.push('• Спробуй додати хоча б 8–10 пунктів.');
+  }
+  const withoutCheckbox = lines.filter((l) => !l.trim().startsWith('[ ]'));
+  if (withoutCheckbox.length > 0) {
+    issues.push('• Не всі рядки починаються з "[ ]". Зроби формат єдиним.');
+  }
+
+  feedbackEl.textContent =
+    issues.length === 0
+      ? '✅ Непоганий чек-лист. Далі порівняй із зразком і подумай, що ще можна покрити.'
+      : '⚠ Підкоригуй чек-лист:\n' + issues.join('\n');
+}
+const checkValidateBtn = document.getElementById('checkValidateBtn');
+if (checkValidateBtn) {
+  checkValidateBtn.addEventListener('click', validateChecklist);
+}
+
+// ===============================
+// BUG REPORT EXPORT BUTTONS
+// ===============================
+document.getElementById("bugExportMdBtn")?.addEventListener("click", () => {
+  const data = {
+    title: document.getElementById("bugTitle").value.trim(),
+    env: document.getElementById("bugEnvironment").value.trim(),
+    steps: document.getElementById("bugSteps").value.trim(),
+    expected: document.getElementById("bugExpected").value.trim(),
+    actual: document.getElementById("bugActual").value.trim(),
+    severity: document.getElementById("bugSeverity").value,
+    priority: document.getElementById("bugPriority").value,
+    scenarioObj: document.getElementById("bugScenarioSelect").selectedOptions[0].text,
+    scenarioText: document.getElementById("bugScenarioDescription").textContent.trim()
+  };
+
+  const md =
+`# Bug Report
+**Title:** ${data.title}
+**Environment:** ${data.env}
+**Severity:** ${data.severity}
+**Priority:** ${data.priority}
+
+**Scenario:** ${data.scenarioObj}
+${data.scenarioText}
+
+## Steps to Reproduce
+${data.steps}
+
+## Expected
+${data.expected}
+
+## Actual
+${data.actual}
+`;
+
+  download("bug-report.md", md, "text/markdown");
+});
+
+document.getElementById("bugExportCsvBtn")?.addEventListener("click", () => {
+  const csv =
+`Title,Environment,Steps,Expected,Actual,Severity,Priority
+"${bugTitle.value.replace(/"/g,'""')}",
+"${bugEnvironment.value.replace(/"/g,'""')}",
+"${bugSteps.value.replace(/"/g,'""')}",
+"${bugExpected.value.replace(/"/g,'""')}",
+"${bugActual.value.replace(/"/g,'""')}",
+"${bugSeverity.value}",
+"${bugPriority.value}"`;
+
+  download("bug-report.csv", csv, "text/csv");
+});
+
+
+/* ========= EXPORT HELPERS ========= */
+function dl(filename, content, mime = "text/plain;charset=utf-8") {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+const $ = (id) => document.getElementById(id);
+const val = (id) => (($(id)?.value ?? "").trim());
+const escCSV = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
+
+/* ========= BUGS: MD / CSV ========= */
+if ($("bugExportMd")) $("bugExportMd").addEventListener("click", () => {
+  const md = `# Bug Report
+**Title:** ${val("bugTitle")}
+**Environment:** ${val("bugEnvironment")}
+**Severity:** ${val("bugSeverity")}  
+**Priority:** ${val("bugPriority")}
+
+## Steps to Reproduce
+${val("bugSteps")}
+
+## Expected
+${val("bugExpected")}
+
+## Actual
+${val("bugActual")}
+`;
+  dl("bug-report.md", md, "text/markdown;charset=utf-8");
+});
+
+if ($("bugExportCsv")) $("bugExportCsv").addEventListener("click", () => {
+  const row = [
+    escCSV(val("bugTitle")),
+    escCSV(val("bugEnvironment")),
+    escCSV(val("bugSteps")),
+    escCSV(val("bugExpected")),
+    escCSV(val("bugActual")),
+    escCSV(val("bugSeverity")),
+    escCSV(val("bugPriority")),
+  ].join(",");
+  const csv = "Title,Environment,Steps,Expected,Actual,Severity,Priority\n" + row + "\n";
+  dl("bug-report.csv", csv, "text/csv;charset=utf-8");
+});
+
+/* ========= TEST CASES: MD / CSV ========= */
+if ($("caseExportMd")) $("caseExportMd").addEventListener("click", () => {
+  const md = `# Test Case ${val("caseId")}
+**Summary:** ${val("caseTitle")}
+**Preconditions:**
+${val("casePre")}
+
+## Steps
+${val("caseSteps")}
+
+## Expected result
+${val("caseExpected")}
+`;
+  dl("test-case.md", md, "text/markdown;charset=utf-8");
+});
+
+if ($("caseExportCsv")) $("caseExportCsv").addEventListener("click", () => {
+  const row = [
+    escCSV(val("caseId")),
+    escCSV(val("caseTitle")),
+    escCSV(val("casePre")),
+    escCSV(val("caseSteps")),
+    escCSV(val("caseExpected")),
+  ].join(",");
+  const csv = "ID,Summary,Preconditions,Steps,Expected\n" + row + "\n";
+  dl("test-case.csv", csv, "text/csv;charset=utf-8");
+});
+
+/* ========= CHECKLISTS: MD / CSV ========= */
+if ($("checkExportMd")) $("checkExportMd").addEventListener("click", () => {
+  const items = val("checkItems").split("\n").map(s => s.trim()).filter(Boolean);
+  const md = "# Checklist\n" + items.map(i => `- [ ] ${i}`).join("\n") + "\n";
+  dl("checklist.md", md, "text/markdown;charset=utf-8");
+});
+
+if ($("checkExportCsv")) $("checkExportCsv").addEventListener("click", () => {
+  const items = val("checkItems").split("\n").map(s => s.trim()).filter(Boolean);
+  const csv = "Item\n" + items.map(escCSV).join("\n") + "\n";
+  dl("checklist.csv", csv, "text/csv;charset=utf-8");
+});
+
+/* ========= COURSE NOTES (LOCALSTORAGE) ========= */
+function saveCourseNote(moduleId, text) {
+  const notes = JSON.parse(localStorage.getItem('qa_courseNotes') || '{}');
+  notes[moduleId] = text;
+  localStorage.setItem('qa_courseNotes', JSON.stringify(notes));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const notes = JSON.parse(localStorage.getItem('qa_courseNotes') || '{}');
+  const textareas = document.querySelectorAll('.course-notes');
+  textareas.forEach((ta, index) => {
+    const moduleId = index + 1; // Our 1-based index from python loop
+    if (notes[moduleId]) {
+      ta.value = notes[moduleId];
+    }
+  });
+});

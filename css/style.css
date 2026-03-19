@@ -14,7 +14,8 @@
   --chip-border: #e5e7eb;
 
   --card-border: #e5e7eb;
-  --card-bg: radial-gradient(
+  --card-bg:
+    radial-gradient(
       circle at top left,
       rgba(79, 70, 229, 0.08),
       transparent 55%
@@ -49,12 +50,12 @@
   --card-bg-3d: rgba(20, 20, 40, 0.7);
   --text-primary-3d: #ffffff;
   --text-secondary-3d: #b8b8ff;
-  --glow-primary: 0 0 10px rgba(157, 0, 255, 0.7),
-    0 0 20px rgba(157, 0, 255, 0.5);
-  --glow-secondary: 0 0 10px rgba(0, 229, 255, 0.7),
-    0 0 20px rgba(0, 229, 255, 0.5);
-  --glow-accent: 0 0 10px rgba(255, 0, 229, 0.7),
-    0 0 20px rgba(255, 0, 229, 0.5);
+  --glow-primary:
+    0 0 10px rgba(157, 0, 255, 0.7), 0 0 20px rgba(157, 0, 255, 0.5);
+  --glow-secondary:
+    0 0 10px rgba(0, 229, 255, 0.7), 0 0 20px rgba(0, 229, 255, 0.5);
+  --glow-accent:
+    0 0 10px rgba(255, 0, 229, 0.7), 0 0 20px rgba(255, 0, 229, 0.5);
   --card-width: 300px;
   --card-height: 420px;
   --carousel-radius: 400px;
@@ -75,7 +76,8 @@ body.darkmode {
   --chip-border: #374151;
 
   --card-border: rgba(148, 163, 184, 0.25);
-  --card-bg: radial-gradient(
+  --card-bg:
+    radial-gradient(
       circle at top left,
       rgba(79, 70, 229, 0.18),
       transparent 55%
@@ -103,13 +105,19 @@ body.darkmode {
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   min-height: 100vh;
   background: var(--bg-body);
   color: var(--text-main);
   padding: 24px;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 /* Головний контейнер програми (одна актуальна версія) */
@@ -122,7 +130,10 @@ body {
   padding: 30px 40px 60px; /* більше простору знизу під кнопки */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
   border: 1px solid var(--border-main);
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -200,7 +211,10 @@ body.darkmode #theme-switch svg:last-child {
   padding: 8px 14px;
   cursor: pointer;
   border-radius: 999px 999px 0 0;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 /* Основні вкладки (Теорія / Карточки) */
@@ -236,7 +250,10 @@ body.darkmode #theme-switch svg:last-child {
   cursor: pointer;
   border-radius: 999px;
   border: 1px solid var(--section-border);
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 /* Саб-вкладки в теорії */
@@ -293,7 +310,10 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    background 0.15s ease;
   box-shadow: 0 10px 18px rgba(79, 70, 229, 0.35);
   white-space: nowrap;
 }
@@ -343,7 +363,9 @@ button:active {
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .question-label {
@@ -418,7 +440,9 @@ body.darkmode .topic-tag {
   border: 1px dashed var(--section-border);
   font-size: 13px;
   color: var(--text-main);
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .theory-section h2 {
@@ -654,7 +678,9 @@ body.sidebar-layout main {
 #sidebar a,
 #sidebar .dropdown-btn,
 #sidebar .sub-menu a {
-  transition: color 0.15s ease, background-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 /* Адаптив для сайдбару */
@@ -760,11 +786,16 @@ body.sidebar-layout main {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(1px 1px at 25% 25%, white, transparent),
+  background-image:
+    radial-gradient(1px 1px at 25% 25%, white, transparent),
     radial-gradient(1px 1px at 50% 50%, white, transparent),
     radial-gradient(2px 2px at 75% 75%, white, transparent),
     radial-gradient(2px 2px at 100% 100%, white, transparent);
-  background-size: 200px 200px, 300px 300px, 400px 400px, 600px 600px;
+  background-size:
+    200px 200px,
+    300px 300px,
+    400px 400px,
+    600px 600px;
   background-repeat: repeat;
   animation: twinkle 10s linear infinite;
 }
@@ -808,7 +839,8 @@ body.sidebar-layout main {
   margin-left: -140px; /* половина ширини */
   margin-top: -180px; /* половина висоти */
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+  transition:
+    transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     opacity 0.3s ease;
   cursor: pointer;
   opacity: 0.35; /* бічні картки напівпрозорі */
@@ -985,10 +1017,18 @@ body.sidebar-layout main {
 /* ===== Анімації ===== */
 @keyframes twinkle {
   0% {
-    background-position: 0 0, 0 0, 0 0, 0 0;
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
   }
   100% {
-    background-position: 200px 200px, 300px 300px, 400px 400px, 600px 600px;
+    background-position:
+      200px 200px,
+      300px 300px,
+      400px 400px,
+      600px 600px;
   }
 }
 
@@ -1093,7 +1133,12 @@ body.sidebar-layout main {
 
 /* Основний текст */
 body {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -1111,8 +1156,14 @@ h5,
 h6,
 .theory-section h2,
 .theory-section h3 {
-  font-family: "Manrope", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family:
+    "Manrope",
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.015em;
@@ -1160,8 +1211,14 @@ button,
 #sidebar a,
 #sidebar .dropdown-btn,
 #sidebar .logo {
-  font-family: "Manrope", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family:
+    "Manrope",
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   font-weight: 600;
   letter-spacing: 0.02em;
   font-size: 15px;
@@ -1212,7 +1269,8 @@ textarea {
 /* Код */
 code,
 pre {
-  font-family: "Inter", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+  font-family:
+    "Inter", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
   font-size: 14px;
   line-height: 1.5;
@@ -1309,7 +1367,9 @@ body.darkmode {
   color: var(--text-main);
   font-size: 14px;
   cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease,
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
     transform 0.08s ease;
 }
 
@@ -1362,4 +1422,110 @@ body.darkmode {
   .quiz-option-btn {
     font-size: 13px;
   }
+}
+
+/* ===== QA COURSE ACCORDION ===== */
+.course-section {
+  max-width: 800px;
+}
+
+.course-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.course-module {
+  background: var(--section-bg);
+  border: 1px solid var(--section-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.course-module:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.course-module summary {
+  padding: 16px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none; /* Hide default arrow */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-user-select: none;
+  user-select: none;
+  background: var(--bg-color); /* slightly different header */
+}
+
+.course-module summary::-webkit-details-marker {
+  display: none;
+}
+
+.course-module summary::after {
+  content: "▼";
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  color: var(--text-muted);
+}
+
+.course-module[open] summary::after {
+  transform: rotate(-180deg);
+}
+
+.course-module[open] summary {
+  border-bottom: 1px solid var(--section-border);
+}
+
+.module-content {
+  padding: 16px 20px;
+  background: var(--section-bg);
+}
+
+.course-notes {
+  width: 100%;
+  min-height: 120px;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--section-border);
+  background: var(--bg-color);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.course-notes:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.course-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.badge {
+  background: linear-gradient(135deg, #4f46e5, #ec4899);
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.course-btn {
+  background: rgba(79, 70, 229, 0.1) !important;
+  color: #4f46e5 !important;
+  border-color: #4f46e5 !important;
+  font-weight: 600;
+}
+
+/* Utilities */
+.mt-8 {
+  margin-top: 8px;
 }
