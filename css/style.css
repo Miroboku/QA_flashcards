@@ -528,7 +528,7 @@ body.sidebar-layout main {
   align-self: start;
   transition: 300ms ease-in-out;
   overflow: hidden;
-  white-space: nowrap;
+  text-wrap: nowrap;
   z-index: 10;
 }
 
@@ -588,19 +588,21 @@ body.sidebar-layout main {
   border-radius: 0.5em;
 }
 
-/* Підменю приховано за замовчуванням */
+/* Підменю */
 #sidebar .sub-menu {
-  display: none;
-  padding-left: 0;
-  margin: 0;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 300ms ease-in-out;
 }
 
-/* Показуємо, коли є клас show */
+#sidebar .sub-menu > div {
+  overflow: hidden;
+}
+
 #sidebar .sub-menu.show {
-  display: block;
+  grid-template-rows: 1fr;
 }
 
-/* Відступ для пунктів підменю */
 #sidebar .sub-menu a {
   padding-left: 2em;
 }
@@ -693,7 +695,7 @@ body.sidebar-layout main {
 
   .app {
     padding: 16px 14px 80px;
-    min-height: unset;
+    min-height: auto;
   }
 
   #sidebar {
