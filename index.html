@@ -4,221 +4,109 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QA Flashcards – Теорія тестування</title>
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000000' rx='20'/%3E%3Ctext x='50%25' y='54%25' fill='%23ffffff' font-family='Arial, sans-serif' font-size='52' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EQA%3C/text%3E%3C/svg%3E"
-    />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000000' rx='20'/%3E%3Ctext x='50%25' y='54%25' fill='%23ffffff' font-family='Arial, sans-serif' font-size='52' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EQA%3C/text%3E%3C/svg%3E" />
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/data.js" defer></script>
+    <link rel="manifest" href="manifest.json" />
     <script src="js/app.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
   </head>
-  <body class="sidebar-layout">
-    <!-- Кнопка перемикання теми -->
+  <body>
+    <!-- Background Elements -->
+    <div class="bg-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+
     <button id="theme-switch" aria-label="Перемкнути тему">
-      <!-- Місяць -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="24px"
-        viewBox="0 -960 960 960"
-        width="24px"
-      >
-        <path
-          d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"
-        />
-      </svg>
-      <!-- Сонце -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="24px"
-        viewBox="0 -960 960 960"
-        width="24px"
-      >
-        <path
-          d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"
-        />
-      </svg>
+      <i class="ph ph-moon"></i>
     </button>
 
     <!-- SIDEBAR -->
-    <nav id="sidebar">
-      <ul>
-        <li>
-          <span class="logo">QA Flashcards</span>
-          <button onclick="toggleSidebar()" id="toggle-btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-            >
-              <path
-                d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"
-              />
-            </svg>
-          </button>
-        </li>
+    <nav id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">QA Flashcards</div>
+        <button id="toggle-btn" class="toggle-btn">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
 
-        <!-- Теорія -->
-        <li class="active">
-          <button onclick="toggleSubMenu(this)" class="dropdown-btn">
-            <!-- Іконка книги -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-            >
-              <path
-                d="M200-120q-33 0-56.5-23.5T120-200v-520q0-33 23.5-56.5T200-800h520q17 0 28.5 11.5T760-760v520q0 17-11.5 28.5T720-200H400l-40 40-40-40H200Zm0-80h560v-480H200v480Zm80-80h160v-80H280v80Zm0-120h320v-80H280v80Zm0-120h320v-80H280v80ZM200-200v-520 520Z"
-              />
-            </svg>
-            <span>Теорія</span>
-            <!-- Стрілка -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-            >
-              <path
-                d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"
-              />
-            </svg>
+      <ul class="nav-menu">
+        <li class="nav-item active">
+          <button class="nav-link submenu-toggle" data-tab="theory">
+            <i class="ph ph-book-open-text"></i>
+            <span class="nav-text">Теорія</span>
+            <i class="ph ph-caret-down caret" style="margin-left:auto; font-size:16px;"></i>
           </button>
-          <ul class="sub-menu show">
-            <li>
-              <a
-                href="#theoryTab"
-                data-main-tab="theoryTab"
-                data-subtab="theoryBase"
-                >Базова теорія</a
-              >
-            </li>
-            <li>
-              <a
-                href="#theoryTab"
-                data-main-tab="theoryTab"
-                data-subtab="theoryApiSql"
-                >API / SQL</a
-              >
-            </li>
-            <li>
-              <a
-                href="#theoryTab"
-                data-main-tab="theoryTab"
-                data-subtab="theoryGameDev"
-                >GameDev QA</a
-              >
-            </li>
-            <li>
-              <a
-                href="#theoryTab"
-                data-main-tab="theoryTab"
-                data-subtab="theorySdlcStlc"
-                >SDLC / STLC</a
-              >
-            </li>
-            <li>
-              <a
-                href="#theoryTab"
-                data-main-tab="theoryTab"
-                data-subtab="theoryMethodologies"
-                >Waterfall / Agile / Scrum</a
-              >
-            </li>
-            <li>
-              <a
-                href="#theoryTab"
-                data-main-tab="theoryTab"
-                data-subtab="theoryCourse"
-                class="course-link"
-                >Курс QA</a
-              >
-            </li>
+          <ul class="submenu">
+            <li><a href="#" class="submenu-link" data-subtab="theoryBase">Базова теорія</a></li>
+            <li><a href="#" class="submenu-link" data-subtab="theoryApiSql">API / SQL</a></li>
+            <li><a href="#" class="submenu-link" data-subtab="theoryGameDev">GameDev QA</a></li>
+            <li><a href="#" class="submenu-link" data-subtab="theorySdlcStlc">SDLC / STLC</a></li>
+            <li><a href="#" class="submenu-link" data-subtab="theoryMethodologies">Agile / Scrum</a></li>
+            <li><a href="#" class="submenu-link" data-subtab="theoryCourse">Курс QA</a></li>
           </ul>
         </li>
 
-        <!-- Карточки -->
-        <li>
-          <a href="#cardsTab" data-main-tab="cardsTab">
-            <!-- Іконка карточок -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-            >
-              <path
-                d="M240-160q-33 0-56.5-23.5T160-240v-480q0-33 23.5-56.5T240-800h360q33 0 56.5 23.5T680-720v80h80q33 0 56.5 23.5T840-560v320q0 33-23.5 56.5T760-160H240Zm0-80h520v-320h-80v240q0 33-23.5 56.5T600-240H240v80Zm0-160h360v-320H240v320Zm80-80v-80h200v80H320Z"
-              />
-            </svg>
-            <span>Карточки</span>
+        <li class="nav-item">
+          <a href="#" class="nav-link" data-tab="cards">
+            <i class="ph ph-cards"></i>
+            <span class="nav-text">Карточки</span>
           </a>
         </li>
-        <!-- Тести / Quiz -->
-        <li>
-          <a href="#quizTab" data-main-tab="quizTab">
-            <!-- Іконка тестів (чекбокси) -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-            >
-              <path
-                d="M200-160q-33 0-56.5-23.5T120-240v-480q0-33 23.5-56.5T200-800h400l200 200v360q0 33-23.5 56.5T720-160H200Zm280-80h240v-280H640v-160H200v440h280Zm-180-80 80-80-56-56-24 24-24-24-56 56 80 80Zm0-200 80-80-56-56-24 24-24-24-56 56 80 80Zm200 80h160v-80H500v80Zm0 200h160v-80H500v80Z"
-              />
-            </svg>
-            <span>Тести / Quiz</span>
+        
+        <li class="nav-item">
+          <a href="#" class="nav-link" data-tab="quiz">
+            <i class="ph ph-exam"></i>
+            <span class="nav-text">Тести / Quiz</span>
           </a>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link submenu-toggle" data-tab="practice">
+            <i class="ph ph-keyboard"></i>
+            <span class="nav-text">Практика</span>
+            <i class="ph ph-caret-down caret" style="margin-left:auto; font-size:16px;"></i>
+          </button>
+          <ul class="submenu">
+            <li><a href="#" class="submenu-link" data-subtab="practiceBugs">Баг-репорти</a></li>
+            <li><a href="#" class="submenu-link" data-subtab="practiceCases">Тест-кейси</a></li>
+            <li><a href="#" class="submenu-link" data-subtab="practiceChecklists">Чек-листи</a></li>
+          </ul>
         </li>
       </ul>
     </nav>
 
-    <!-- MAIN APP -->
-    <main>
-      <div class="cosmos-background">
-        <div class="stars-container"></div>
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="header-banner">
+        <h1>QA Theory & Practice</h1>
+        <p>Загальне тестування, SQL/API та GameDev QA.</p>
       </div>
-      <div class="app">
-        <div class="header-row">
-          <div>
-            <h1>QA Flashcards</h1>
-            <div class="subtitle">
-              Теорія + карточки: загальне тестування, SQL/API та GameDev QA.
-            </div>
-          </div>
-        </div>
 
-        <div id="theoryTab" class="tab-content active">
-          <!-- Кнопки сабвкладок -->
-          <div class="subtabs">
-            <button class="subtab-btn active" data-subtab="theoryBase">
-              Базова теорія
-            </button>
-            <button class="subtab-btn" data-subtab="theoryApiSql">
-              API / SQL
-            </button>
-            <button class="subtab-btn" data-subtab="theoryGameDev">
-              GameDev QA
-            </button>
-            <button class="subtab-btn" data-subtab="theorySdlcStlc">
-              SDLC / STLC
-            </button>
-            <button class="subtab-btn" data-subtab="theoryMethodologies">
-              Waterfall / Agile / Scrum
-            </button>
-            <button class="subtab-btn" data-subtab="theoryCourse">
-              Курс QA
-            </button>
-          </div>
+      <!-- THEORY TAB -->
+      <div id="tab-theory" class="tab-content active glass-panel">
+        <div class="subtabs-container" id="theory-content-wrap">
+          <button class="subtab-btn active" data-group="theory" data-subtab="theoryBase">Базова теорія</button>
+          <button class="subtab-btn" data-group="theory" data-subtab="theoryApiSql">API / SQL</button>
+          <button class="subtab-btn" data-group="theory" data-subtab="theoryGameDev">GameDev QA</button>
+          <button class="subtab-btn" data-group="theory" data-subtab="theorySdlcStlc">SDLC / STLC</button>
+          <button class="subtab-btn" data-group="theory" data-subtab="theoryMethodologies">Agile / Scrum</button>
+          <button class="subtab-btn" data-group="theory" data-subtab="theoryCourse">Курс QA</button>
+        </div>
 
           <!-- БАЗОВА ТЕОРІЯ -->
           <div id="theoryBase" class="subtab-content active">
@@ -488,6 +376,156 @@
                 </li>
               </ul>
             </div>
+
+            <div class="theory-section">
+              <h2>6. Edge Cases (Граничні / Крайові випадки)</h2>
+              <p>
+                <strong>Edge Case</strong> — це сценарій тестування, що знаходиться на межі або за межею стандартних вхідних значень. Більшість критичних багів знаходяться саме тут, бо розробники, як правило, добре перевіряють "середні" дані, але забувають про крайні.
+              </p>
+
+              <h3>Чому Edge Cases важливі?</h3>
+              <p>
+                Тестування тільки "щасливих сценаріїв" (happy path) залишає систему вразливою. Реальні користувачі роблять непередбачувані речі: вводять порожні поля, вставляють емодзі в числові поля, натискають кнопку тричі поспіль або заходять із найстарішого браузера.
+              </p>
+
+              <h3>Зв'язок з техніками тест-дизайну</h3>
+              <ul class="theory-list">
+                <li>
+                  <strong>BVA (Boundary Value Analysis):</strong> Безпосередньо пов'язана з edge cases. Перевіряємо значення <em>на межі</em>, <em>трохи нижче</em> та <em>трохи вище</em> межі.<br>
+                  Приклад: поле приймає від 1 до 100 → тестуємо: <code>0, 1, 2, 99, 100, 101</code>
+                </li>
+                <li>
+                  <strong>Equivalence Partitioning:</strong> Після ділення на класи — edge cases є значеннями прямо на кордоні між класами.
+                </li>
+              </ul>
+
+              <h3>Основні типи Edge Cases</h3>
+              <table class="theory-table">
+                <thead>
+                  <tr><th>Тип</th><th>Опис</th><th>Приклад</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Граничні числа</strong></td>
+                    <td>Мінімум, максимум, 0, від'ємні, дробові</td>
+                    <td>Поле «Кількість»: ввести <code>0</code>, <code>-1</code>, <code>99999999</code>, <code>1.5</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Порожній ввід</strong></td>
+                    <td>Пусте поле, пробіл, лише пробіли</td>
+                    <td>Ім'я користувача = <code>" "</code> (пробіл) — чи приймається як валідне?</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Дуже довгий рядок</strong></td>
+                    <td>Ввід, що перевищує ліміт символів</td>
+                    <td>Вставити 10 000 символів у поле «Місто» — чи обрізається чи крашиться?</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Спецсимволи та SQL Injection</strong></td>
+                    <td>Символи <code>' " ; -- &lt;&gt; / \</code>, HTML-теги</td>
+                    <td>Ввести <code>'; DROP TABLE users; --</code> у поле пошуку</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Unicode / Емодзі</strong></td>
+                    <td>Кирилиця, ієрогліфи, емодзі, RTL-мови (арабська)</td>
+                    <td>Ім'я = <code>Владислав 🚀</code> — чи коректно зберігається у БД?</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Нульові / null значення</strong></td>
+                    <td>Відсутність значення там, де очікується</td>
+                    <td>API повертає <code>null</code> для поля «ціна» — фронтенд крашиться?</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Паралельні дії</strong></td>
+                    <td>Два користувачі одночасно редагують один об'єкт</td>
+                    <td>Два адміни одночасно видаляють один і той самий запис — Race Condition</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Мережеві збої</strong></td>
+                    <td>Запит відправлено, але з'єднання перервалось</td>
+                    <td>Оплата відправлена → інтернет зник → гроші списались, але підтвердження не прийшло</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Дати та часові зони</strong></td>
+                    <td>29 лютого, 31 грудня, перехід на літній час, UTC offset</td>
+                    <td>Замовлення зроблено о 23:59 31/12 — чи потрапляє в правильний звітний рік?</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Стан після помилки</strong></td>
+                    <td>Що відбувається після невдалої операції?</td>
+                    <td>Завантаження файлу впало — чи очищається тимчасовий файл на сервері?</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3>Corner Case vs Edge Case</h3>
+              <ul class="theory-list">
+                <li><strong>Edge Case</strong> — один параметр на межі (наприклад, максимальна довжина рядка).</li>
+                <li><strong>Corner Case</strong> — декілька параметрів одночасно на межі (наприклад, максимальна довжина рядка <em>і</em> спецсимволи <em>і</em> UTF-8 кодування).</li>
+              </ul>
+
+              <h3>Питання на співбесіді: "Що таке edge cases?"</h3>
+              <p>
+                <em>Відповідь:</em> «Edge case — це тестовий сценарій, де вхідні дані знаходяться на межі допустимих значень або виходять за неї. Я виявляю їх через техніки BVA та Equivalence Partitioning, а також через досвід і знання типових "больових точок" системи — порожні поля, нулі, спецсимволи, паралельні запити та мережеві збої.»
+              </p>
+            </div>
+          </div>
+
+          <!-- API / SQL -->
+          <div id="theoryApiSql" class="subtab-content">
+            <div class="theory-section">
+              <h2>1. Бази даних та SQL</h2>
+              <p>
+                <strong>SQL (Structured Query Language)</strong> — це мова програмування для взаємодії з реляційними базами даних. Вона дозволяє нам читати, записувати та змінювати дані, які зберігає бекенд.
+              </p>
+              
+              <img src="png/sql_diagram.png" alt="SQL Database architecture" class="theory-illustration" />
+              
+              <h3>Основні запити (CRUD):</h3>
+              <ul class="theory-list">
+                <li><strong>SELECT</strong> — читання даних (Read). Наприклад: <code>SELECT * FROM users WHERE age > 18;</code></li>
+                <li><strong>INSERT</strong> — додавання нових даних (Create).</li>
+                <li><strong>UPDATE</strong> — зміна існуючих даних (Update).</li>
+                <li><strong>DELETE</strong> — видалення даних (Delete).</li>
+              </ul>
+              
+              <h3>Що таке JOIN?</h3>
+              <p>
+                <strong>JOIN</strong> використовується для об'єднання рядків з двох або більше таблиць на основі пов'язаного між ними стовпця (наприклад, ID користувача).
+              </p>
+              <ul class="theory-list">
+                <li><strong>INNER JOIN:</strong> повертає тільки ті рядки, де є збіги в обох таблицях.</li>
+                <li><strong>LEFT JOIN:</strong> повертає всі рядки з лівої таблиці та збіги з правої (або NULL, якщо збігів немає).</li>
+              </ul>
+            </div>
+
+            <div class="theory-section">
+              <h2>2. Клієнт-серверна архітектура та API</h2>
+              <p>
+                <strong>API (Application Programming Interface)</strong> — це набір правил, за якими дві програми (наприклад, фронтенд і бекенд) спілкуються між собою. Найпопулярніший тип — <strong>REST API</strong>, який працює через протокол HTTP.
+              </p>
+              
+              <img src="png/api_diagram.png" alt="REST API Request Response cycle" class="theory-illustration" />
+
+              <h3>HTTP-методи (REST API)</h3>
+              <ul class="theory-list">
+                <li><strong>GET</strong> — Отримати дані з сервера (відкриття сторінки, пошук).</li>
+                <li><strong>POST</strong> — Надіслати нові дані на сервер (реєстрація, створення посту).</li>
+                <li><strong>PUT / PATCH</strong> — Оновити існуючі дані (зміна пароля, редагування профілю). PUT замінює ресурс повністю, PATCH — частково.</li>
+                <li><strong>DELETE</strong> — Видалити дані з сервера.</li>
+              </ul>
+
+              <h3>Статус-коди відповіді (HTTP Status Codes)</h3>
+              <ul class="theory-list">
+                <li><strong>2xx (Success):</strong> <code>200 OK</code> (запит успішний), <code>201 Created</code> (створено новий ресурс).</li>
+                <li><strong>3xx (Redirection):</strong> <code>301 Moved Permanently</code>, <code>302 Found</code>.</li>
+                <li><strong>4xx (Client Error):</strong> Помилка на боці клієнта (відправили погані дані). <code>400 Bad Request</code>, <code>401 Unauthorized</code> (немає логіну), <code>403 Forbidden</code> (немає прав), <code>404 Not Found</code>.</li>
+                <li><strong>5xx (Server Error):</strong> Помилка бекенду (баг у коді сервера або впала БД). <code>500 Internal Server Error</code>, <code>502 Bad Gateway</code>.</li>
+              </ul>
+              
+              <h3>JSON (JavaScript Object Notation)</h3>
+              <p>Це найпоширеніший формат обміну даними між клієнтом і сервером. Дані передаються у вигляді пар "ключ-значення" (наприклад, <code>{"name": "Іван", "age": 25}</code>). Легко читається як людьми, так і машинами.</p>
+            </div>
           </div>
 
           <!-- SDLC / STLC -->
@@ -651,243 +689,88 @@
           </div>
           <div id="theoryGameDev" class="subtab-content">
             <div class="theory-section">
-              <h2>0. Game Development Life Cycle (GDLC)</h2>
+              <h2>Game Development Life Cycle (GDLC)</h2>
               <p>
-                <strong>Game Development Life Cycle</strong> — послідовність
-                етапів від ідеї до підтримки після релізу. QA залучається
-                <strong>на кожному етапі</strong> з різним фокусом.
+                <strong>GDLC</strong> — це послідовність етапів від ідеї до підтримки гри після релізу. QA залучається на кожному етапі з різним фокусом.
               </p>
 
-              <img
-                src="png/gdlc.png"
-                alt="Game Development Life Cycle"
-                class="theory-illustration"
-                style="
-                  max-width: 20%;
-                  display: block;
-                  margin: 12px auto;
-                  border-radius: 8px;
-                "
-              />
+              <img src="png/gdlc_timeline.png" alt="Game Development Stages Timeline" class="theory-illustration" style="max-width: 100%; border-radius: 12px; border: none; box-shadow: none; background: transparent;" />
 
               <table class="theory-table">
                 <thead>
                   <tr>
                     <th>Етап</th>
                     <th>Що відбувається</th>
-                    <th>Роль QA</th>
+                    <th>Фокус QA</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>Planning & Pre-production</strong></td>
-                    <td>GDD, прототипи, вибір рушія, концепт-арти.</td>
-                    <td>Тестування прототипів, рев'ю вимог, оцінка ризиків.</td>
+                    <td><strong>Planning (Pitch)</strong></td>
+                    <td>Ідея, концепт, пошук бюджету, визначення цільової аудиторії.</td>
+                    <td>QA зазвичай ще не залучений (інколи — аналіз схожих ігор конкурентів).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Pre-production</strong></td>
+                    <td>Створення GDD, прототипи, концепт-арти.</td>
+                    <td>Тестування прототипів, оцінка ризиків, рев'ю вимог.</td>
                   </tr>
                   <tr>
                     <td><strong>Production</strong></td>
-                    <td>Активна розробка: рівні, механіки, AI, інтеграція.</td>
-                    <td>
-                      Build-to-build regression, функціональне тестування,
-                      звіти.
-                    </td>
+                    <td>Активна розробка рівнів, механік та AI.</td>
+                    <td>Build-to-build regression, функціональні тести.</td>
                   </tr>
                   <tr>
-                    <td><strong>Alpha</strong></td>
-                    <td>
-                      <em>Feature Complete</em> — ключові механіки є, контент не
-                      повний.
-                    </td>
-                    <td>
-                      Пік навантаження QA. Пошук блокерів, перевірка логіки.
-                    </td>
+                    <td><strong>Quality Assurance (Alpha/Beta)</strong></td>
+                    <td>Feature Complete (Альфа) та Content Complete (Бета).</td>
+                    <td>Пік навантаження. Пошук блокерів, баланс, полішинг.</td>
                   </tr>
                   <tr>
-                    <td><strong>Beta</strong></td>
-                    <td>
-                      <em>Content Complete</em> — весь контент готовий. Feature
-                      Freeze.
-                    </td>
-                    <td>
-                      Полішинг, баланс, перфоманс, підготовка до сертифікації.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Gold / Master</strong></td>
+                    <td><strong>Launch (Master)</strong></td>
                     <td>Release Candidate — фінальна збірка для магазинів.</td>
-                    <td>
-                      Фінальний smoke-тест, перевірка сертифікації (TRC/TCR).
-                    </td>
+                    <td>Фінальний smoke-тест, перевірка сертифікації (TRC/TCR).</td>
                   </tr>
                   <tr>
-                    <td><strong>Post-launch</strong></td>
-                    <td>Патчі, DLC, live-ops, івенти.</td>
-                    <td>
-                      Регресія патчів, аналіз телеметрії та краш-логів гравців.
-                    </td>
+                    <td><strong>Post-production</strong></td>
+                    <td>Патчі, DLC, івенти (Live-ops).</td>
+                    <td>Регресія патчів, аналіз краш-логів та телеметрії гравців.</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
             <div class="theory-section">
-              <h2>1. Інструменти тестувальника (QA Tools у рушії)</h2>
-              <p>
-                У GameDev QA рідко тестують гру "наосліп". Для прискорення
-                використовуються вбудовані інструменти (Debug Tools):
-              </p>
+              <h2>Специфіка баг-репорту в GameDev</h2>
+              <p>Окрім стандартних кроків, баг-репорт у геймдеві <strong>обов'язково</strong> має містити:</p>
               <ul class="theory-list">
-                <li>
-                  <strong>Debug Menu / Dev Console:</strong> Спеціальне меню для
-                  QA та розробників. Дозволяє вмикати God Mode, Noclip (політ
-                  крізь стіни), видавати предмети, міняти рівень, скіпати
-                  квести.
-                </li>
-                <li>
-                  <strong>Time Manipulation:</strong> Зміна швидкості гри
-                  (Slow-mo або Fast-forward). Допомагає тестувати таймінги
-                  анімацій, hit-frames або швидку зміну дня і ночі.
-                </li>
-                <li>
-                  <strong>Telemetry / Heatmaps:</strong> Інструменти аналітики,
-                  які показують "теплові карти" дій гравців (де найчастіше
-                  ходять, де вмирають). Допомагає тестувати баланс.
-                </li>
-                <li>
-                  <strong>Freecam (Вільна камера):</strong> Відв'язування камери
-                  від персонажа, щоб оглянути рівень за межами видимості гравця
-                  (пошук дірок у текстурах).
-                </li>
+                <li><strong>Build ID та Платформу:</strong> Напр. <code>Build 1.4.2_RC, PS5 DevKit</code>. Баг у ранковому білді може не існувати у вечірньому.</li>
+                <li><strong>Локацію (Координати):</strong> Напр. <code>(X: 3450, Y: 120, Z: -45)</code>. Без вектора розробник не знайде дірку на мапі в 20 км².</li>
+                <li><strong>Save-файл:</strong> Розробник не буде грати 5 годин, щоб дійти до боса. Сейв прямо перед багом — це закон.</li>
+                <li><strong>Відео (Capture):</strong> Текстом неможливо описати некоректну анімацію чи розсинхрон звуку. Відео потрібне завжди.</li>
+                <li><strong>Crash Dump (Логи):</strong> Файли дампу пам'яті для пошуку причини Hard-lock.</li>
               </ul>
             </div>
 
             <div class="theory-section">
-              <h2>2. Тестування Штучного Інтелекту (AI) та NPC</h2>
+              <h2>Інструменти тестувальника (Debug Tools)</h2>
+              <p>У GameDev QA рідко тестують гру "наосліп". Для прискорення використовуються вбудовані в рушій інструменти:</p>
               <ul class="theory-list">
-                <li>
-                  <strong>NavMesh (Навігаційна сітка):</strong> Невидима
-                  полігональна сітка, по якій рушій дозволяє ходити NPC.
-                  <em>Баг:</em> NPC застрягає в камені або йде в стіну — це
-                  зламаний NavMesh.
-                </li>
-                <li>
-                  <strong>Line of Sight (LoS) & Aggro:</strong> Перевірка зору
-                  ворогів. Чи бачить ворог гравця крізь стіну? Як швидко злітає
-                  "агро", якщо гравець ховається в кущі?
-                </li>
-                <li>
-                  <strong>State Machine (Кінцевий автомат):</strong> AI працює
-                  за станами (Idle -> Patrol -> Combat -> Flee). QA має
-                  перевірити, чи коректно ворог перемикається між ними
-                  (наприклад, чи не стоїть він на місці, коли його б'ють).
-                </li>
-                <li>
-                  <strong>Pathfinding:</strong> Здатність NPC знайти шлях до
-                  цілі, обходячи динамічні перешкоди (наприклад, якщо гравець
-                  поставив ящик на шляху).
-                </li>
+                <li><strong>Dev Console:</strong> Вмикає God Mode, Noclip (політ крізь стіни), видачу предметів, зміну рівня.</li>
+                <li><strong>Time Manipulation:</strong> Зміна швидкості гри (Slow-mo) для перевірки таймінгів анімацій чи hit-frames.</li>
+                <li><strong>Freecam:</strong> Відв'язування камери від персонажа для огляду рівня за межами видимості гравця.</li>
+                <li><strong>Telemetry / Heatmaps:</strong> Інструменти аналітики, що показують, де гравці найчастіше вмирають або ходять (для балансу).</li>
               </ul>
             </div>
 
             <div class="theory-section">
-              <h2>3. Глибинне тестування механік та Edge Cases</h2>
+              <h2>Типові ігрові баги та термінологія</h2>
               <ul class="theory-list">
-                <li>
-                  <strong>Hitbox vs Hurtbox:</strong> <em>Hitbox</em> — зона
-                  удару зброї. <em>Hurtbox</em> — зона на тілі персонажа, яка
-                  отримує урон. QA перевіряє їх синхронізацію, щоб гравець не
-                  отримував урон від повітря.
-                </li>
-                <li>
-                  <strong>Animation Canceling:</strong> Переривання тривалої
-                  анімації (наприклад, атаки або лікування) перекатом або
-                  стрибком. QA перевіряє, чи не дає це експлойт на подвійний
-                  DPS.
-                </li>
-                <li>
-                  <strong>Save-scumming:</strong> Перезавантаження збереження
-                  перед генерацією луту або кидком кубика. Перевірка, чи не
-                  ламає це стейт квесту або логіку гри.
-                </li>
-                <li>
-                  <strong>Inventory Overflow:</strong> Що станеться, якщо
-                  підняти 999-й предмет, коли максимум 99? Чи випаде він, чи
-                  зникне, чи крашне гру?
-                </li>
-                <li>
-                  <strong>Frame Data (для файтингів/соулс-лайк):</strong>
-                  Підрахунок кадрів невразливості (i-frames) під час перекату.
-                  Якщо при 60 FPS перекат має 12 i-frames, QA перевіряє, чи
-                  дійсно урон не проходить у ці долі секунди.
-                </li>
-              </ul>
-            </div>
-
-            <div class="theory-section">
-              <h2>4. Типові ігрові баги та термінологія</h2>
-              <ul class="theory-list">
-                <li>
-                  <strong>Soft-lock:</strong> Гра не впала, але гравець застряг
-                  (зник сюжетний NPC, не з'явився тригер виходу).
-                  <em>Hard-lock</em> — повне зависання або краш.
-                </li>
-                <li>
-                  <strong>Out of Bounds (OoB):</strong> Вихід за межі ігрового
-                  рівня через прогалину в колізіях (невидимих стінах). Часто
-                  веде до нескінченного падіння.
-                </li>
-                <li>
-                  <strong>Z-fighting:</strong> Графічний баг, коли дві текстури
-                  на одному рівні "блимають", змагаючись за пріоритет
-                  відмальовки камерою.
-                </li>
-                <li>
-                  <strong>Clipping (Кліппінг):</strong> Проходження 3D-моделей
-                  одна крізь одну (меч стичить крізь стіну, плащ проходить крізь
-                  ноги персонажа).
-                </li>
-                <li>
-                  <strong>LOD (Level of Detail) Pop-in:</strong> Механізм
-                  підвантаження низькополігональних моделей здалеку. Баг — коли
-                  якісна модель з'являється надто пізно і різко ("стрибає" перед
-                  очима).
-                </li>
-              </ul>
-            </div>
-
-            <div class="theory-section">
-              <h2>5. Специфіка баг-репорту в GameDev</h2>
-              <p>
-                Окрім стандартних кроків, баг-репорт у геймдеві
-                <strong>обов'язково</strong> містить:
-              </p>
-              <ul class="theory-list">
-                <li>
-                  <strong>Build ID та Платформу:</strong> Наприклад,
-                  <code>Build 1.4.2_RC, PS5 DevKit</code>. Білди збираються
-                  щодня, і баг у ранковому білді може не існувати у вечірньому.
-                </li>
-                <li>
-                  <strong>Локацію та Координати:</strong> Дебаг-вектор типу
-                  <code>(X: 3450, Y: 120, Z: -45)</code>. Без цього
-                  левел-дизайнер ніколи не знайде висяче в повітрі дерево на
-                  мапі площею 20 км².
-                </li>
-                <li>
-                  <strong>Save-файл (Збереження):</strong> Розробник не буде
-                  витрачати 5 годин, щоб дійти до боса, на якому стався краш.
-                  Сейв прямо перед багом — закон.
-                </li>
-                <li>
-                  <strong>Відео відтворення (Capture):</strong> Текстом
-                  неможливо описати некоректну анімацію, розсинхрон звуку чи
-                  кліппінг. Відео потрібне для 90% візуальних багів.
-                </li>
-                <li>
-                  <strong>Crash Dump / Logs:</strong> Файли дампу пам'яті, які
-                  генеруються при вильоті гри. Це головний інструмент
-                  програмістів для пошуку причини Hard-lock.
-                </li>
+                <li><strong>Soft-lock:</strong> Гра не впала, але гравець застряг (зник сюжетний NPC). <em>Hard-lock</em> — повне зависання (краш).</li>
+                <li><strong>Out of Bounds (OoB):</strong> Вихід за межі ігрового рівня через прогалину в невидимих стінах. Часто веде до падіння під мапу.</li>
+                <li><strong>Z-fighting:</strong> Дві текстури на одному рівні "блимають", змагаючись за пріоритет відмальовки.</li>
+                <li><strong>Clipping:</strong> Проходження 3D-моделей одна крізь одну (меч стичить крізь стіну).</li>
+                <li><strong>Hitbox vs Hurtbox:</strong> <em>Hitbox</em> — зона удару зброї. <em>Hurtbox</em> — зона на тілі, яка отримує урон. Їх розсинхрон веде до отримання урону з повітря.</li>
+                <li><strong>NavMesh:</strong> Навігаційна сітка для NPC. Якщо вона зламана — ворог застрягає в стіні або стоїть на місці.</li>
               </ul>
             </div>
           </div>
@@ -983,9 +866,9 @@
 
               <div class="image-block">
                 <img
-                  src="png/agile.jpg"
+                  src="png/agile_diagram.png"
                   alt="Agile Scrum Framework"
-                  class="theory-img"
+                  class="theory-illustration"
                 />
               </div>
 
@@ -1446,336 +1329,267 @@
             </div>
           </div>
         </div>
-        <!-- /theoryTab -->
+      </div>
+      <!-- /THEORY TAB -->
 
-        <div id="cardsTab" class="tab-content">
-          <section class="memory-section">
-            <div class="carousel-container">
-              <!-- Сюди JS буде підкидати карточки -->
-              <div class="carousel" id="memory-carousel"></div>
-            </div>
-
-            <div class="carousel-controls">
-              <button id="prev-btn" class="control-btn">&lsaquo;</button>
-              <button id="next-btn" class="control-btn">&rsaquo;</button>
-            </div>
-          </section>
-        </div>
-        <!-- ===== Тести / Quiz ===== -->
-        <div id="quizTab" class="tab-content">
-          <section class="quiz-section">
-            <div class="quiz-header">
-              <h2>Тести / Quiz</h2>
-              <p>
-                Обери тему і пройди невеликий тест. Обирай варіанти відповідей,
-                а потім переходь до наступного питання.
-              </p>
-            </div>
-
-            <div class="quiz-controls">
-              <div class="quiz-select-wrap">
-                <label for="quizTopicSelect">Тема:</label>
-                <select id="quizTopicSelect">
-                  <option value="all">Усі теми впереміш</option>
-                  <option value="База">Базова теорія</option>
-                  <option value="STLC">STLC / процеси</option>
-                  <option value="SQL/API">SQL / API</option>
-                  <option value="GameDev">GameDev QA</option>
-                </select>
-              </div>
-
-              <button id="quizStartBtn">Почати заново</button>
-            </div>
-
-            <div id="quizCard" class="quiz-card">
-              <div class="quiz-meta">
-                <span id="quizQuestionCounter">Питання 0 / 0</span>
-                <span id="quizScore">Рахунок: 0</span>
-              </div>
-
-              <div id="quizQuestionText" class="quiz-question">
-                Обери тему і натисни «Почати заново», щоб почати тест.
-              </div>
-
-              <div id="quizOptions" class="quiz-options">
-                <!-- Сюди JS додасть кнопки з варіантами -->
-              </div>
-
-              <div id="quizFeedback" class="quiz-feedback"></div>
-
-              <button id="quizNextBtn" class="quiz-next-btn" disabled>
-                Наступне питання
-              </button>
-            </div>
-          </section>
+      <!-- CARDS TAB -->
+      <div id="tab-cards" class="tab-content glass-panel">
+        <div class="flashcards-controls">
+          <div class="filter-group">
+            <label for="fc-topic-select" style="color: var(--text-muted);">Тема:</label>
+            <select id="fc-topic-select" class="cyber-select">
+              <option value="all">Усі теми</option>
+              <option value="База">Базова теорія</option>
+              <option value="Функціональне">Функціональне</option>
+              <option value="STLC">STLC</option>
+              <option value="SQL/API">SQL/API</option>
+              <option value="GameDev">GameDev</option>
+            </select>
+          </div>
+          <button id="fc-flip" class="cyber-btn secondary">Перевернути</button>
         </div>
 
-        <!-- ===== Практика ===== -->
-        <div id="practiceTab" class="tab-content">
-          <section class="practice-section">
-            <div class="practice-header">
-              <h2>Практика: Баги, Тест-кейси, Чек-листи</h2>
-              <p>Обирай вкладку і тренуйся писати артефакти або генеруй їх.</p>
+        <div class="flashcard-container">
+          <div id="flashcard" class="flashcard">
+            <div class="fc-face fc-front">
+              <div id="fc-topic" class="fc-topic">Topic</div>
+              <div id="fc-question" class="fc-question">Клікни, щоб почати</div>
+              <div class="fc-hint">Клікни по картці, щоб побачити відповідь</div>
             </div>
-
-            <div class="subtabs" style="margin-bottom: 20px">
-              <button class="subtab-btn active" data-subtab="practiceBugs">
-                Баг-репорти
-              </button>
-              <button class="subtab-btn" data-subtab="practiceCases">
-                Тест-кейси
-              </button>
-              <button class="subtab-btn" data-subtab="practiceChecklists">
-                Чек-листи
-              </button>
+            <div class="fc-face fc-back">
+              <div class="fc-topic">Відповідь</div>
+              <div id="fc-answer" class="fc-answer">Тут буде відповідь</div>
             </div>
-
-            <!-- БАГ-РЕПОРТИ -->
-            <div id="practiceBugs" class="subtab-content active">
-              <div class="practice-layout">
-                <div class="practice-form">
-                  <h2>Твій баг-репорт</h2>
-
-                  <label>
-                    Title
-                    <input
-                      type="text"
-                      id="bugTitle"
-                      placeholder="e.g. Crash when changing resolution to 4k"
-                    />
-                  </label>
-
-                  <label>
-                    Environment
-                    <input
-                      type="text"
-                      id="bugEnvironment"
-                      placeholder="PC, build 1.0.0.1234 QA, Win10, Chrome / RTX 3060"
-                    />
-                  </label>
-
-                  <label>
-                    Steps to Reproduce
-                    <textarea
-                      id="bugSteps"
-                      rows="5"
-                      placeholder="1. ...&#10;2. ...&#10;3. ..."
-                    ></textarea>
-                  </label>
-
-                  <label>
-                    Expected result
-                    <textarea id="bugExpected" rows="3"></textarea>
-                  </label>
-
-                  <label>
-                    Actual result
-                    <textarea id="bugActual" rows="3"></textarea>
-                  </label>
-
-                  <div class="two-cols">
-                    <label>
-                      Severity
-                      <select id="bugSeverity">
-                        <option value="">-- вибрати --</option>
-                        <option>Blocker</option>
-                        <option>Critical</option>
-                        <option>Major</option>
-                        <option>Minor</option>
-                        <option>Trivial</option>
-                      </select>
-                    </label>
-                    <label>
-                      Priority
-                      <select id="bugPriority">
-                        <option value="">-- вибрати --</option>
-                        <option>High</option>
-                        <option>Medium</option>
-                        <option>Low</option>
-                      </select>
-                    </label>
-                  </div>
-
-                  <div class="practice-actions">
-                    <button
-                      id="bugValidateBtn"
-                      type="button"
-                      class="primary-btn"
-                    >
-                      Перевірити локально
-                    </button>
-                    <button id="bugExportMd" type="button" class="secondary">
-                      Експорт MD
-                    </button>
-                    <button id="bugExportCsv" type="button" class="secondary">
-                      Експорт CSV
-                    </button>
-                    <button
-                      id="bugAiCheckBtn"
-                      type="button"
-                      class="ghost-btn"
-                      disabled
-                    >
-                      Перевірити ШІ (пізніше)
-                    </button>
-                  </div>
-
-                  <div id="bugFeedback" class="practice-feedback"></div>
-                </div>
-
-                <!-- СПРАВА: сценарій + зразок -->
-                <div class="practice-scenario">
-                  <h2>Сценарій</h2>
-                  <label>
-                    Об’єкт:
-                    <select id="bugScenarioSelect">
-                      <option value="game-save">
-                        GameDev: краш при завантаженні сейву
-                      </option>
-                      <option value="web-login">
-                        Web: неправильний логін без помилки
-                      </option>
-                    </select>
-                  </label>
-                  <p id="bugScenarioDescription" class="scenario-text"></p>
-
-                  <details id="bugSample" class="sample-block">
-                    <summary>Зразок відповіді</summary>
-                    <pre class="code-block" id="bugSampleText"></pre>
-                  </details>
-                </div>
-              </div>
-            </div>
-
-            <!-- ТЕСТ-КЕЙСИ -->
-            <div id="practiceCases" class="subtab-content">
-              <div class="practice-layout">
-                <!-- ЗЛІВА: форма -->
-                <div class="practice-form">
-                  <h2>Твій тест-кейс</h2>
-
-                  <label>
-                    ID
-                    <input type="text" id="caseId" placeholder="TC-GAME-001" />
-                  </label>
-                  <label> Summary <input type="text" id="caseTitle" /> </label>
-                  <label>
-                    Pre-conditions
-                    <textarea id="casePre" rows="2"></textarea>
-                  </label>
-                  <label>
-                    Steps
-                    <textarea
-                      id="caseSteps"
-                      rows="5"
-                      placeholder="1. ...&#10;2. ...&#10;3. ..."
-                    ></textarea>
-                  </label>
-                  <label>
-                    Expected result
-                    <textarea id="caseExpected" rows="3"></textarea>
-                  </label>
-
-                  <div class="practice-actions">
-                    <button
-                      id="caseValidateBtn"
-                      type="button"
-                      class="primary-btn"
-                    >
-                      Перевірити локально
-                    </button>
-                    <button id="caseExportMd" type="button" class="secondary">
-                      Експорт MD
-                    </button>
-                    <button id="caseExportCsv" type="button" class="secondary">
-                      Експорт CSV
-                    </button>
-                  </div>
-
-                  <div id="caseFeedback" class="practice-feedback"></div>
-                </div>
-
-                <!-- СПРАВА: сценарій + зразок -->
-                <div class="practice-scenario">
-                  <h2>Сценарій</h2>
-                  <label>
-                    Об’єкт:
-                    <select id="caseScenarioSelect">
-                      <option value="game-character">
-                        GameDev: створення персонажа
-                      </option>
-                      <option value="web-register">
-                        Web: форма реєстрації
-                      </option>
-                    </select>
-                  </label>
-                  <p id="caseScenarioDescription" class="scenario-text"></p>
-
-                  <details id="caseSample" class="sample-block">
-                    <summary>Зразок відповіді</summary>
-                    <pre class="code-block" id="caseSampleText"></pre>
-                  </details>
-                </div>
-              </div>
-            </div>
-
-            <!-- ЧЕК-ЛИСТИ -->
-            <div id="practiceChecklists" class="subtab-content">
-              <div class="practice-layout">
-                <!-- ЗЛІВА: форма -->
-                <div class="practice-form">
-                  <h2>Твій чек-лист</h2>
-                  <label>
-                    Пункти (один рядок = одна перевірка)
-                    <textarea
-                      id="checkItems"
-                      rows="10"
-                      placeholder="[ ] Пункт 1&#10;[ ] Пункт 2&#10;[ ] Пункт 3"
-                    ></textarea>
-                  </label>
-
-                  <div class="practice-actions">
-                    <button
-                      id="checkValidateBtn"
-                      type="button"
-                      class="primary-btn"
-                    >
-                      Перевірити локально
-                    </button>
-                    <button id="checkExportMd" type="button" class="secondary">
-                      Експорт MD
-                    </button>
-                    <button id="checkExportCsv" type="button" class="secondary">
-                      Експорт CSV
-                    </button>
-                  </div>
-
-                  <div id="checkFeedback" class="practice-feedback"></div>
-                </div>
-
-                <!-- СПРАВА: сценарій + зразок -->
-                <div class="practice-scenario">
-                  <h2>Сценарій</h2>
-                  <label>
-                    Об’єкт:
-                    <select id="checkScenarioSelect">
-                      <option value="game-main-menu">
-                        GameDev: головне меню гри
-                      </option>
-                      <option value="web-login-form">Web: форма логіну</option>
-                    </select>
-                  </label>
-                  <p id="checkScenarioDescription" class="scenario-text"></p>
-
-                  <details id="checkSample" class="sample-block">
-                    <summary>Зразок відповіді</summary>
-                    <pre class="code-block" id="checkSampleText"></pre>
-                  </details>
-                </div>
-              </div>
-            </div>
-          </section>
+          </div>
         </div>
+
+        <div style="display: flex; justify-content: center; gap: 24px;">
+          <button id="fc-prev" class="cyber-btn"><i class="ph ph-caret-left" style="margin-right: 8px;"></i> Попередня</button>
+          <button id="fc-next" class="cyber-btn">Наступна <i class="ph ph-caret-right" style="margin-left: 8px;"></i></button>
+        </div>
+      </div>
+
+      <!-- QUIZ TAB -->
+      <div id="tab-quiz" class="tab-content glass-panel">
+        <div class="quiz-header">
+          <h2 style="font-family: var(--font-head); font-size: 28px; color: var(--primary);">Перевірка знань</h2>
+          <p style="color: var(--text-muted); margin-top: 8px;">Обери тему та проходь тестування.</p>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 32px;">
+          <select id="quiz-topic-select" class="cyber-select">
+            <option value="all">Усі теми впереміш</option>
+            <option value="База">Базова теорія</option>
+            <option value="STLC">STLC / процеси</option>
+            <option value="SQL/API">SQL / API</option>
+            <option value="GameDev">GameDev QA</option>
+          </select>
+          <button id="quiz-start" class="cyber-btn secondary">Почати заново</button>
+        </div>
+
+        <div style="max-width: 700px; margin: 0 auto; background: var(--glass-overlay-strong); padding: 32px; border-radius: 16px; border: 1px solid var(--panel-border);">
+          <div class="quiz-meta">
+            <span id="quiz-counter">0 / 0</span>
+            <span id="quiz-score">Score: 0</span>
+          </div>
+
+          <div id="quiz-question" class="quiz-question">Завантаження...</div>
+          <div id="quiz-options" class="quiz-options"></div>
+          
+          <div id="quiz-feedback" class="quiz-feedback"></div>
+
+          <div class="quiz-actions">
+            <button id="quiz-next" class="cyber-btn" disabled>Наступне питання <i class="ph ph-arrow-right" style="margin-left: 8px;"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRACTICE TAB -->
+      <div id="tab-practice" class="tab-content glass-panel">
+        <div class="header-banner" style="margin-bottom: 24px; text-align: center;">
+          <h2 style="font-family: var(--font-head); font-size: 28px; color: var(--secondary);">Практика написання артефактів</h2>
+          <p style="color: var(--text-muted);">Тренуйся писати баг-репорти, тест-кейси та чек-листи.</p>
+        </div>
+
+        <!-- AI SETTINGS BLOCK -->
+        <div style="background: var(--glass-overlay-strong); border: 1px solid var(--panel-border); border-radius: 12px; padding: 16px; margin-bottom: 24px; text-align: center;">
+          <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--primary);">🤖 AI Ментор (Gemini)</h3>
+          <div style="display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap;">
+            <input type="password" id="gemini-api-key" class="form-control" placeholder="Встав сюди свій Gemini API Key..." style="max-width: 300px; margin: 0;">
+            <button id="save-api-key" class="cyber-btn secondary">Зберегти ключ</button>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;">Щоб ШІ міг перевірити твій артефакт, отримай безкоштовний ключ на <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--primary);">Google AI Studio</a>. Ключ зберігається лише у твоєму браузері.</p>
+        </div>
+
+        <div class="subtabs-container" id="practice-content-wrap" style="justify-content: center;">
+          <button class="subtab-btn active" data-group="practice" data-subtab="practiceBugs">Баг-репорти</button>
+          <button class="subtab-btn" data-group="practice" data-subtab="practiceCases">Тест-кейси</button>
+          <button class="subtab-btn" data-group="practice" data-subtab="practiceChecklists">Чек-листи</button>
+        </div>
+
+        <!-- BUG REPORTS -->
+        <div id="practiceBugs" class="subtab-content active">
+          <div class="practice-grid">
+            <div>
+              <h3 style="margin-bottom: 20px; color: var(--primary);">Форма Баг-репорту</h3>
+              <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="bugTitle" class="form-control" placeholder="Crash when changing resolution to 4k">
+              </div>
+              <div class="form-group">
+                <label>Steps to Reproduce</label>
+                <textarea id="bugSteps" class="form-control" placeholder="1. ...&#10;2. ..."></textarea>
+              </div>
+              <div class="two-cols">
+                <div class="form-group">
+                  <label>Expected Result</label>
+                  <textarea id="bugExp" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Actual Result</label>
+                  <textarea id="bugAct" class="form-control" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="form-group" style="margin-top: 16px;">
+                <label>Environment</label>
+                <input type="text" id="bugEnv" class="form-control" placeholder="PC, Win10, Chrome 120">
+              </div>
+              <div class="actions-row">
+                <button id="bugValidate" class="cyber-btn">Перевірити</button>
+                <button id="bugExportMd" class="cyber-btn secondary">.MD</button>
+                <button id="bugExportCsv" class="cyber-btn secondary">.CSV</button>
+              </div>
+              <div id="bugFeedback" class="feedback-msg"></div>
+            </div>
+            
+            <div>
+              <div class="sample-box">
+                <h3>Сценарій</h3>
+                <div class="form-group">
+                  <select id="bugScenarioSelect" class="form-control">
+                    <option value="game-save">GameDev: краш при завантаженні сейву</option>
+                    <option value="web-login">Web: кнопка логіну не реагує</option>
+                    <option value="mobile-crash">Mobile: виліт при відкритті камери</option>
+                    <option value="api-500">API: 500 Internal Server Error при оплаті</option>
+                  </select>
+                </div>
+                <p id="bugScenarioDescription" class="sample-desc">Після завантаження сейву гравець зʼявляється під мапою й безкінечно падає. Платформа: PC.</p>
+                
+                <h4 style="margin: 20px 0 10px;">Зразок відповіді:</h4>
+                <div class="sample-code" id="bugSampleText">Title: [PC] Player spawns under the map after loading save
+Environment: PC, build 1.0.0.1234 QA
+Steps to Reproduce:
+1. Launch the game
+2. Select save "Forest_AutoSave_01"
+3. Click "Load"
+Expected: Player spawns on the ground
+Actual: Player spawns under the map and falls infinitely</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TEST CASES -->
+        <div id="practiceCases" class="subtab-content">
+          <div class="practice-grid">
+            <div>
+              <h3 style="margin-bottom: 20px; color: var(--primary);">Форма Тест-кейсу</h3>
+              <div class="form-group">
+                <label>Title / Summary</label>
+                <input type="text" id="caseTitle" class="form-control" placeholder="Успішне створення персонажа">
+              </div>
+              <div class="form-group">
+                <label>Pre-conditions</label>
+                <textarea id="casePre" class="form-control" rows="2" placeholder="Гра запущена, екран створення..."></textarea>
+              </div>
+              <div class="form-group">
+                <label>Steps</label>
+                <textarea id="caseSteps" class="form-control" placeholder="1. ...&#10;2. ..."></textarea>
+              </div>
+              <div class="form-group">
+                <label>Expected Result</label>
+                <textarea id="caseExp" class="form-control" rows="3"></textarea>
+              </div>
+              
+              <div class="actions-row">
+                <button id="caseValidate" class="cyber-btn">Перевірити</button>
+                <button id="caseExportMd" class="cyber-btn secondary">.MD</button>
+                <button id="caseExportCsv" class="cyber-btn secondary">.CSV</button>
+              </div>
+              <div id="caseFeedback" class="feedback-msg"></div>
+            </div>
+            
+            <div>
+              <div class="sample-box">
+                <h3>Сценарій</h3>
+                <div class="form-group">
+                  <select id="caseScenarioSelect" class="form-control">
+                    <option value="game-character">GameDev: створення персонажа</option>
+                    <option value="web-register">Web: успішна реєстрація</option>
+                    <option value="mobile-checkout">Mobile: оплата через Apple Pay</option>
+                    <option value="api-search">API: пошук товарів з фільтрами</option>
+                  </select>
+                </div>
+                <p id="caseScenarioDescription" class="sample-desc">Екран створення персонажа: вибір класу, імені, складності. Потрібен тест-кейс для успішного створення.</p>
+                
+                <h4 style="margin: 20px 0 10px;">Зразок відповіді:</h4>
+                <div class="sample-code" id="caseSampleText">Назва: Успішне створення нового персонажа
+Передумови: Екран створення персонажа відкритий
+Кроки:
+1. Обрати клас "Warrior"
+2. Ввести імʼя "Arthas"
+3. Обрати складність "Normal"
+4. Натиснути "Start Game"
+Очікуваний результат:
+Створюється новий персонаж, гравець потрапляє на стартову локацію.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHECKLISTS -->
+        <div id="practiceChecklists" class="subtab-content">
+          <div class="practice-grid">
+            <div>
+              <h3 style="margin-bottom: 20px; color: var(--primary);">Чек-лист</h3>
+              <div class="form-group">
+                <label>Пункти (один рядок = одна перевірка)</label>
+                <textarea id="checkItems" class="form-control" rows="12" placeholder="[ ] Пункт 1&#10;[ ] Пункт 2"></textarea>
+              </div>
+              
+              <div class="actions-row">
+                <button id="checkValidate" class="cyber-btn">Перевірити</button>
+                <button id="checkExportMd" class="cyber-btn secondary">.MD</button>
+                <button id="checkExportCsv" class="cyber-btn secondary">.CSV</button>
+              </div>
+              <div id="checkFeedback" class="feedback-msg"></div>
+            </div>
+            
+            <div>
+              <div class="sample-box">
+                <h3>Сценарій</h3>
+                <div class="form-group">
+                  <select id="checkScenarioSelect" class="form-control">
+                    <option value="game-main-menu">GameDev: головне меню гри</option>
+                    <option value="web-login-form">Web: форма логіну</option>
+                    <option value="mobile-profile">Mobile: екран профілю</option>
+                    <option value="cross-browser">Web: кросбраузерність лендінгу</option>
+                  </select>
+                </div>
+                <p id="checkScenarioDescription" class="sample-desc">Головне меню гри: New Game, Continue, Settings, Exit. Склади чек-лист з 10–15 пунктів.</p>
+                
+                <h4 style="margin: 20px 0 10px;">Зразок відповіді:</h4>
+                <div class="sample-code" id="checkSampleText">[ ] Кнопка "New Game" активна та запускає нову гру
+[ ] "Continue" недоступна, якщо немає сейвів
+[ ] "Continue" завантажує останній сейв
+[ ] Відкриття "Settings" не скидає музик/ефектів
+[ ] Кнопка "Exit" показує підтвердження
+[ ] Локалізація тексту відповідає обраній мові</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
   </body>
