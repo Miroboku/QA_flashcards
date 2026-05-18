@@ -1,4 +1,4 @@
-const CACHE_NAME = 'qa-flashcards-v14';
+const CACHE_NAME = 'qa-flashcards-v15';
 const urlsToCache = [
   './',
   './index.html',
@@ -10,39 +10,44 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', event => {
-  self.skipWaiting(); // Оновлює SW без необхідності закривати вкладку
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
+      .then(cache => cache.addAll(urlsToCache))
   );
 });
 
+// Network-first: завжди тягне свіжу версію, кеш — лише офлайн-fallback
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+        // Зберігаємо свіжу версію в кеш
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, responseClone);
+        });
+        return response;
+      })
+      .catch(() => {
+        // Якщо офлайн — повертаємо з кешу
+        return caches.match(event.request);
       })
   );
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim()); // Захоплює контроль над усіма вкладками миттєво
+  event.waitUntil(self.clients.claim());
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
+    caches.keys().then(cacheNames =>
+      Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
+          if (!cacheWhitelist.includes(cacheName)) {
             return caches.delete(cacheName);
           }
         })
-      );
-    })
+      )
+    )
   );
 });
