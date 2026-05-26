@@ -739,7 +739,7 @@ textarea.form-control {
 .feedback-msg.success { border-left: 4px solid #00ff80; }
 .feedback-msg.error { border-left: 4px solid var(--accent); }
 
-/* Responsive Sidebar */
+/* Responsive Sidebar & Mobile Adaptation */
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -750,9 +750,16 @@ textarea.form-control {
     position: fixed;
     bottom: 0;
     top: auto;
+    left: 0;
     flex-direction: row;
-    padding: 10px;
+    padding: 6px 12px;
     z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    border-right: none;
+    border-top: 1px solid var(--panel-border);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background: var(--panel-bg);
   }
   .sidebar-header {
     display: none;
@@ -761,21 +768,195 @@ textarea.form-control {
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
+    gap: 0;
+  }
+  .nav-item {
+    border-radius: 8px;
+    overflow: hidden;
+    width: 22%;
   }
   .nav-link {
     flex-direction: column;
-    padding: 8px;
-    gap: 4px;
-    font-size: 11px;
+    padding: 6px 4px;
+    gap: 2px;
+    font-size: 10px;
     text-align: center;
+    border-radius: 8px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-link i {
+    font-size: 18px;
+    min-width: auto;
   }
   .nav-text {
     display: none;
   }
+  .sidebar .nav-link .caret {
+    display: none !important;
+  }
   .submenu {
     display: none !important;
   }
+  .nav-item.active > .nav-link {
+    border-left: none;
+    border-top: 3px solid var(--primary);
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.05);
+  }
   .main-content {
-    padding: 20px 20px 100px 20px;
+    padding: 20px 16px 100px 16px;
+  }
+  .glass-panel {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  #theme-switch {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .header-banner {
+    padding-right: 48px;
+    margin-bottom: 24px;
+  }
+  .header-banner h1 {
+    font-size: 28px;
+  }
+  .theory-section {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .theory-section h2 {
+    font-size: 18px;
+  }
+  .theory-section h3 {
+    font-size: 15px;
+  }
+  .theory-illustration {
+    margin: 16px auto;
+  }
+  .theory-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+  .subtabs-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    gap: 8px;
+    justify-content: flex-start !important;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  .subtabs-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+  }
+  .subtab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-banner h1 {
+    font-size: 24px;
+  }
+  .two-cols {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .flashcard-container {
+    height: 280px;
+    margin-bottom: 20px;
+  }
+  .fc-face {
+    padding: 20px;
+    border-radius: 16px;
+  }
+  .fc-question {
+    font-size: 18px;
+  }
+  .fc-answer {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .fc-topic {
+    top: 12px;
+    left: 12px;
+    font-size: 10px;
+  }
+  .fc-hint {
+    bottom: 12px;
+    font-size: 10px;
+  }
+  .quiz-question {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .quiz-opt-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  .quiz-feedback {
+    font-size: 14px;
+    margin: 16px 0;
+  }
+  .course-accordion summary {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  .module-content {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flashcards-controls {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .filter-group {
+    width: 100%;
+  }
+  .cyber-select {
+    flex-grow: 1;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  #fc-flip {
+    width: 100%;
+  }
+  .cyber-btn {
+    padding: 8px 16px;
+    font-size: 11px;
+    width: auto;
+  }
+  .actions-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .actions-row .cyber-btn {
+    width: 100%;
+  }
+  .subtabs-container {
+    gap: 6px;
+  }
+  .subtab-btn {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 }
